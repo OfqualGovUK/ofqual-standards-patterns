@@ -6,7 +6,7 @@ permalink: /standards.schema.json
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "$id": "{{siteRoot}}standards.json",
     "title": "Standards' requirements summary",
-    "description": "Home Office engineering standard requirements",
+    "description": "Ofqual standard requirements",
     "type": "object",
     "default": {},
     "required": [
@@ -15,7 +15,7 @@ permalink: /standards.schema.json
     "properties": {
         "standards": {
             "title": "Standards",
-            "description": "List of Home Office engineering standards",
+            "description": "List of Ofqual standards",
             "type": "array",
             "default": [],
             "items": {"$ref": "#/$defs/standard"}
@@ -23,7 +23,7 @@ permalink: /standards.schema.json
     },
     "$defs": {
         "standard": {
-            "title": "A summary of a Home Office engineering standard",
+            "title": "A summary of an Ofqual standard",
             "type": "object",
             "required": [
                 "id",
@@ -35,14 +35,14 @@ permalink: /standards.schema.json
             ],
             "properties": {
                 "id": {
-                    "title": "SEGAS ID",
-                    "description": "A unique ID for the specification",
+                    "title": "ID",
+                    "description": "A unique ID for the standard",
                     "type": "string",
-                    "pattern": "^SEGAS-\\d{5}$"
+                    "pattern": "Ofqual-\\d{5}$"
                 },
                 "title": {
                     "title": "Title",
-                    "description": "A short title describing the subject of the specification",
+                    "description": "A short title describing the subject of the standard",
                     "type": "string"
                 },
                 "url": {
@@ -75,7 +75,7 @@ permalink: /standards.schema.json
         },
         "requirement": {
             "title": "Requirement",
-            "description": "A requirement that is part of a Home Office engineering standard",
+            "description": "A requirement that is part of an Ofqual standard",
             "type": "object",
             "required": [
                 "title",
