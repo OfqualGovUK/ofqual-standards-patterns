@@ -1,7 +1,7 @@
 ---
 homepage: true
 layout: product
-title: Principles, Standards anf Patterns
+title: Principles, Standards and Patterns
 description: Build better solutions by working to agreed Ofqual principles, standards and patterns
 startButton:
   href: "/about/"
