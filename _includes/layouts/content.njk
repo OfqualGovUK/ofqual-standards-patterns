@@ -1,0 +1,65 @@
+{% extends "../../node_modules/@x-govuk/govuk-eleventy-plugin/layouts/base.njk" %}
+
+{% block beforeContent %}
+  {% if phaseBannerConfiguration %}
+    {% import "macros/feedbackBanner.njk" as feedback %}
+    <div data-axe-exclude="It is acceptable that this is outside a landmark region">
+      {{ feedback.phaseBanner(phaseBannerConfiguration) }}
+    </div>
+  {% endif %}
+
+  <nav aria-label="Breadcrumbs">
+    {{ govukBreadcrumbs({
+        classes: "govuk-!-display-none-print",
+        items: breadcrumbItems
+    }) if showBreadcrumbs }}
+  </nav>
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+
+      <header class="app-document-header">
+        <h1 class="app-document-header__title govuk-heading-xl">
+          {% if id %} <span class="govuk-caption-xl">{{ id }}</span>{% endif %}
+          {{ title | smart }}
+        </h1>
+        {% if description %}
+          <p class="app-document-header__description govuk-body-l">
+            {{ description | markdown("inline") }}
+          </p>
+        {% endif %}
+      </header>
+
+      <p class="govuk-body">
+        Last updated: {{ page.date | postDate }}
+
+        {% if tags | length %}
+          {% from "macros/tagList.njk" import tagList %}
+          <br>
+          <span class="tags">Relates to (tags): {{ tagList(tags) }}</span>
+        {% endif %}
+      </p>
+
+      {{ appProseScope(content) if content }}
+
+      {% if gitHashPath %}
+        <p class="govuk-body">
+          {% set githubPath = page.filePathStem + '.md' %}
+          <a class="version-permalink" href="{{ gitHashPath }}{{githubPath}}" target="_blank" rel="noopener">
+            Content version permalink (GitHub) (opens in a new tab)
+          </a>
+        </p>
+      {% endif %}
+    </div>
+    <div class="govuk-grid-column-one-third-from-desktop">
+      {% block sidebar %}
+        {% from "macros/navigationList.njk" import navigationList %}
+        {{ navigationList(page.url, "Engineering guidance and standards", collections.homepageLinks) }}
+      {% endblock %}
+      {% include "layouts/shared/related.njk" %}
+    </div>
+  </div>
+{% endblock %}

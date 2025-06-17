@@ -1,0 +1,45 @@
+{
+  "name": "engineering-guidance-and-standards",
+  "version": "2.0.0",
+  "description": "Write documentation using Markdown and publish it using 11ty GOV.UK layout plugin",
+  "keywords": [
+    "guidance",
+    "standards",
+    "home office",
+    "eleventy",
+    "eleventy-plugin"
+  ],
+  "homepage": "",
+  "bugs": {
+    "url": "https://"
+  },
+  "contributors": [
+    {
+      "name": "Rob Johnson"
+    },
+    {
+      "name": "Ed Hamilton"
+    }
+  ],
+  "license": "MIT",
+  "scripts": {
+    "build": "eleventy",
+    "serve": "eleventy --serve",
+    "cypress:open": "cypress open",
+    "cypress:run": "cypress run",
+    "docker:build": "docker build -t engineering-guidance-and-standards ."
+  },
+  "engines": {
+    "node": ">=22.0.0 <23.0.0"
+  },
+  "dependencies": {
+    "@11ty/eleventy": "^3.0.0",
+    "@x-govuk/govuk-eleventy-plugin": "^6.7.2",
+    "luxon": "^3.6.1",
+    "parse5": "^7.3.0"
+  },
+  "devDependencies": {
+    "@cfworker/json-schema": "^4.1.1",
+    "axe-core": "^4.10.3"
+  }
+}
