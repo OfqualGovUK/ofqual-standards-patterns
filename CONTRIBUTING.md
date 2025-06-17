@@ -1,11 +1,7 @@
 # How to contribute
 
-This is the contribution guide for the Home Office Software Engineering Guidance and Standards, we commonly refer to as SEGAS. This guide will cover the primary way we
-expect contributions to be made, which is adding new principles, standards, guidance and patterns.
-
-To contact the team you can get us at [segas@digital.homeoffice.gov.uk](mailto:segas@digital.homeoffice.gov.uk)
-
-Please read and follow our [Code of Conduct](https://github.com/UKHomeOffice/engineering-guidance-and-standards/blob/main/CODE_OF_CONDUCT.md).
+This is the contribution guide for the Ofqual Principles, Standards and Patterns. This guide will cover the primary way we
+expect contributions to be made, which is adding new principles, standards and patterns.
 
 ## New to open source
 
@@ -19,26 +15,9 @@ Please find some helpful links to guide you in starting your journey with open s
 
 We will now look at the process we expect contributors to take when suggesting fixes, new content or a review of existing content.
 
-## Issues
-
-### Create an issue
-
-- Before submitting an issue, please search the issue tracker to check the issue is not already there.
-- Please [create an issue](https://github.com/UKHomeOffice/engineering-guidance-and-standards/issues/new/choose) if you wish to:
-  - report a bug
-  - propose a new pattern
-  - propose a new principle
-  - propose a new standard
-  - review any existing content
-  - report a security vulnerability
-
-### Solve an issue
-
-- Have a look at our [existing issues](https://github.com/UKHomeOffice/engineering-guidance-and-standards/issues), and you might find something you would like to help us on!
-
 ## Make changes
 
-To start the process of making changes to an issue you have raised, firstly you should [fork our repo](https://github.com/UKHomeOffice/engineering-guidance-and-standards/fork). This is so you can make changes without affecting the original project until you're ready.
+To start the process of making changes, firstly you should [fork our repo](https://github.com/UKOfqualGovUK/ofqual-standards-patterns/fork). This is so you can make changes without affecting the original project until you're ready.
 
 ### Create a branch
 
@@ -62,7 +41,7 @@ Please make sure you have set up Git to sign your commits with a method that Git
 
 If you have already pushed a commit that is unsigned, you can rectify this in two ways:
 
-1. Once commit signing is set up, rebase your work onto the main branch, then force push the changes. As with any force push, if you think others may have your branch checked out please make sure they are aware, e.g. with a comment on the pull request, so that they can update their local branches. This is usually not an issue for SEGAS contributions, as other collaborators work through the GitHub web interface rather than locally checked out versions.
+1. Once commit signing is set up, rebase your work onto the main branch, then force push the changes. As with any force push, if you think others may have your branch checked out please make sure they are aware, e.g. with a comment on the pull request, so that they can update their local branches. 
 2. Create a new branch from the main branch, re-apply your changes to that branch, submit a new PR, and close the old one. This is usually more work, but can be simpler to manage if there are multiple contributors, or a complex commit history.
 
 ## Pull Requests
@@ -77,7 +56,7 @@ When creating a PR, use the appropriate template checklists for code and content
 
 ### Who can merge your PR
 
-Any 2 of the maintainers on this repo are needed to review and accept your change and at least 1 reviewer must be a [code owner](https://github.com/UKHomeOffice/engineering-guidance-and-standards/blob/main/CODEOWNERS).
+Any 2 of the maintainers on this repo are needed to review and accept your change and at least 1 reviewer must be a [code owner](https://github.com/OfqualGovUK/ofqual-standards-patterns/blob/main/CODEOWNERS).
 
 ## Your PR is merged!
 
@@ -101,7 +80,7 @@ However, if you feel that some changes are becoming more complex, then you may w
 
 ## Build, release, deploy
 
-We are using [GitHub workflows](https://github.com/UKHomeOffice/engineering-guidance-and-standards/tree/main/.github/workflows) for build and deploy and automated end to end testing.
+We are using [GitHub workflows](https://github.com/OfqualGovUK/ofqual-standards-patterns/tree/main/.github/workflows) for build and deploy and automated end to end testing.
 
 The following actions are performed for each PR before merging:
 
@@ -146,6 +125,6 @@ When creating content please take a look at the standard for that content. This 
 ### Templates
 
 You can use the following templates when creating content:
-- [Pattern template](https://github.com/UKHomeOffice/engineering-guidance-and-standards/blob/main/docs/patterns/pattern.template.md)
-- [Principle template](https://github.com/UKHomeOffice/engineering-guidance-and-standards/blob/main/docs/principles/principle.template.md)
-- [Standard template](https://github.com/UKHomeOffice/engineering-guidance-and-standards/blob/main/docs/standards/standard.template.md)
+- [Pattern template](https://github.com/OfqualGovUK/ofqual-standards-patterns/blob/main/docs/patterns/pattern.template.md)
+- [Principle template](https://github.com/OfqualGovUK/ofqual-standards-patterns/blob/main/docs/principles/principle.template.md)
+- [Standard template](https://github.com/OfqualGovUK/ofqual-standards-patterns/blob/main/docs/standards/standard.template.md)
