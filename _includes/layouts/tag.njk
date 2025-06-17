@@ -1,0 +1,41 @@
+{% extends "../../node_modules/@x-govuk/govuk-eleventy-plugin/layouts/tag.njk" %}
+
+{% block beforeContent %}
+  {% if phaseBannerConfiguration %}
+    {% import "macros/feedbackBanner.njk" as feedback %}
+    <div data-axe-exclude="It is acceptable that this is outside a landmark region">
+      {{ feedback.phaseBanner(phaseBannerConfiguration) }}
+    </div>
+  {% endif %}
+
+  <nav aria-label="Breadcrumbs">
+    {{ super() }}
+  </nav>
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    {{ appDocumentHeader({
+      title: title or ("Posts tagged ‘" + tag + "’")
+    }) }}
+
+    {% import "macros/contentDocumentList.njk" as documentList %}
+    {{ documentList.contentDocumentList({
+      headingLevel: 3 if paginationHeading else 2,
+      classes: "app-document-list--large",
+      items: collections[tag] | orderPagesByTitle,
+      displayContentCategory: true
+    }) }}
+
+    {{ appProseScope(content) if content }}
+
+  </div>
+  <div class="govuk-grid-column-one-third-from-desktop">
+    {% block sidebar %}
+      {% from "macros/navigationList.njk" import navigationList %}
+      {{ navigationList(page.url, "Engineering guidance and standards", collections.homepageLinks) }}
+    {% endblock %}
+  </div>
+</div>
+{% endblock %}
