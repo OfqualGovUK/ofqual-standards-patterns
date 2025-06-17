@@ -1,8 +1,8 @@
 ---
 homepage: true
 layout: product
-title: Engineering Guidance and Standards
-description: Build better applications by working to agreed Home Office engineering principles and standards
+title: Principles, Standards anf Patterns
+description: Build better solutions by working to agreed Ofqual principles, standards and patterns
 startButton:
   href: "/about/"
   text: Find out more about what we are doing
