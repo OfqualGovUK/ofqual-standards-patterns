@@ -15,8 +15,8 @@ This is the preferred option. If you raise an issue on our repository you can ea
 
 You will need a GitHub account in order to create an issue, which will involve agreeing to [GitHub's privacy policy](https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement).
 
-[Raise an issue on our GitHub repository](https://github.com/UKHomeOffice/engineering-guidance-and-standards/issues/new/choose)
+[Raise an issue on our GitHub repository](https://github.com/OfqualGovUK/ofqual-standards-patterns/issues/new/choose)
 
 ## Get in touch directly
 
-If you do not want to raise an issue on GitHub then you can contact the members of our engineering community that maintain the site at [segas@digital.homeoffice.gov.uk](mailto:segas@digital.homeoffice.gov.uk).
+If you do not want to raise an issue on GitHub then you can contact the members of our engineering community that maintain the site at [ITSupport@ofqual.gov.uk](mailto:itsupport@ofqual.gov.uk).
