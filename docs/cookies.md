@@ -7,4 +7,4 @@ description:
 tags:
 ---
 
-The Home Office Engineering Guidance and Standards site does not use cookies.
+The Ofqual Principle, Standards and Patterns site does not use cookies.
