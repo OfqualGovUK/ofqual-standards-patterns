@@ -2,7 +2,7 @@
 layout: collection
 order: 3
 title: Principles
-description: "To guide the behaviour and decisions of engineering teams"
+description: "To guide the behaviour and decisions of Ofqual teams"
 tags: []
 paginationHeading: false
 pagination:
