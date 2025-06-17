@@ -2,18 +2,18 @@
 eleventyExcludeFromCollections: true
 ---
 
-# Code of conduct for `UKHomeOffice`
+# Code of conduct for `Ofqual`
 
-Contributors to repositories hosted in `UKHomeOffice` are expected to
+Contributors to repositories hosted in `OfqualGovUK` are expected to
 follow the Contributor Covenant Code of
 Conduct, and those working within Government are also expected to follow the [Civil Service Code](https://www.gov.uk/government/publications/civil-service-code/the-civil-service-code) 
 
 ## Contributor Covenant Code of Conduct
 
 > Note: 
-> * where the code of conduct says "project" we mean `UKHomeOffice` and all repositories hosted within it. 
-> * where the code of conduct says "maintainer" we mean `UKHomeOffice` organisation owners
-> * where the code of conduct says "leadership" we mean both `UKHomeOffice` organisation owners, line managers, and other leadership within UKHomeOffice
+> * where the code of conduct says "project" we mean `OfqualGovUK` and all repositories hosted within it. 
+> * where the code of conduct says "maintainer" we mean `OfqualGovUK` organisation owners
+> * where the code of conduct says "leadership" we mean both `OfqualGovUK` organisation owners, line managers, and other leadership within UKHomeOffice
 
 ### Our Pledge
 
@@ -75,7 +75,7 @@ representative at an online or offline event.
 
 Instances of abusive, harassing, or otherwise unacceptable behavior may be
 reported to the community leaders responsible for enforcement at
-segas@digital.homeoffice.gov.uk.
+HR@Ofqual.Gov.UK.
 All complaints will be reviewed and investigated promptly and fairly.
 
 All community leaders are obligated to respect the privacy and security of the
