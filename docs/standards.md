@@ -2,7 +2,7 @@
 layout: collection
 order: 3
 title: Standards
-description: "Explicitly stated expectations for engineering teams"
+description: "Explicitly stated expectations for Ofqual teams"
 tags: []
 paginationHeading: false
 pagination:
@@ -14,6 +14,6 @@ related:
       items:
         - text: Writing a standard
           href: /standards/writing-a-standard/
-        - text: Summary of engineering standards' requirements
+        - text: Summary of standards' requirements
           href: /standards-requirements/
 ---
