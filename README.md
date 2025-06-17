@@ -1,9 +1,9 @@
 
-# Engineering Guidance and Standards
+# Ofqual Principles, Standards and Patterns
  
-This is the home of engineering guidance and standards for the Home Office. Learn more about this project on the [about page](https://engineering.homeoffice.gov.uk/about/).
+This is the home of principles, standards and patterns for Ofqual. 
 
-It is built using Markdown, GOV.UK templates, HO styles, the [x-gov Eleventy Plugin](https://x-govuk.github.io/govuk-eleventy-plugin/) and GitHub Actions.
+It is built using Markdown, GOV.UK templates, Ofqual styles, the [x-gov Eleventy Plugin](https://x-govuk.github.io/govuk-eleventy-plugin/) and GitHub Actions.
 
 ## Requirements
 
@@ -65,8 +65,4 @@ This will open up the Cypress UI, which you can use to run the end-to-end tests 
 
 > **Note**
 > The site must be running on localhost for the tests to work. See [Preview your changes locally](#preview-your-changes-locally).
-## Contributing
-
-See the [contributing page](https://github.com/UKHomeOffice/engineering-guidance-and-standards/blob/main/CONTRIBUTING.md) for details on how to contribute.
-
 
