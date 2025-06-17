@@ -40,4 +40,3 @@ This checklist is a reduced list compared to the full WCAG v2.2 criteria. They h
 - That there are no banners or modals that will cover other elements.
 - The site does not require authentication, and there are no other forms that accept user input.
 
-If these assumptions no longer hold, you should check the changes against the full criteria set. A copy of the current WCAG AA criteria can be found in the [Accessibility guidelines of the Home Office design system](https://design.homeoffice.gov.uk/accessibility/standard).
