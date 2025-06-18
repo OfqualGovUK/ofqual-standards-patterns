@@ -1,11 +1,11 @@
 ---
 layout: principle
-order: 4
-title: Proportionate security
-date: 2023-07-13
+order: 6
+title: 6.	We understand and manage the threats we face
+date: 2025-06-18
 tags:
 - Security
-- Software design
+- Ways of working
 related: # remove this section if you do not need related links on your page
   sections:
     - title: Related links
