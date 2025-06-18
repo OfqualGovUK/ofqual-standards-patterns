@@ -29,6 +29,7 @@ Smaller, incremental deployments build confidence for stakeholders, creating les
 
 ## Applications and Implications
 
+- Build or leverage reusable components and patterns where appropriate
 - Good quality tests which validate a release before it gets to production reinforce the confidence so that we can deploy often. Adding automated test coverage for example can greatly improve a team's likelihood of achieving this principle.
 - CI/CD pipelines that are quick and efficient, automating repetitive tasks so that we can deploy little and often
 - We must be aware of how frequent releases affect users, and consider whether it is applicable in each use case. For example, where a breaking change is introduced, or an in-progress operation would be affected
