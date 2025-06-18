@@ -1,6 +1,6 @@
 ---
 layout: principle
-order: 10
+order: 9
 title: 10.	Security is everyone's responsibility
 date: 2025-06-18
 tags:
