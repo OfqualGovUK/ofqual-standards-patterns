@@ -1,14 +1,13 @@
 ---
 layout: principle
-order: 1
-title: Design from evidence
-date: 2023-08-09
+order: 2
+title: 2.	We are needs-driven and design and deliver proportionate evidence-based solutions
+date: 2025-06-18
 tags:
-- Software design
-- Documentation
+- Ways of working
 ---
 
-Evidence-based decisions improve our ability to meet user needs. Without evidence of why we do things and their impact, it is hard to know what problems there are, what features should be implemented and how best to maintain our products.
+Evidence-based decisions improve our ability to meet user needs. Without evidence of why we do things and their impact, it is hard to know what problems there are, what features should be implemented and how best to maintain our services.
 
 ---
 
@@ -25,6 +24,5 @@ Designing from evidence, and documenting that effectively, allows people to unde
 - Be product centric. Understand user needs and provide evidence for the successful delivery of functionality. User research is a great way to do this, especially as part of short, continuous, agile feedback loops
 - All needs and requirements - whether functional or non-functional - should be documented, pointing back to the evidence base and rationale for the requirement
 - Tests should be used to provide evidence that requirements have been met. This should be understandable to stakeholders so that they have confidence in the software
-- Provide evidence for design decisions in documentation and adhere to the [minimal documentation standard]( /standards/minimal-documentation-set-for-a-product/) - technical decision logs and other useful design artefacts make assurance, future maintenance and development easier
 
 ---
