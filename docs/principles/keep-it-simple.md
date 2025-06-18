@@ -1,22 +1,18 @@
 ---
 layout: principle
-order: 1
-title: Keep it simple
-date: 2025-01-08
+order: 9
+title: 9.	We keep things neat and tidy
+date: 2025-06-18
 tags:
   - Ways of working
-  - Software design
-  - Maintainability
-  - Reusability
 related:
   sections:
     - title: Related links
       items:
-        - text: Write maintainable, reusable and evolutionary code
-          href: /principles/write-maintainable-reusable-and-evolutionary-code/
+       
 ---
 
-Keeping your code and pipelines simple makes them easier to read, self-documenting and enables incidents to be analysed and resolved faster.
+Keeping code and pipelines simple makes them easier to read, self-documenting and enables incidents to be analysed and resolved faster.
 
 ---
 
@@ -38,6 +34,6 @@ If a developer with project experience leaves the team, the remaining team membe
 - Keeping things simple can mean using third party libraries where someone else has already solved a problem, or made something simpler to implement.
 - Multiple lines of comments could mean the code is too complicated to understand and should be refactored.
 - Following naming conventions for variables and methods helps in self documenting your code.
-- Refactoring large functions to break out key logic can improve readability as well as enabling reuse in the future. For further details, the [Write maintainable, reusable and evolutionary code principle](/principles/write-maintainable-reusable-and-evolutionary-code/) goes into greater depth.
+- Refactoring large functions to break out key logic can improve readability as well as enabling reuse in the future. 
 
 ---
