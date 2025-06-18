@@ -20,7 +20,7 @@ Proportionate security enables both usable and secure services. Understand the v
 
 ## Rationale
 
-At the Home Office we build and operate systems in our own threat landscape, with particular vectors to consider, including motivated, well-funded and well-organised threat actors. These vectors require effective defences. Security features require effort to implement and maintain. Overly restrictive security controls incur unnecessary cost and can drive unintended and unwanted behaviour. 
+We build and operate systems in our own threat landscape, with particular vectors to consider, including motivated, well-funded and well-organised threat actors. These vectors require effective defences. Security features require effort to implement and maintain. Overly restrictive security controls incur unnecessary cost and can drive unintended and unwanted behaviour. 
 
 Security controls that are designed to mitigate understood risks are easier to test and measure for their effectiveness. It is important to implement security features that deliver valuable counters to threats, are balanced with user needs and facilitate the ongoing operation and iteration of our services.
 
@@ -28,9 +28,9 @@ Security controls that are designed to mitigate understood risks are easier to t
 
 ## Applications and Implications
 
-- Use [threat modelling](/patterns/threat-modelling/) techniques to understand the landscape and actors. This will help to identify threats and risks against your architecture holistically, including shared capabilities or services
+- Understand the threat landscape and actors to identify threats and risks against your services
 - Test security features with users to minimise potential negative impacts on user experience
 - Consider the cost vs benefit of proposed controls
-- Implement and contribute to the Home Office engineering security standards by collaborating with security teams
+- Contribute to the security standards by collaborating with security teams
 
 ---
