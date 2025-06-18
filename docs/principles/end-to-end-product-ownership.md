@@ -1,6 +1,6 @@
 ---
 layout: principle
-order: 1
+order: 99
 title: End to end product ownership
 date: 2023-08-25
 tags:
