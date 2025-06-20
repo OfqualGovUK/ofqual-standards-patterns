@@ -10,16 +10,13 @@ related:
     - title: Related links
       items:
 ---
-
-Deploying little and often is the practice of regularly deploying small changes, to production if possible, to avoid long intervals between deployments.
-
-This reduces risk, enables teams to iterate and react faster, while maintaining product quality.
+We work in an environment where agility and continuous improvement are crucial for success. Adopting a proactive approach to innovation and problem-solving with an emphasis on rapid experimentation, learning from both successes and failures enables that overall success. Disseminating knowledge during this process helps to accelerate progress and where possible not spending time re-inventing something already in place maintains the pace of a small team.  
 
 ---
 
 ## Rationale
 
-Deploying little and often reduces lead time from change request to release, for both new features and bug fixes. This enables users to see changes faster and provide feedback.
+Deploying little and often reduces lead time from change request to release, for both new features and bug fixes. This enables users to see changes faster and provide feedback. It also reduces risk, enables teams to iterate and react faster, while maintaining product quality.
 
 The cost of fixing potential issues is also smaller due to the fact that the little and often approach allows us to quickly adapt and release or rollback to a stable state. The smaller the change being pushed out the smaller the chance of merge conflicts.
 
