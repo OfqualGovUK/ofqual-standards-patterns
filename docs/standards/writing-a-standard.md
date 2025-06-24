@@ -2,16 +2,15 @@
 layout: standard
 order: 1
 title: Writing a standard
-date: 2023-08-04
-id: SEGAS-00001
+date: 2025-06-24
+id: OFQ-00002
 tags: []
 ---
 
-To be effective, standards must explicitly state what is expected of engineering teams. This standard prescribes how all future standards will be written. To ensure standards are easy to understand, unambiguous, and maintainable, they need to follow a consistent format.
+To be effective, standards must explicitly state what is expected of teams. This standard prescribes how all future standards will be written. To ensure standards are easy to understand, unambiguous, and maintainable, they need to follow a consistent format.
 
 Standards are comprised of a number of parts which are listed as requirements.
-You must detail each one along with a description and any supporting
-information.
+You must detail each one along with a description and any supporting information.
 
 ---
 
@@ -33,7 +32,7 @@ layout: standard
 order: 1
 title: Writing a standard
 date: 2024-11-28
-id: SEGAS-00001
+id: OFQ-00001
 tags:
   - Example
 ```
@@ -56,7 +55,7 @@ It must be no longer than 2 paragraphs and make it very clear whether this stand
 
 ### A standard MUST have one or more requirements
 
-The requirements are the explicit expectations of the standard. Engineers need to know what to do to meet the standard and will clearly state what MUST apply.
+The requirements are the explicit expectations of the standard. Individuals need to know what to do to meet the standard and will clearly state what MUST apply.
 
 There must be details on the context and justification of each requirement, as this provides clarity and will add the spirit to the letter of the law.
 
@@ -85,6 +84,6 @@ date: 2023-12-31
 
 ## Template
 
-You can use the [standard template](https://github.com/UKHomeOffice/engineering-guidance-and-standards/blob/main/docs/standards/standard.template.md) when creating a new standard.
+You can use the [standard template](https://github.com/OfqualGovUK/engineering-guidance-and-standards/blob/main/docs/standards/standard.template.md) when creating a new standard.
 
 ---
