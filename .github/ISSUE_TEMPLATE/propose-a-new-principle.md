@@ -6,12 +6,12 @@ labels: 'content, principle'
 assignees: ''
 
 ---
-Our engineering principles are the high-level direction we want to encourage engineers to follow or consider when they are making decisions and implementing things. Look at the ['writing a principle' standard](https://engineering.homeoffice.gov.uk/standards/writing-a-principle/) and provide some brief information below
+Our principles are the high-level direction we want to encourage teams to follow or consider when they are making decisions and implementing things. Look at the ['writing a principle' standard](https://mango-pebble-0e6614103.6.azurestaticapps.net/standards/writing-a-principle/) and provide some brief information below
 
 **What is the principle you are suggesting?**
 A concise description of the principle
 
-**What would be the benefit to the Home Office of adopting this principle?**
+**What would be the benefit to Ofqual of adopting this principle?**
 This could be the mitigation of risks, or the improvement of other aspects, for example quality or speed of delivery
 
 **How might people follow it**
