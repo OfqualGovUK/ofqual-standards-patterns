@@ -22,4 +22,4 @@ Add any other information you think would be useful here
 
 **Please confirm the below**
 
-- [ ] I have checked through the issues on the repository and don't think this has already been suggested
+- [ ] I have checked through the feedback on the repository and don't think this has already been suggested
