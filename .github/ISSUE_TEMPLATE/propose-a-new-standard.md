@@ -6,12 +6,12 @@ labels: 'content, standard'
 assignees: ''
 
 ---
-Our engineering standards are the things that we expect engineers to do. Look at the ['writing a standard' standard](https://engineering.homeoffice.gov.uk/standards/writing-a-standard/) and provide some brief information below
+Our standards are the things that we expect individuals to do. Look at the ['writing a standard' standard](https://mango-pebble-0e6614103.6.azurestaticapps.net/standards/writing-a-standard/) and provide some brief information below
 
 **What is the standard you are suggesting?**
 A concise description of the standard
 
-**What would be the benefit to the Home Office of adopting this standard?**
+**What would be the benefit to Ofqual of adopting this standard?**
 This could be the mitigation of risks, or the improvement of other aspects, for example quality or speed of delivery
 
 **How might people follow it**
