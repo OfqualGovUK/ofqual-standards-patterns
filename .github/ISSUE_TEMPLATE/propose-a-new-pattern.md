@@ -7,12 +7,12 @@ assignees: ''
 
 ---
 
-Our engineering patterns are example solutions for addressing problems, meeting standards and living our engineering principles. They should make it easier for engineers to do their jobs. We don't have a standard way of writing patterns as we like to be a bit more flexible with their structure. Please provide us with some information on what you are proposing below
+Our patterns are example solutions for addressing problems, meeting standards and living our principles. They should make it easier for individuals to do their jobs. We don't have a standard way of writing patterns as we like to be a bit more flexible with their structure. Please provide us with some information on what you are proposing below
 
 **What is the pattern you are suggesting?**
 A concise description of the pattern, and when you expect it would be used
 
-**What would be the benefit to the Home Office of following this pattern**
+**What would be the benefit to Ofqual of following this pattern**
 This could be the mitigation of risks, or the improvement of other aspects, for example quality or speed of delivery
 
 **How do people implement this pattern**
