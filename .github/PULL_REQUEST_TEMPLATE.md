@@ -25,7 +25,7 @@ I can confirm:
 - [ ] Content does not include any code or configuration changes (excluding frontmatter information)
 
 - [ ] Content meets the content standards
-e.g. [Writing a principle](https://engineering.homeoffice.gov.uk/standards/writing-a-principle/) and [Writing a standard](https://engineering.homeoffice.gov.uk/standards/writing-a-standard/)
+e.g. [Writing a principle](/docs/standards/writing-a-principle.md) and [Writing a standard](/docs/standards/writing-a-standard.md))
 
 - [ ] Content is suitable to open source, i.e.:
 
