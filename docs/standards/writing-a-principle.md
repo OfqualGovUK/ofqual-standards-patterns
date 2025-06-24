@@ -2,14 +2,14 @@
 layout: standard
 order: 1
 title: Writing a principle
-date: 2024-11-28
-id: SEGAS-00002
+date: 2025-06-24
+id: OFQ-00001
 tags: []
 ---
 
-An engineering principle is a goal or property that is foundational to software engineering at the Home Office. Principles should be used to guide the behaviour of software engineering teams and evaluate their output.
+A principle is a goal or property that is foundational to delivery at the Ofqual. Principles should be used to guide the behaviour of teams and individuals and evaluate their output.
 
-Home Office engineering principles will be written to include each of the components described below, so that the intent and importance of the principles are clear, and so that readers will understand how to apply these principles in their work.
+Ofqual principles will be written to include each of the components described below, so that the intent and importance of the principles are clear, and so that readers will understand how to apply these principles in their work.
 
 ---
 
@@ -42,7 +42,7 @@ The filename must be the kebab-cased title so that the principle's url matches i
 
 This description should be no longer than 2 paragraphs. It will be the first paragraph in the markdown file following the metadata. The reader should readily discern the answer to the question: "How does this affect me?".
 
-Succinctly communicate the fundamental principle. It is vital that the description of the principle is unambiguous. Avoid referencing specific technology and platforms, principles will usually span multiple technologies.
+Succinctly communicate the fundamental principle. It is vital that the description of the principle is unambiguous. Avoid referencing specific technology and platforms, principles will usually span multiple technologies and teams.
 
 ### A principle MUST have a rationale
 
@@ -60,7 +60,7 @@ You do not need to write a complete set of things to do or enumerate on all of t
 
 We use tags as a means to link entities in the body of standards. From principles, through standards, to patterns and guidance. Tags should be based on the relevant domain to achieve this.
 
-Do not create tags based on other attributes of your standard, like 'Draft' or 'Important'.  All tags must be sentence case i.e. Starts with a capital and the rest lower case. These need to be defined in the page metadata and will be automatically displayed at the top of the page.
+Do not create tags based on other attributes, like 'Draft' or 'Important'.  All tags must be sentence case i.e. Starts with a capital and the rest lower case. These need to be defined in the page metadata and will be automatically displayed at the top of the page.
 
 ```yaml
 tags:
@@ -79,6 +79,6 @@ date: 2023-12-31
 
 ## Template
 
-You can use the [principle template](https://github.com/UKHomeOffice/engineering-guidance-and-standards/blob/main/docs/principles/principle.template.md) when creating a new principle.
+You can use the [principle template](https://github.com/OfqualGovUK/engineering-guidance-and-standards/blob/main/docs/principles/principle.template.md) when creating a new principle.
 
 ---
