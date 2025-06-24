@@ -19,4 +19,4 @@ Add any other information you think would be useful here
 
 **Please confirm the below**
 
-- [ ] I have checked through the issues on the repository and this has not already been suggested
+- [ ] I have checked through the requests on the repository and this has not already been suggested
