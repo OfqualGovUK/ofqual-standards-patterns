@@ -13,7 +13,7 @@ Ofqual Principles, Standards and Patterns site is a body of knowledge for those 
 
 There is a wealth of experience and best practice that we can draw on, to standardise some of the things that we do and manage quality consistently. This will help us to deliver secure, performant technology that meets user needs, and deliver it quickly.
 
-We want to use our community to shape the guidance and standards on this siteand should  meet regularly to discuss topics relating to their areas and contribute towards the standards and patterns.
+We want to use our community to shape the standards and patterns on this site. They should meet regularly to discuss topics relating to their areas and contribute towards the standards and patterns.
 
 ## Why we are doing it
 
