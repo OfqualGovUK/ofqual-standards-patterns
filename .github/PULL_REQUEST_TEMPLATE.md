@@ -3,7 +3,7 @@ Is this pull request a content or a code change? (Please fill in the relevant se
 # Code change
 
 ## Accessibility considerations
-- [ ] Please review the [accessibility checks for layout changes](https://github.com/UKHomeOffice/engineering-guidance-and-standards/blob/main/technical-docs/accessibility/layout-checks.md).
+- [ ] Please review the [accessibility checks for layout changes](https://github.com/OfqualGovUK/engineering-guidance-and-standards/blob/main/technical-docs/accessibility/layout-checks.md).
 
 - [ ] This change will not change layouts, page structures or anything else that might impact accessibility
 
@@ -19,7 +19,7 @@ Is this pull request a content or a code change? (Please fill in the relevant se
 # Content change
 
 ## Accessibility considerations
-- [ ] Please review the [accessibility checks for content changes](https://github.com/UKHomeOffice/engineering-guidance-and-standards/blob/main/technical-docs/accessibility/content-checks.md).
+- [ ] Please review the [accessibility checks for content changes](https://github.com/OfqualGovUK/engineering-guidance-and-standards/blob/main/technical-docs/accessibility/content-checks.md).
 
 I can confirm:
 - [ ] Content does not include any code or configuration changes (excluding frontmatter information)
