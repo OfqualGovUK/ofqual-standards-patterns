@@ -46,7 +46,7 @@ module.exports = function(eleventyConfig) {
                     '  <span class="govuk-header__logotype-text">Ofqual</span>' +
                     '</span>'
             },
-            productName: 'Engineering Guidance and Standards',
+            productName: 'Principles, Standards and Patterns',
             organisationName: 'Ofqual',
             search: {
                 label: 'Search site',
