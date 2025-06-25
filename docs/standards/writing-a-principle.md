@@ -79,6 +79,6 @@ date: 2023-12-31
 
 ## Template
 
-You can use the [principle template](https://github.com/OfqualGovUK/engineering-guidance-and-standards/blob/main/docs/principles/principle.template.md) when creating a new principle.
+You can use the [principle template](https://github.com/OfqualGovUK/ofqual-standards-patterns/blob/main/docs/principles/principle.template.md) when creating a new principle.
 
 ---
