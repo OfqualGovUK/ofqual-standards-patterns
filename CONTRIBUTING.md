@@ -37,13 +37,6 @@ Make sure you pull your fork and switch to your new branch to do these changes.
 
 Don't forget to commit and push your changes to your forked repo ready for the contribution!
 
-Please make sure you have set up Git to sign your commits with a method that GitHub can verify. GitHub provides [instructions on setting up commit signing](https://docs.github.com/en/enterprise-cloud@latest/authentication/managing-commit-signature-verification/signing-commits). To help the site comply with [SEGAS-00009 - Signing code commits](https://engineering.homeoffice.gov.uk/standards/signing-code-commits/), the repository rules require a fully signed commit history when merging a pull request into the main branch. You will not be able to merge the resulting PR if any commits in the associated branch are unsigned, or if the signatures can't be verified by GitHub. If you are signing commits, and they are showing as unverified in GitHub, check you have added the relevant key to your account. When adding SSH keys in GitHub you can add the key as an authorisation key or a signing key. If you want to use the same key for both, you will need to add it twice, once for each purpose.
-
-If you have already pushed a commit that is unsigned, you can rectify this in two ways:
-
-1. Once commit signing is set up, rebase your work onto the main branch, then force push the changes. As with any force push, if you think others may have your branch checked out please make sure they are aware, e.g. with a comment on the pull request, so that they can update their local branches. 
-2. Create a new branch from the main branch, re-apply your changes to that branch, submit a new PR, and close the old one. This is usually more work, but can be simpler to manage if there are multiple contributors, or a complex commit history.
-
 ## Pull Requests
 
 When you're finished with your changes you should create a pull request, commonly known as a PR.
@@ -96,35 +89,23 @@ Once merged the site is deployed.
 
 We are using a trunk based strategy.
 
-### Review
-
-You can tag any of the maintainers of this repo to get pre-pull request reviews and start discussions.  We are a friendly team so please feel free to tag us!
-
 # Organisation of content
 
 Patterns, principles and standards should be created in the correct subdirectory in `/docs`. We are also using a tagging and metadata approach to organise content across the site by topic and related knowledge domain.
 
-All patterns, principles and standards content should be tagged in the frontmatter of the .md file to reference at least one of the below topic domains. Follow the guidance on tagging from the ['writing a standard' standard](https://engineering.homeoffice.gov.uk/standards/writing-a-standard/#a-standard-must-have-tags).
+All patterns, principles and standards content should be tagged in the frontmatter of the .md file
 
-- Observability - the process of monitoring applications, services and reliability
-- Software Design - how our applications, services and software are architected at the software level
-- Security - making our applications, systems, services and ways of working resistant to cyber attacks
-- Ways of Working - engineering teams patterns for approaching work
-- Build, Release and Deploy - all things pipelines, building and platform engineering
-- Source Control - storing and managing the source code
-
-You can view a list of [all the topic domain tags currently in use across the site](https://engineering.homeoffice.gov.uk/tags/). Your content may cross cut many of these areas, and that is ok, tag everything that you think is relevant.
+You can view a list of [all the topic domain tags currently in use across the site](https://mango-pebble-0e6614103.6.azurestaticapps.net/tags/). Your content may cross cut many of these areas, and that is ok, tag everything that you think is relevant.
 
 ## Look at the standard for the content
 
 When creating content please take a look at the standard for that content. This helps to make sure we are all creating content correctly.
 
-- [Writing a principle](https://engineering.homeoffice.gov.uk/standards/writing-a-principle/)
-- [Writing a standard](https://engineering.homeoffice.gov.uk/standards/writing-a-standard/)
+- [Writing a principle](https://mango-pebble-0e6614103.6.azurestaticapps.net/standards/writing-a-principle/)
+- [Writing a standard](https://mango-pebble-0e6614103.6.azurestaticapps.net/standards/writing-a-standard/)
 
 ### Templates
 
 You can use the following templates when creating content:
-- [Pattern template](https://github.com/OfqualGovUK/ofqual-standards-patterns/blob/main/docs/patterns/pattern.template.md)
 - [Principle template](https://github.com/OfqualGovUK/ofqual-standards-patterns/blob/main/docs/principles/principle.template.md)
 - [Standard template](https://github.com/OfqualGovUK/ofqual-standards-patterns/blob/main/docs/standards/standard.template.md)
