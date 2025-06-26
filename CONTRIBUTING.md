@@ -3,14 +3,6 @@
 This is the contribution guide for the Ofqual Principles, Standards and Patterns. This guide will cover the primary way we
 expect contributions to be made, which is adding new principles, standards and patterns.
 
-## New to open source
-
-Please find some helpful links to guide you in starting your journey with open source.
-
-- To get an overview of our project please see our [README](README.md).
-- [Collaborating with pull requests](https://docs.github.com/en/github/collaborating-with-pull-requests)
-- [See the benefits of Open Source](https://opensource.guide/)
-
 # Getting Started
 
 We will now look at the process we expect contributors to take when suggesting fixes, new content or a review of existing content.
@@ -54,6 +46,14 @@ Any 2 of the maintainers on this repo are needed to review and accept your chang
 ## Your PR is merged!
 
 Congratulations, your contribution is now merged into the project and you have improved and added value to an on-going open source project.  Thank you!
+
+## New to open source
+
+Please find some helpful links to guide you in starting your journey with open source.
+
+- To get an overview of our project please see our [README](README.md).
+- [Collaborating with pull requests](https://docs.github.com/en/github/collaborating-with-pull-requests)
+- [See the benefits of Open Source](https://opensource.guide/)
 
 # Additional Info for Maintainers
 
