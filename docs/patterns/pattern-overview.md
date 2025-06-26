@@ -9,6 +9,6 @@ tags:
 
 Our patterns are example solutions for addressing problems, meeting standards and living our principles. They should make it easier for individuals to do their jobs. 
 
-We don't have a standard way of writing patterns, as we like to be a bit more flexible with their structure.
+We don't have a standard way of writing patterns, as we like the communities to decide on how best to write and maintain any 'templates' for this, as this allows communities and areas to be a bit more flexible with their structure. Please work with your community to produce your pattern documentation with suitable consistency.
 
 ---
