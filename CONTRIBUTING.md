@@ -47,6 +47,8 @@ Any 2 of the maintainers on this repo are needed to review and accept your chang
 
 Congratulations, your contribution is now merged into the project and you have improved and added value to an on-going open source project.  Thank you!
 
+# Additional Info for Maintainers
+
 ## New to open source
 
 Please find some helpful links to guide you in starting your journey with open source.
@@ -54,8 +56,6 @@ Please find some helpful links to guide you in starting your journey with open s
 - To get an overview of our project please see our [README](README.md).
 - [Collaborating with pull requests](https://docs.github.com/en/github/collaborating-with-pull-requests)
 - [See the benefits of Open Source](https://opensource.guide/)
-
-# Additional Info for Maintainers
 
 ## Testing
 
