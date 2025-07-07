@@ -20,7 +20,7 @@ Ofqual principles will be written to include each of the components described be
 - [A principle MUST have a rationale](#a-principle-must-have-a-rationale)
 - [A principle MUST state expected applications and implications](#a-principle-must-include-applications-and-implications)
 - [A principle MUST have tags](#a-principle-must-have-tags)
-- [A principle MUST show the role of the person that owns the principle](#a-principle-must-show-the-role of-the-person-that-owns-the-principle)
+- [A principle MUST show the role of the person that owns the principle](#a-principle-must-show-the-role-of-the-person-that-owns-the-principle)
 - [A principle MUST show when it was last updated](#a-principle-must-show-when-it-was-last-updated)
 
 ---
