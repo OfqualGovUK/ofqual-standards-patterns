@@ -40,3 +40,7 @@ Heading tags are automatically assigned an id, converting spaces to `kebab-case`
 ## Applications and Implications
 
 <!-- Applications and implications text, it is best if these are bullet points -->
+
+## Principle Owner
+
+<!-- Owner Role -->
