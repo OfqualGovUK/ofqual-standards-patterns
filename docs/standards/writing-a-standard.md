@@ -3,7 +3,7 @@ layout: standard
 order: 1
 title: Writing a standard
 date: 2025-06-24
-id: OFQ-00002
+id: OFQ-002
 tags: []
 ---
 
@@ -25,14 +25,14 @@ You must detail each one along with a description and any supporting information
 
 ### A standard MUST have an ID
 
-An unambiguous and unique identifier is needed for each standard. This provides clarity and can be helpful in communication. This must be included as part of the page metadata. Format is AAA for area owner and 999 where the uniqueness is within that set not across it.
+An unambiguous and unique identifier is needed for each standard. This provides clarity and can be helpful in communication. This must be included as part of the page metadata. Format is aaa-999, where is AAA for area owner and 999 is a sequential number, where the uniqueness is within that areas set, not across it.
 
 ```yaml
 layout: standard
 order: 1
 title: Writing a standard
-date: 2024-11-28
-id: OFQ-00001
+date: 2025-07-07
+id: OFQ-001
 tags:
   - Example
 ```
@@ -78,7 +78,7 @@ tags:
 Products and services are built to a standard and as time goes by standards evolve. Show the date the standard was last updated. The metadata needs to include the date in YYYY-MM-DD format (see below).
 
 ```yaml
-date: 2023-12-31
+date: 2024-12-31
 ```
 ---
 
