@@ -25,7 +25,7 @@ You must detail each one along with a description and any supporting information
 
 ### A standard MUST have an ID
 
-An unambiguous and unique identifier is needed for each standard. This provides clarity and can be helpful in communication. This must be included as part of the page metadata.
+An unambiguous and unique identifier is needed for each standard. This provides clarity and can be helpful in communication. This must be included as part of the page metadata. Format is AAA for area owner and 999 where the uniqueness is within that set not across it.
 
 ```yaml
 layout: standard
