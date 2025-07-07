@@ -3,7 +3,7 @@ layout: standard
 order: 1
 title: Writing a principle
 date: 2025-06-24
-id: OFQ-00001
+id: OFQ-001
 tags: []
 ---
 
@@ -67,6 +67,9 @@ tags:
   - Source management
   - Security
 ```
+### A principle MUST show the role of the person that owns this principle
+
+Write the name of the role which owns the principle. eg 'Associate Director of Product and UCD'.
 
 ### A principle MUST show when it was last updated
 
