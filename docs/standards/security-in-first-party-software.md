@@ -11,10 +11,14 @@ tags:
   - Digital
 related: # remove this section if you do not need related links on your page
   sections:
-    - title: Related links
+    - title: Related Principles
       items:
         - text: Security Is Everyone's Responsibility
           href: /principles/security-is-everyones-responsibility/ # Note: use an absolute link from the site home page
+    - title: Related Patterns
+      items:
+        - text: Snyk as a Security Scanning Tool
+          href: /patterns/snyk-as-a-security-scanning-tool/ # Note: use an absolute link from the site home page
 ---
 
 <!-- Standard description -->
