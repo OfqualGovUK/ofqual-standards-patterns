@@ -1,6 +1,6 @@
 ---
 layout: standard
-order: 1
+order: 3
 title: Security In First Party Software
 date: 2025-07-14 # this should be the date that the content was most recently amended or formally reviewed
 id: OFQ-00003 # Set unique ID for standard
@@ -33,6 +33,10 @@ Please see https://x-govuk.github.io/govuk-eleventy-plugin/markdown/#line-breaks
 
 Heading tags are automatically assigned an id, converting spaces to `kebab-case` and applying URL encoding. If you want to link to a specific heading, you can obtain the URL encoded link by running the site locally, inspecting the appropriate <h3> element in the browser's developer tools and copying the value from the 'id' attribute.
 -->
+
+This standard defines how developers must ensure that code they produce is secure and suitable for use on our technology estate.
+
+This standard specifically covers "First-Party" development, where internal or contract developers create bespoke software for use in Ofqual, rather than "Third-Party" solutions that are bought off-the-shelf
 
 ---
 

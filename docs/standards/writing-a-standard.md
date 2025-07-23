@@ -1,10 +1,12 @@
 ---
 layout: standard
-order: 1
+order: 2
 title: Writing a standard
 date: 2025-06-24
-id: OFQ-002
-tags: []
+id: OFQ-00002
+tags:
+  - Guide
+  - Meta
 ---
 
 To be effective, standards must explicitly state what is expected of teams. This standard prescribes how all future standards will be written. To ensure standards are easy to understand, unambiguous, and maintainable, they need to follow a consistent format.

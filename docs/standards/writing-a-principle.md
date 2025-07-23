@@ -3,8 +3,10 @@ layout: standard
 order: 1
 title: Writing a principle
 date: 2025-06-24
-id: OFQ-001
-tags: []
+id: OFQ-00001
+tags:
+  - Guide
+  - Meta
 ---
 
 A principle is a goal or property that is foundational to delivery at the Ofqual. Principles should be used to guide the behaviour of teams and individuals and evaluate their output.
