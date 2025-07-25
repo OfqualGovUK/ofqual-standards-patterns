@@ -1,7 +1,7 @@
 ---
 layout: standard
 order: 4
-title: Build Pipelines
+title: Build Pipelines for Digital Infrastructure
 date: 2025-07-23 # this should be the date that the content was most recently amended or formally reviewed
 id: OFQ-00004 # Set unique ID for standard
 # use `tags: []` for no tags
@@ -22,11 +22,7 @@ related: # remove this section if you do not need related links on your page
     - title: Related Patterns
       items:
         - text: Snyk as a Security Scanning Tool
-          href: /principles/we-use-the-right-tools-and-have-the-right-rules/ # Note: use an absolute link from the site home page
-        - text: We keep things neat and tidy
-          href: /principles/we-keep-things-neat-and-tidy/ # Note: use an absolute link from the site home page
-        - text: Security is everyone's responsibility
-          href: /principles/security-is-everyones-responsibility/
+          href: /patterns/we-use-the-right-tools-and-have-the-right-rules/ # Note: use an absolute link from the site home page
 
 
 ---
