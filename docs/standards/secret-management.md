@@ -2,7 +2,7 @@
 layout: standard
 order: 7
 title: Secret Management
-date: 2025-089-16 # this should be the date that the content was most recently amended or formally reviewed
+date: 2025-09-16 # this should be the date that the content was most recently amended or formally reviewed
 id: OFQ-00007 # Set unique ID for standard
 # use `tags: []` for no tags
 # Note: tags must use sentence case capitalisation
