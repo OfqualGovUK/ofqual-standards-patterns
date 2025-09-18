@@ -12,12 +12,14 @@ pool:
 stages:
 - stage: BuildAndDeploy
   condition: and(succeeded(), startsWith(variables['build.sourceBranch'], 'refs/heads/main'))
-  steps:
-    - checkout: self
-      submodules: true
-    - task: AzureStaticWebApp@0
-      inputs:
-        app_location: '/' # App source code path relative to cwd
-        api_location: '' # Api source code path relative to cwd
-        output_location: '_site' # Built app content directory relative to app_location - optional
-        azure_static_web_apps_api_token: $(deployment_token)
+  jobs:
+    - job: BuildProd
+      steps:
+        - checkout: self
+          submodules: true
+        - task: AzureStaticWebApp@0
+          inputs:
+            app_location: '/' # App source code path relative to cwd
+            api_location: '' # Api source code path relative to cwd
+            output_location: '_site' # Built app content directory relative to app_location - optional
+            azure_static_web_apps_api_token: $(deployment_token)
