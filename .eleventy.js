@@ -130,16 +130,6 @@ export default async function(eleventyConfig) {
         )
     );
 
-
-    eleventyConfig.addCollection("homepageLinks", function(collectionApi) {
-      let homepageLinks = [
-          ...collectionApi.getFilteredByGlob(["**/principles.md"]),
-          ...collectionApi.getFilteredByGlob(["**/standards.md"]),
-          ...collectionApi.getFilteredByGlob(["**/patterns.md"]),
-      ];
-      return homepageLinks
-    });
-
     eleventyConfig.addCollection("getAllStandardsOrderedByID", function(collectionApi) {
       return collectionApi.getFilteredByGlob("**/standards/*.md").sort(function(a, b) {
           return a.data.id.localeCompare(b.data.id); // sort by ID ascending
