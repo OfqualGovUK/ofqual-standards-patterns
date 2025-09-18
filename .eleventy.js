@@ -26,7 +26,7 @@ function injectGitSha(eleventyConfig, gitHubRepositoryUrl) {
 
 export default async function(eleventyConfig) {
     const _siteRoot = process.env.SITE_ROOT ?? 'http://localhost:8080/';
-    const gitHubRepositoryUrl = "";
+    const gitHubRepositoryUrl = "https://github.com/OfqualGovUK/ofqual-standards-patterns";
 
     // Pass assets through to final build directory
     eleventyConfig.addPassthroughCopy({ "docs/assets/logos": "assets/logos"});
@@ -47,7 +47,6 @@ export default async function(eleventyConfig) {
             copyright: {
                 html: '<a class="govuk-footer__link govuk-footer__copyright-logo" href="https://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/uk-government-licensing-framework/crown-copyright/">©&nbsp;Crown copyright</a>'
             },
-
             meta: {
                 items: [
                     {
