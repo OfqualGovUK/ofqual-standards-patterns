@@ -75,6 +75,7 @@ stages:
           monitorWhen: 'always'
           codeSeverityThreshold: 'high'
           failOnIssues: false
+          additionalArguments: '--all-projects' 
       # Step 6: Scan app
       - task: SnykSecurityScan@1
         displayName: 'Synk app scan'
