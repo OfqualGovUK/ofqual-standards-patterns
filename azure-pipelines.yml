@@ -87,7 +87,7 @@ stages:
 - stage: BuildAndDeploy
   jobs:
     - job: BuildDev
-      condition: and(succeeded(), startsWith(variables['build.sourceBranch'], 'refs/pull))
+      condition: and(succeeded(), startsWith(variables['build.sourceBranch'], 'refs/pull'))
       steps:
         - checkout: self
           submodules: true
