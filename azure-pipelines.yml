@@ -58,7 +58,7 @@ stages:
         inputs:
           command: custom
           verbose: false
-          customCommand: "build"
+          customCommand: "run build"
         # Step 4: Install and authenticate Snyk
       - script: |
           npm install -g snyk
