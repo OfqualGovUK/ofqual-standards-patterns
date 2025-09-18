@@ -54,11 +54,11 @@ stages:
           customFeed: 'b8db0229-c220-4583-b1d9-1111e482a1ce'
         # Step 3: build app
       - task: Npm@1
-        displayName: 'npm build dist'
+        displayName: 'npm build'
         inputs:
           command: custom
           verbose: false
-          customCommand: "run dist"
+          customCommand: "build"
         # Step 4: Install and authenticate Snyk
       - script: |
           npm install -g snyk
