@@ -86,26 +86,6 @@ stages:
           additionalArguments: '--all-projects'    
 - stage: BuildAndDeploy
   jobs:
-    - job: BuildDev
-      condition: and(succeeded(), startsWith(variables['build.sourceBranch'], 'refs/pull'))
-      steps:
-        - checkout: self
-          submodules: true
-        - task: NodeTool@0
-          inputs:
-            versionSpec: "22.x"
-        - task: Npm@1
-          displayName: "npm install"
-          inputs:
-            command: 'install'
-            customRegistry: 'useFeed'
-            customFeed: 'b8db0229-c220-4583-b1d9-1111e482a1ce'
-        - task: Npm@1
-          displayName: 'npm build dist'
-          inputs:
-            command: custom
-            verbose: false
-            customCommand: "run dist"
     - job: BuildProd
       condition: and(succeeded(), startsWith(variables['build.sourceBranch'], 'refs/heads/main'))
       steps:
