@@ -1,4 +1,5 @@
-module.exports = {
+// noinspection JSUnusedGlobalSymbols included dynamically
+export default {
   tags: [],
   category: 'Standard',
   eleventyComputed: {
