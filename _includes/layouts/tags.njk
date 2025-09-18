@@ -1,4 +1,4 @@
-{% extends "../../node_modules/@x-govuk/govuk-eleventy-plugin/layouts/tags.njk" %}
+{% extends "../../node_modules/@x-govuk/govuk-eleventy-plugin/src/layouts/tags.njk" %}
 
 {% block beforeContent %}
   {% if phaseBannerConfiguration %}
@@ -32,7 +32,7 @@
     <div class="govuk-grid-column-one-third-from-desktop">
       {% block sidebar %}
         {% from "macros/navigationList.njk" import navigationList %}
-        {{ navigationList(page.url, "Principles, Standards and Patterns", collections.homepageLinks) }}
+        {{ navigationList(page.url, "Principles, Standards and Patterns", homepageLinks) }}
       {% endblock %}
     </div>
   </div>

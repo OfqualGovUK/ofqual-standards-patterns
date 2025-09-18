@@ -1,8 +1,10 @@
-const govukEleventyPlugin  = require('@x-govuk/govuk-eleventy-plugin')
-const { DateTime } = require("luxon");
-const childProcess = require('child_process');
-const fs = require("fs");
-const path = require("path");
+import { govukEleventyPlugin } from "@x-govuk/govuk-eleventy-plugin";
+import {DateTime} from "luxon";
+import { pathToFileURL } from 'url';
+import childProcess from "child_process";
+import path from "path";
+import fs from "fs";
+import dlAsSummaryList from "./lib/markdown/dl-as-govuk-summary-list.js";
 
 function injectGitSha(eleventyConfig, gitHubRepositoryUrl) {
     let latestGitCommitHash = process.env.GITHUB_COMMIT_SHA;
@@ -22,36 +24,23 @@ function injectGitSha(eleventyConfig, gitHubRepositoryUrl) {
     );
 }
 
-module.exports = function(eleventyConfig) {
-    const _siteRoot = process.env.SITE_ROOT ?? 'http://localhost/';
+export default async function(eleventyConfig) {
+    const _siteRoot = process.env.SITE_ROOT ?? 'http://localhost:8080/';
     const gitHubRepositoryUrl = "";
 
     // Pass assets through to final build directory
     eleventyConfig.addPassthroughCopy({ "docs/assets/logos": "assets/logos"});
+    eleventyConfig.addPassthroughCopy({ "docs/assets/images": "assets/images"});
     // Register the plugins
     let govukPluginOptions = {
-        scssSettingsPath: "/styles/_settings.scss",
-        icons: {
-            mask: '/assets/logos/ho-mask-icon.svg',
-            shortcut: '/assets/logos/favicon.ico',
-            touch: '/assets/logos/govuk-crest.png'
-        },
         opengraphImageUrl: '/assets/logos/govuk-opengraph-image.png',
         homeKey: 'Home',
         header: {
-            logotype: {
-                html:
-                    '<span class="govuk-header__logotype">' +
-                    '  <img src="/assets/logos/govuk-opengraph-image.png" height="34px", alt="Gov Logo>' +
-                    '  <span class="govuk-header__logotype-text">Ofqual</span>' +
-                    '</span>'
-            },
-            productName: 'Principles, Standards and Patterns',
-            organisationName: 'Ofqual',
+            productName: 'Ofqual IM',
             search: {
                 label: 'Search site',
-                indexPath: '/search.json',
-                sitemapPath: '/sitemap.html'
+                indexPath: '/search-index.json',
+                sitemapPath: '/sitemap/'
             }
         },
         footer: {
@@ -81,17 +70,16 @@ module.exports = function(eleventyConfig) {
             }
         },
         stylesheets: ['/styles/base.css'],
+        templates: {
+            searchIndex: true,
+        }
     };
     eleventyConfig.addPlugin(govukEleventyPlugin, govukPluginOptions)
 
     // Customise markdown-it renderer provided by x-gov 11ty plugin. Plugin execution is
     // deferred, so this needs to be a plugin, and added after the x-gov plugin is.
     eleventyConfig.addPlugin((eleventyConfig) => {
-        const md = require('@x-govuk/govuk-eleventy-plugin/lib/markdown-it.js')(govukPluginOptions)
-
-        md.use(require('./lib/markdown/dl-as-govuk-summary-list'));
-
-        eleventyConfig.setLibrary('md', md);
+        eleventyConfig.amendLibrary('md', md => md.use(dlAsSummaryList));
     });
 
     eleventyConfig.addFilter("postDate", (dateObj) => {
@@ -120,22 +108,17 @@ module.exports = function(eleventyConfig) {
       });
     });
 
-    fs.readdirSync(path.join(process.cwd(), path.join('lib', 'filters'))).map((file) => path.parse(file))
-        .filter(({ext}) => ext === '.js')
-        .forEach(({name, base}) =>
-            eleventyConfig.addFilter(
-                name,
-                require(path.join(process.cwd(), 'lib', 'filters', base)),
-            )
-        );
-
-    eleventyConfig.addCollection("homepageLinks", function(collectionApi) {
-      return [
-          ...collectionApi.getFilteredByGlob(["**/principles.md"]),
-          ...collectionApi.getFilteredByGlob(["**/standards.md"]),
-          ...collectionApi.getFilteredByGlob(["**/patterns.md"]),
-      ];
-    });
+    await Promise.all(
+    fs.readdirSync(path.join(process.cwd(), 'lib', 'filters'))
+        .map(file => path.parse(file))
+        .filter(({ ext }) => ext === '.js')
+        .map(async ({ name, base }) =>
+        eleventyConfig.addFilter(
+            name,
+            (await import(pathToFileURL(path.join(process.cwd(), 'lib', 'filters', base)).href)).default
+        )
+        )
+    );
 
     eleventyConfig.addCollection("getAllStandardsOrderedByID", function(collectionApi) {
       return collectionApi.getFilteredByGlob("**/standards/*.md").sort(function(a, b) {
