@@ -9,8 +9,7 @@ startButton:
 # hide duplicate title in page title
 options:
   header:
-    productName: ''
-  titleSuffix: Ofqual
+    productName: 'Ofqual IM'
 ---
 <div class="govuk-grid-row">
 {% for item in homepageLinks %}

@@ -1,10 +1,10 @@
 ---
 eleventyExcludeFromCollections: true
-layout: post
+layout: page
 order: 1
 title: How we use cookies 
 description:
-tags:
+tags: []
 ---
 
 The Ofqual Principle, Standards and Patterns site does not use cookies.

@@ -25,7 +25,7 @@ function injectGitSha(eleventyConfig, gitHubRepositoryUrl) {
 }
 
 export default async function(eleventyConfig) {
-    const _siteRoot = process.env.SITE_ROOT ?? 'http://localhost/';
+    const _siteRoot = process.env.SITE_ROOT ?? 'http://localhost:8080/';
     const gitHubRepositoryUrl = "";
 
     // Pass assets through to final build directory
@@ -33,27 +33,14 @@ export default async function(eleventyConfig) {
     eleventyConfig.addPassthroughCopy({ "docs/assets/images": "assets/images"});
     // Register the plugins
     let govukPluginOptions = {
-        icons: {
-            mask: '/assets/logos/ho-mask-icon.svg',
-            shortcut: '/assets/logos/favicon.ico',
-            touch: '/assets/logos/govuk-crest.png'
-        },
         opengraphImageUrl: '/assets/logos/govuk-opengraph-image.png',
         homeKey: 'Home',
         header: {
-            logotype: {
-                html:
-                    '<span class="govuk-header__logotype">' +
-                    '  <img src="/assets/logos/govuk-opengraph-image.png" height="34px", alt="Gov Logo>' +
-                    '  <span class="govuk-header__logotype-text">Ofqual</span>' +
-                    '</span>'
-            },
-            productName: 'Principles, Standards and Patterns',
-            titleSuffix: 'Ofqual',
+            productName: 'Ofqual IM',
             search: {
                 label: 'Search site',
-                indexPath: '/search.json',
-                sitemapPath: '/sitemap.html'
+                indexPath: '/search-index.json',
+                sitemapPath: '/sitemap/'
             }
         },
         footer: {
@@ -83,6 +70,9 @@ export default async function(eleventyConfig) {
             }
         },
         stylesheets: ['/styles/base.css'],
+        templates: {
+            searchIndex: true,
+        }
     };
     eleventyConfig.addPlugin(govukEleventyPlugin, govukPluginOptions)
 
