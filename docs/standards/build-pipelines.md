@@ -2,7 +2,7 @@
 layout: standard
 order: 4
 title: Build Pipelines for Digital Infrastructure
-date: 2025-07-23 # this should be the date that the content was most recently amended or formally reviewed
+date: 2025-10-01 # this should be the date that the content was most recently amended or formally reviewed
 id: OFQ-00004 # Set unique ID for standard
 # use `tags: []` for no tags
 # Note: tags must use sentence case capitalisation

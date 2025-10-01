@@ -2,7 +2,7 @@
 layout: standard
 order: 5
 title: Release Pipelines in Digital Services
-date: 2025-07-25 # this should be the date that the content was most recently amended or formally reviewed
+date: 2025-10-01 # this should be the date that the content was most recently amended or formally reviewed
 id: OFQ-00005 # Set unique ID for standard
 # use `tags: []` for no tags
 # Note: tags must use sentence case capitalisation
