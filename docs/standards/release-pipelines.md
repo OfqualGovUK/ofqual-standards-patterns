@@ -36,7 +36,7 @@ Please see https://x-govuk.github.io/govuk-eleventy-plugin/markdown/#line-breaks
 Heading tags are automatically assigned an id, converting spaces to `kebab-case` and applying URL encoding. If you want to link to a specific heading, you can obtain the URL encoded link by running the site locally, inspecting the appropriate <h3> element in the browser's developer tools and copying the value from the 'id' attribute.
 -->
 
-This standard defines how developers and infrastructure engineers must set up release pipelines in digital services
+This standard defines how developers and infrastructure engineers must set up release pipelines in digital services; release pipelines are used in all deployed services except for static apps, which are controlled via the [Build Pipelines](/standards/build-pipelines#static-applications)
 
 ---
 
