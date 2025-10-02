@@ -1,5 +1,5 @@
 {
-  "name": "engineering-guidance-and-standards",
+  "name": "ofqual-im-standards-and-patterns",
   "version": "2.0.0",
   "description": "Write documentation using Markdown and publish it using 11ty GOV.UK layout plugin",
   "keywords": [
@@ -11,9 +11,6 @@
   ],
   "homepage": "",
   "type": "module",
-  "bugs": {
-    "url": "https://"
-  },
   "contributors": [
     {
       "name": "Michael Arnold"
@@ -26,9 +23,7 @@
   "scripts": {
     "build": "eleventy",
     "serve": "eleventy --serve",
-    "cypress:open": "cypress open",
-    "cypress:run": "cypress run",
-    "docker:build": "docker build -t engineering-guidance-and-standards ."
+    "docker:build": "docker build -t ofqual-standards-patterns ."
   },
   "engines": {
     "node": ">=22.0.0 <23.0.0"
@@ -39,9 +34,5 @@
     "luxon": "3.7.2",
     "parse5": "8.0.0",
     "gray-matter": "4.0.3"
-  },
-  "devDependencies": {
-    "@cfworker/json-schema": "^4.1.1",
-    "axe-core": "^4.10.3"
   }
 }
