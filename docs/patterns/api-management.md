@@ -4,7 +4,6 @@ order: 1
 title: API Management (APIM)
 date: 2025-08-01 # this should be the date that the content was most recently amended or formally reviewed
 # use `tags: []` for no tags 
-# Check https://ho-cto.github.io/engineering-guidance-and-standards/tags/ for existing tags
 # Note: tags must use sentence case capitalisation
 tags:
   - Digital

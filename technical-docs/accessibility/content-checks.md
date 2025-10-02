@@ -3,13 +3,6 @@
 When content is added to the site, or later updated it should be checked for accessibility issues as part of the 
 review process. 
 
-## Automated checks
-
-Most content checks are context specific and can't be assessed by automated tools. [The accessibility cypress tests](
-../../cypress/e2e/a11y.spec.cy.js) will run [axe-core](https://github.com/dequelabs/axe-core) tests against each page
-in the site. This will check for issues like empty links, skipped heading levels. As part of checking every page it will
-also verfiy that page titles are not repeated on multiple pages.
-
 ## Manual checks
 
 Read through the page content. This is best done by checking out the repository and [reviewing the changes locally](
