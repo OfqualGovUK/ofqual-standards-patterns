@@ -7,7 +7,7 @@ description:
 tags: []
 ---
 
-This accessibility statement applies to the Ofqual IM Principles, Standards and Patterns documentation site at [{{siteRoot}}]({{ siteRoot }}).
+This accessibility statement applies to the Ofqual Digital and Data Principles, Standards and Patterns documentation site at [{{siteRoot}}]({{ siteRoot }}).
 
 This website is run by the Ofqual. We want as many people as possible to be able to use this website. For example, that means you should be able to:
 

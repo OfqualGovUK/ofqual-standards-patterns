@@ -9,11 +9,7 @@ Is this pull request a content or a code change? (Please fill in the relevant se
 
 **OR**
 
-- [ ] This change might impact accessibility, automated axe tests cover the impact
-
-**OR**
-
-- [ ] This change might impact accessibility and is not covered by automated axe tests - manual testing has been performed
+- [ ] This change might impact accessibility - manual testing has been performed
 (If the change might impact accessibility then please add some further information below)
 
 # Content change
