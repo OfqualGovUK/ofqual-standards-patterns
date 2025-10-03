@@ -39,7 +39,8 @@ export default async function(eleventyConfig) {
             logotype: {
                 html:
                     '<span class="govuk-header__logotype">' +
-                    '  <img src="/assets/logos/OfqualLogo.svg" height="64px" alt="Ofqual Logo">' +
+                    '  <img src="/assets/logos/OfqualLogoWhite.svg" height="64px" alt="Ofqual Logo">' +
+                    '  <img class="hide" src="/assets/logos/OfqualLogoBlack.svg" height="64px" alt="Ofqual Logo">' +
                     '</span>'
             },
             productName: 'Ofqual Digital and Data',

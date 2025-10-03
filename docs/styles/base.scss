@@ -49,13 +49,27 @@ body, .govuk-template__body {
     color: #0b0c0c;
   }
 
+  // This hide class and child sections get
+  // used to swap around the Ofqual logo for when
+  // the main link is hovered over
+
+  .hide {
+    display: none
+  }
+
+  .govuk-header__link:focus img:first-child
+  {
+    display: none;
+  }
+
+  .govuk-header__link:focus img:last-child
+  {
+    display: inline-block
+  }
+
   .govuk-header__logotype {
     vertical-align: baseline;
     top: 0
-  }
-
-  .govuk-header__logotype:focus {
-    fill: #0b0c0c
   }
 
   .govuk-header__product-name {
