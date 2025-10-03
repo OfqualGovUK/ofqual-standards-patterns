@@ -36,7 +36,13 @@ export default async function(eleventyConfig) {
         opengraphImageUrl: '/assets/logos/govuk-opengraph-image.png',
         homeKey: 'Home',
         header: {
-            productName: 'Ofqual IM',
+            logotype: {
+                html:
+                    '<span class="govuk-header__logotype">' +
+                    '  <img src="/assets/logos/OfqualLogo.svg" height="64px" alt="Ofqual Logo">' +
+                    '</span>'
+            },
+            productName: 'Ofqual Digital and Data',
             search: {
                 label: 'Search site',
                 indexPath: '/search-index.json',

@@ -7,7 +7,7 @@ description: Find out more about what we are doing
 tags: []
 ---
 
-The Ofqual IM Principles, Standards and Patterns site is a body of knowledge for those delivering changes at Ofqual. It is comprised of principles, patterns and standards that define how we do things. This is created and curated by the delivery community.
+The Ofqual Digital and Data Principles, Standards and Patterns site is a body of knowledge for those delivering changes at Ofqual. It is comprised of principles, patterns and standards that define how we do things. This is created and curated by the delivery community.
 
 ## How you can contribute
 
