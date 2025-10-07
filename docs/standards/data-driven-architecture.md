@@ -2,8 +2,8 @@
 layout: standard
 order: 1
 title: Data Driven Architecture
-date: 2023-12-31 # this should be the date that the content was most recently amended or formally reviewed
-id: OFQ-00005 # Set unique ID for standard
+date: 2025-10-07 # this should be the date that the content was most recently amended or formally reviewed
+id: OFQ-00008 # Set unique ID for standard
 # use `tags: []` for no tags
 # Note: tags must use sentence case capitalisation
 tags:
