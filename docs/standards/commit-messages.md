@@ -58,13 +58,11 @@ Use HTML URL encoding as in the 'Notes on links' above, to ensure that links to 
 
 -->
 
-- [Commit Message Format](#commit-message-format-must-follow-a-structure)
+- [Commit Message Format](#commit-message-format-must-follow-this-structure)
 - [Components](#components-you-must-use-in-commits)
 - [Examples](#examples)
 
-### Commit Message Format MUST follow a structure
-
-Each commit message should follow this structure: 
+### Commit message format MUST follow this structure
 
 `[TICKET_NUMBER] PREFIX: Description`
 
