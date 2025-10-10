@@ -56,6 +56,7 @@ Use HTML URL encoding as in the 'Notes on links' above, to ensure that links to 
 - [Follow the GOV.UK design system pattern](#follow-the-govuk-design-system-pattern)
 - [Be as specific as possible without being confusing](#be-as-specific-as-possible-without-being-confusing)
 - [Choose a content template based on which service is unavailable](#choose-a-content-template-based-on-which-service-is-unavailable)
+- [Choose content sections based on the facts to hand](#choose-content-sections-based-on-the-facts-to-hand)
 
 ### Follow the GOV.UK design system pattern
 
@@ -64,7 +65,7 @@ The GOV.UK design system has a recommended [pattern for implementing shutter pag
 
 ### Be as specific as possible without being confusing
 
-A shutter page is most helpful when it can inform the user why the service is unavailable, when it will be available again and what, if anything, has happened to any data the user has in the system. Language should meet standards set out in the [GOV.UK style guide](https://www.gov.uk/guidance/style-guide) and be simple to understand. Where possible to do so, tell the user:
+A shutter page is most helpful when it can inform the user that the service is unavailable, when it will be available again and what, if anything, has happened to any data the user has in the system. Language should meet standards set out in the [GOV.UK style guide](https://www.gov.uk/guidance/style-guide) and be simple to understand. Where possible to do so, tell the user:
 
 * the name of the service that is unavailable
 * that the service is unavailable
@@ -75,15 +76,133 @@ A shutter page is most helpful when it can inform the user why the service is un
 
 ### Choose a content template based on which service is unavailable
 
-Where a single service is unavailable, base your shutter page content on the appropriate template below to match the service.
+Where a single service is unavailable, base your shutter page content on the [appropriate template](#templates) below to match the service.
 
 Where multiple services are unavailable, base your content on the [multiple services](#multiple-services) template.
+
+### Choose content sections based on the facts to hand
+
+Each shutter page, according to the GOV.UK standard, has a number of [content sections](#content-sections) which can be used depending on the situation and the available information:
+
+* timings - when the service will become available again, or if the service has permanently closed - must be present
+* user data - what has happened to the user's data, especially relating to if the user was in the middle of a transaction - may be present
+* contact information - if required to allow the user to meet a user need - may be present
+* other services - links to alternative services that meet the user needs - may be present
+
+## Content sections
+
+### Timings
+
+_This section must always be present._
+
+* If you are unsure of the timings for when the service will become available again, you should use the phrase:  
+>You will be able to use the service later.
+* Where you have a target time for the service becoming available, make this known to the user, and be as specific as possible. If you know the exact time, then use it:  
+>You will be able to use the service from 9am on Monday 6 October 2025.
+* Otherwise, just give the day and date:  
+>You will be able to use the service on Monday 6 October 2025.
+
+If there is a situation where the timings change, for example the service needs to remain unavailable for longer than anticipated, the shutter page should be updated with the new, confirmed time when it is expected to become available again.
+
+### User data
+
+_This section may optionally be present._
+
+Use this section where the service allows users to input or modify data. It should reassure the user what has happened to any data they were in the middle of inputting, but also inform them if the data will only be stored for a limited time.
+
+* Where the service cleans out data for incomplete user workflows, tell the user how long we keep the data for:  
+>We have saved your answers. They will be available for 30 days.
+* Where the service stores partial data indefinitely:  
+>We have saved your answers. They will be available when the service is back.
+* Where the service has not stored partial data:  
+>We have not saved your answers. When the service is available, you will have to start again.
+
+### Contact information
+
+_This section may optionally be present._
+
+**Do not direct users to contact Ofqual via phone or email without confirming with the service owner and the product lead that it is appropriate to do so.**
+
+Where the process is business critical or time sensitive, it may be necessary to direct users to another method of contacting Ofqual. It is acceptable to either link to a page containing the contact information or to include it on the page.
+
+If linking to a page, it is preferable to link to the [contact page on the main Ofqual website](https://www.gov.uk/guidance/contact-ofqual) unless otherwise agreed with the service owner and product lead.
+
+* Linking through to contact information:  
+>[Contact Ofqual](https://www.gov.uk/guidance/contact-ofqual) if you need to talk to someone about your application.
+* Providing contact information on-page:  
+>Contact us if you need to speak to someone about your case.
+>
+>Phone:  
+**0300 303 3344**
+>
+>Email:  
+**<public.enquiries@ofqual.gov.uk>**
+>
+>Opening times:  
+**Monday to Friday: 9am to 5pm**
+
+### Other services
+
+_This section may optionally be present._
+
+Where there is another public-sector service that fully or partially meets the user needs of the service that is unavailable we can link the user to it. Do not link to commercial services as it may be seen as a sign of endorsement.
+
+* Link to a single service:
+> You can [use the find a learning aim service](https://submit-learner-data.service.gov.uk/find-a-learning-aim/) to find information on available:
+>
+> * qualifications
+> * standards
+> * apprenticeships
+> * T Levels
+
+* Link to multiple services:
+> You can [use the find a learning aim service](https://submit-learner-data.service.gov.uk/find-a-learning-aim/) to find information on available:
+>
+> * qualifications
+> * standards
+> * apprenticeships
+> * T Levels
+>
+> You can [use the find a course service](https://nationalcareers.service.gov.uk/find-a-course) to find information on:
+>
+> * qualifications
+> * courses
+> * unregulated courses 
+> * skills bootcamps
 
 ## Templates
 
 ### Multiple services
 
+#### Title
+
+```<title>Sorry, the service is unavailable - Ofqual - GOV.UK</title>```
+
+#### Body content
+
+```
+<h1 class="govuk-heading-l">Sorry, the service is unavailable</h1>
+      
+<p class="govuk-body">
+  You will be able to use the service later.
+</p>
+```    
+
 ### The Portal
+
+#### Title
+
+```<title>Sorry, the service is unavailable - The Portal - Ofqual - GOV.UK</title>```
+
+#### Body content
+
+```
+<h1 class="govuk-heading-l">Sorry, the service is unavailable</h1>
+      
+<p class="govuk-body">
+  You will be able to use the service later.
+</p>
+```  
 
 ### The Register
 
