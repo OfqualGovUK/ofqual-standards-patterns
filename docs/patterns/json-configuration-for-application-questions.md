@@ -1,7 +1,26 @@
-# JSON Configuration Pattern for Recognition Application Questions
+---
+layout: pattern
+order: 3
+title: JSON Configuration for Application Questions
+date: 2025-10-10 # this should be the date that the content was most recently amended or formally reviewed
+# use `tags: []` for no tags 
+# Note: tags must use sentence case capitalisation
+tags:
+  - Data
+  - Digital
+related: # remove this section if you do not need related links on your page
+  sections:
+    - title: Related standards
+      items:
+        - text: Data-Driven Architecture
+          href: /standards/data-driven-architecture/ # Note: use an absolute link from the site home page
+---
 
-## 🧾 Introduction
+## Introduction
+
 The recognition citizen-facing web page prompts users to complete a series of questions to submit an application for recognition by Ofqual. These questions are configured via a JSON record stored in a database table. This document outlines the required JSON structure to surface a question.
+
+This pattern is likely suitable for use in task-list type scenarios, where users are asked to complete a series of tasks containing sets of questions.
 
 ---
 
