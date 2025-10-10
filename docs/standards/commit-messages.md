@@ -58,8 +58,8 @@ Use HTML URL encoding as in the 'Notes on links' above, to ensure that links to 
 
 -->
 
-- [Commit Message Format](#commit-message-format-must-follow-this-structure)
-- [Components](#components-you-must-use-in-commits)
+- [Commit message format MUST follow this structure](#commit-message-format-must-follow-this-structure)
+- [Components you MUST use in commits](#components-you-must-use-in-commits)
 - [Examples](#examples)
 
 ### Commit message format MUST follow this structure
