@@ -8,6 +8,8 @@ id: OFQ-00009 # Set unique ID for standard
 # Note: tags must use sentence case capitalisation
 tags:
   - Digital
+  - Data
+  - Infrastructure
 related: # remove this section if you do not need related links on your page
   sections:
     - title: Related principles
@@ -56,17 +58,17 @@ Use HTML URL encoding as in the 'Notes on links' above, to ensure that links to 
 
 -->
 
-- [Commit Message Format](#commit-message-format)
-- [Components](#components)
+- [Commit Message Format](#commit-message-format-must-follow-a-structure)
+- [Components](#components-you-must-use-in-commits)
 - [Examples](#examples)
 
-### Commit Message Format
+### Commit Message Format MUST follow a structure
 
 Each commit message should follow this structure: 
 
 `[TICKET_NUMBER] PREFIX: Description`
 
-### Components
+### Components you MUST use in commits
 
 1. Ticket Number – Enclosed in square brackets (e.g. ```[49102]```) 
 **OR**
