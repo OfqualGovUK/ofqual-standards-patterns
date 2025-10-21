@@ -133,18 +133,21 @@ Where the process is business critical or time sensitive, it may be necessary to
 
 If linking to a page, it is preferable to link to the [contact page on the main Ofqual website](https://www.gov.uk/guidance/contact-ofqual) unless otherwise agreed with the service owner and product lead.
 
-* Linking through to contact information:  
->[Contact Ofqual](https://www.gov.uk/guidance/contact-ofqual) if you need to talk to someone about your application.
-* Providing contact information on-page:  
->Contact us if you need to speak to someone about your case.
->
->Phone:  
+#### Linking through to contact information:
+
+[Contact Ofqual](https://www.gov.uk/guidance/contact-ofqual) if you need to talk to someone about your application.
+
+#### Providing contact information on-page:
+
+Contact us if you need to speak to someone about your case.
+
+Phone:  
 **0300 303 3344**
->
->Email:  
-**<public.enquiries@ofqual.gov.uk>**
->
->Opening times:  
+
+Email:  
+**&lt;public.enquiries@ofqual.gov.uk&gt;**
+
+Opening times:  
 **Monday to Friday: 9am to 5pm**
 
 ### Other services
@@ -153,28 +156,30 @@ _This section may optionally be present._
 
 Where there is another public-sector service that fully or partially meets the user needs of the service that is unavailable we can link the user to it. Do not link to commercial services as it may be seen as a sign of endorsement.
 
-* Link to a single service:
-> You can [use the find a learning aim service](https://submit-learner-data.service.gov.uk/find-a-learning-aim/) to find information on available:
->
-> * qualifications
-> * standards
-> * apprenticeships
-> * T Levels
+#### Link to a single service:
 
-* Link to multiple services:
-> You can [use the find a learning aim service](https://submit-learner-data.service.gov.uk/find-a-learning-aim/) to find information on available:
->
-> * qualifications
-> * standards
-> * apprenticeships
-> * T Levels
->
-> You can [use the find a course service](https://nationalcareers.service.gov.uk/find-a-course) to find information on:
->
-> * qualifications
-> * courses
-> * unregulated courses 
-> * skills bootcamps
+You can [use the find a learning aim service](https://submit-learner-data.service.gov.uk/find-a-learning-aim/) to find information on available:
+
+* qualifications
+* standards
+* apprenticeships
+* T Levels
+
+#### Link to multiple services:
+
+You can [use the find a learning aim service](https://submit-learner-data.service.gov.uk/find-a-learning-aim/) to find information on available:
+
+* qualifications
+* standards
+* apprenticeships
+* T Levels
+
+You can [use the find a course service](https://nationalcareers.service.gov.uk/find-a-course) to find information on:
+
+* qualifications
+* courses
+* unregulated courses 
+* skills bootcamps
 
 ## Templates
 
@@ -183,20 +188,20 @@ Where there is another public-sector service that fully or partially meets the u
 #### Title
 
 ```
-<!-- HEAD - title -->
-<title>Sorry, the service is unavailable - Ofqual - GOV.UK</title>
+&lt;!-- HEAD - title --&gt;
+&lt;title&gt;Sorry, the service is unavailable - Ofqual - GOV.UK&lt;/title&gt;
 ```
 
 #### Body content
 
 ```
-<!-- SECTION - heading -->
-<h1 class="govuk-heading-l">Sorry, the service is unavailable</h1>
+&lt;!-- SECTION - heading --&gt;
+&lt;h1 class="govuk-heading-l"&gt;Sorry, the service is unavailable&lt;/h1&gt;
 
-<!-- SECTION - timings -->
-<p class="govuk-body">
+&lt;!-- SECTION - timings --&gt;
+&lt;p class="govuk-body"&gt;
   You will be able to use the service later.
-</p>
+&lt;/p&gt;
 ```
 
 ### The Portal
@@ -204,8 +209,8 @@ Where there is another public-sector service that fully or partially meets the u
 #### Title
 
 ```
-<!-- HEAD - title -->
-<title>Sorry, the service is unavailable - The Portal - Ofqual - GOV.UK</title>
+&lt;!-- HEAD - title --&gt;
+&lt;title&gt;Sorry, the service is unavailable - The Portal - Ofqual - GOV.UK&lt;/title&gt;
 ```
 
 #### Body content
@@ -213,24 +218,24 @@ Where there is another public-sector service that fully or partially meets the u
 Customise the sections below as needed, following the details in [content sections](#content-sections).
 
 ```
-<!-- SECTION - heading -->
-<h1 class="govuk-heading-l">Sorry, the service is unavailable</h1>
+&lt;!-- SECTION - heading --&gt;
+&lt;h1 class="govuk-heading-l"&gt;Sorry, the service is unavailable&lt;/h1&gt;
 
-<!-- SECTION - timings -->
-<p class="govuk-body">
+&lt;!-- SECTION - timings --&gt;
+&lt;p class="govuk-body"&gt;
   You will be able to use the service later.
-</p>
+&lt;/p&gt;
 
-<!-- SECTION - user data -->
-<p class="govuk-body">
+&lt;!-- SECTION - user data --&gt;
+&lt;p class="govuk-body"&gt;
   Your answers have been saved for when the service is available again.
-</p>
+&lt;/p&gt;
 
-<!-- SECTION - contact information -->
-<p class="govuk-body">
-  <a href="https://www.gov.uk/guidance/contact-ofqual" class="govuk-link">Contact Ofqual</a>
+&lt;!-- SECTION - contact information --&gt;
+&lt;p class="govuk-body"&gt;
+  &lt;a href="https://www.gov.uk/guidance/contact-ofqual" class="govuk-link"&gt;Contact Ofqual&lt;/a&gt;
   if you urgently need to complete a task while the portal is unavailable.
-</p>
+&lt;/p&gt;
 ```
 
 ### The Register
@@ -240,8 +245,8 @@ This covers the services `Find a regulated qualification` and `Find a regulated 
 #### Title
 
 ```
-<!-- HEAD - title -->
-<title>Sorry, the service is unavailable - Find a regulated qualification or awarding organisation - Ofqual - GOV.UK</title>
+&lt;!-- HEAD - title --&gt;
+&lt;title&gt;Sorry, the service is unavailable - Find a regulated qualification or awarding organisation - Ofqual - GOV.UK&lt;/title&gt;
 ```
 
 #### Body content
@@ -249,34 +254,34 @@ This covers the services `Find a regulated qualification` and `Find a regulated 
 Customise the sections below as needed, following the details in [content sections](#content-sections).
 
 ```
-<!-- SECTION - heading -->
-<h1 class="govuk-heading-l">Sorry, the service is unavailable</h1>
+&lt;!-- SECTION - heading --&gt;
+&lt;h1 class="govuk-heading-l"&gt;Sorry, the service is unavailable&lt;/h1&gt;
 
-<!-- SECTION - timings -->
-<p class="govuk-body">
+&lt;!-- SECTION - timings --&gt;
+&lt;p class="govuk-body"&gt;
   You will be able to use the service later.
-</p>
+&lt;/p&gt;
 
-<!-- SECTION - other services -->
-<p class="govuk-body">
-  You can <a href="https://submit-learner-data.service.gov.uk/find-a-learning-aim/" class="govuk-link">use the find a learning aim service</a> to find information on available:
-</p>
-<ul class="govuk-list govuk-list--bullet">
-  <li>qualifications</li>
-  <li>standards</li>
-  <li>apprenticeships</li>
-  <li>T Levels</li>
-</ul>
-<p class="govuk-body">
-  You can <a href="https://nationalcareers.service.gov.uk/find-a-course" class="govuk-link">use the find a course service</a>
+&lt;!-- SECTION - other services --&gt;
+&lt;p class="govuk-body"&gt;
+  You can &lt;a href="https://submit-learner-data.service.gov.uk/find-a-learning-aim/" class="govuk-link"&gt;use the find a learning aim service&lt;/a&gt; to find information on available:
+&lt;/p&gt;
+&lt;ul class="govuk-list govuk-list--bullet"&gt;
+  &lt;li&gt;qualifications&lt;/li&gt;
+  &lt;li&gt;standards&lt;/li&gt;
+  &lt;li&gt;apprenticeships&lt;/li&gt;
+  &lt;li&gt;T Levels&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p class="govuk-body"&gt;
+  You can &lt;a href="https://nationalcareers.service.gov.uk/find-a-course" class="govuk-link"&gt;use the find a course service&lt;/a&gt;
   to find information on:
-</p>
-<ul class="govuk-list govuk-list--bullet">
-  <li>qualifications</li>
-  <li>courses</li>
-  <li>unregulated courses</li>
-  <li>skills bootcamps</li>
-</ul>
+&lt;/p&gt;
+&lt;ul class="govuk-list govuk-list--bullet"&gt;
+  &lt;li&gt;qualifications&lt;/li&gt;
+  &lt;li&gt;courses&lt;/li&gt;
+  &lt;li&gt;unregulated courses&lt;/li&gt;
+  &lt;li&gt;skills bootcamps&lt;/li&gt;
+&lt;/ul&gt;
 ```
 
 ### Subject matter specialists
@@ -284,8 +289,8 @@ Customise the sections below as needed, following the details in [content sectio
 #### Title
 
 ```
-<!-- HEAD - title -->
-<title>Sorry, the service is unavailable - Subject matter specialists - Ofqual - GOV.UK</title>
+&lt;!-- HEAD - title --&gt;
+&lt;title&gt;Sorry, the service is unavailable - Subject matter specialists - Ofqual - GOV.UK&lt;/title&gt;
 ```
 
 #### Body content
@@ -293,18 +298,18 @@ Customise the sections below as needed, following the details in [content sectio
 Customise the sections below as needed, following the details in [content sections](#content-sections).
 
 ```
-<!-- SECTION - heading -->
-<h1 class="govuk-heading-l">Sorry, the service is unavailable</h1>
+&lt;!-- SECTION - heading --&gt;
+&lt;h1 class="govuk-heading-l"&gt;Sorry, the service is unavailable&lt;/h1&gt;
 
-<!-- SECTION - timings -->
-<p class="govuk-body">
+&lt;!-- SECTION - timings --&gt;
+&lt;p class="govuk-body"&gt;
   You will be able to use the service later.
-</p>
+&lt;/p&gt;
 
-<!-- SECTION - user data -->
-<p class="govuk-body">
+&lt;!-- SECTION - user data --&gt;
+&lt;p class="govuk-body"&gt;
   Your answers have been saved for when the service is available again.
-</p>
+&lt;/p&gt;
 ```
 
 ### Contact Ofqual
@@ -312,8 +317,8 @@ Customise the sections below as needed, following the details in [content sectio
 #### Title
 
 ```
-<!-- HEAD - title -->
-<title>Sorry, the service is unavailable - Contact Ofqual - Ofqual - GOV.UK</title>
+&lt;!-- HEAD - title --&gt;
+&lt;title&gt;Sorry, the service is unavailable - Contact Ofqual - Ofqual - GOV.UK&lt;/title&gt;
 ```
 
 #### Body content
@@ -321,36 +326,36 @@ Customise the sections below as needed, following the details in [content sectio
 Customise the sections below as needed, following the details in [content sections](#content-sections).
 
 ```
-<!-- SECTION - heading -->
-<h1 class="govuk-heading-l">Sorry, the service is unavailable</h1>
+&lt;!-- SECTION - heading --&gt;
+&lt;h1 class="govuk-heading-l"&gt;Sorry, the service is unavailable&lt;/h1&gt;
 
-<!-- SECTION - timings -->
-<p class="govuk-body">
+&lt;!-- SECTION - timings --&gt;
+&lt;p class="govuk-body"&gt;
   You will be able to use the service later.
-</p>
+&lt;/p&gt;
 
-<!-- SECTION - user data -->
-<p class="govuk-body">
+&lt;!-- SECTION - user data --&gt;
+&lt;p class="govuk-body"&gt;
   We have not saved your answers. When the service is available, you will have to start again.
-</p>
+&lt;/p&gt;
 
-<!-- SECTION - contact information -->
-<p class="govuk-body">
+&lt;!-- SECTION - contact information --&gt;
+&lt;p class="govuk-body"&gt;
   Contact us if you need to speak to someone about your case.
-</p>
-<p class="govuk-body">Phone:<br>
-  <span class="govuk-!-font-weight-bold">
+&lt;/p&gt;
+&lt;p class="govuk-body"&gt;Phone:&lt;br&gt;
+  &lt;span class="govuk-!-font-weight-bold"&gt;
     0300 303 3344
-  </span>
-</p>
-<p class="govuk-body">Email:<br>
-  <a href="mailto:public.enquiries@ofqual.gov.uk" class="govuk-link govuk-!-font-weight-bold">public.enquiries@ofqual.gov.uk</a>
-</p>  
-<p class="govuk-body">Opening times:<br>
-  <span class="govuk-!-font-weight-bold">
+  &lt;/span&gt;
+&lt;/p&gt;
+&lt;p class="govuk-body"&gt;Email:&lt;br&gt;
+  &lt;a href="mailto:public.enquiries@ofqual.gov.uk" class="govuk-link govuk-!-font-weight-bold"&gt;public.enquiries@ofqual.gov.uk&lt;/a&gt;
+&lt;/p&gt;  
+&lt;p class="govuk-body"&gt;Opening times:&lt;br&gt;
+  &lt;span class="govuk-!-font-weight-bold"&gt;
     Monday to Friday: 9am to 5pm
-  </span>
-</p>
+  &lt;/span&gt;
+&lt;/p&gt;
 ```
 
 ### Recognition
@@ -358,8 +363,8 @@ Customise the sections below as needed, following the details in [content sectio
 #### Title
 
 ```
-<!-- HEAD - title -->
-<title>Sorry, the service is unavailable - Apply to have your qualifications regulated - Ofqual - GOV.UK</title>
+&lt;!-- HEAD - title --&gt;
+&lt;title&gt;Sorry, the service is unavailable - Apply to have your qualifications regulated - Ofqual - GOV.UK&lt;/title&gt;
 ```
 
 #### Body content
@@ -367,23 +372,23 @@ Customise the sections below as needed, following the details in [content sectio
 Customise the sections below as needed, following the details in [content sections](#content-sections).
 
 ```
-<!-- SECTION - heading -->
-<h1 class="govuk-heading-l">Sorry, the service is unavailable</h1>
+&lt;!-- SECTION - heading --&gt;
+&lt;h1 class="govuk-heading-l"&gt;Sorry, the service is unavailable&lt;/h1&gt;
 
-<!-- SECTION - timings -->
-<p class="govuk-body">
+&lt;!-- SECTION - timings --&gt;
+&lt;p class="govuk-body"&gt;
   You will be able to use the service later.
-</p>
+&lt;/p&gt;
 
-<!-- SECTION - user data -->
-<p class="govuk-body">
+&lt;!-- SECTION - user data --&gt;
+&lt;p class="govuk-body"&gt;
   Your answers have been saved for when the service is available again.
-</p>
+&lt;/p&gt;
 
-<!-- SECTION - contact information -->
-<p class="govuk-body">
-  <a href="https://www.gov.uk/guidance/contact-ofqual" class="govuk-link">Contact Ofqual</a>
+&lt;!-- SECTION - contact information --&gt;
+&lt;p class="govuk-body"&gt;
+  &lt;a href="https://www.gov.uk/guidance/contact-ofqual" class="govuk-link"&gt;Contact Ofqual&lt;/a&gt;
   if you need to talk to someone about your application.
-</p>
+&lt;/p&gt;
 ```
 ---
