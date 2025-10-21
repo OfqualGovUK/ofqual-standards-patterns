@@ -1,12 +1,13 @@
 ---
 layout: standard
-order: 8
+order: 11
 title: Shutter page content
-date: 2025-10-08 # this should be the date that the content was most recently amended or formally reviewed
-id: OFQ-00008 # Set unique ID for standard
+date: 2025-10-21 # this should be the date that the content was most recently amended or formally reviewed
+id: OFQ-00011 # Set unique ID for standard
 # use `tags: []` for no tags
 # Note: tags must use sentence case capitalisation
 tags:
+  - Infrastructure
   - Digital
   - UCD
 related: # remove this section if you do not need related links on your page
@@ -53,17 +54,17 @@ Use HTML URL encoding as in the 'Notes on links' above, to ensure that links to 
 
 -->
 
-- [Follow the GOV.UK design system pattern](#follow-the-govuk-design-system-pattern)
-- [Be as specific as possible without being confusing](#be-as-specific-as-possible-without-being-confusing)
-- [Choose a content template based on which service is unavailable](#choose-a-content-template-based-on-which-service-is-unavailable)
-- [Choose content sections based on the facts to hand](#choose-content-sections-based-on-the-facts-to-hand)
+- [You SHOULD follow the GOV.UK design system pattern](#you-should-follow-the-govuk-design-system-pattern)
+- [You MUST be as specific as possible without being confusing](#you-must-be-as-specific-as-possible-without-being-confusing)
+- [You MUST choose a content template based on which service is unavailable](#you-must-choose-a-content-template-based-on-which-service-is-unavailable)
+- [You MUST choose content sections based on the facts to hand](#you-must-choose-content-sections-based-on-the-facts-to-hand)
+- [You SHOULD update the page as the facts change](#you-should-update-the-page-as-the-facts-change)
 
-### Follow the GOV.UK design system pattern
+### You SHOULD follow the GOV.UK design system pattern
 
 The GOV.UK design system has a recommended [pattern for implementing shutter pages](https://design-system.service.gov.uk/patterns/service-unavailable-pages/) for GOV.UK services. Where possible, we should follow its best-practice recommendations.
 
-
-### Be as specific as possible without being confusing
+### You MUST be as specific as possible without being confusing
 
 A shutter page is most helpful when it can inform the user that the service is unavailable, when it will be available again and what, if anything, has happened to any data the user has in the system. Language should meet standards set out in the [GOV.UK style guide](https://www.gov.uk/guidance/style-guide) and be simple to understand. Where possible to do so, tell the user:
 
@@ -74,13 +75,13 @@ A shutter page is most helpful when it can inform the user that the service is u
 * contact information, if it is required to meet user needs
 * links to alternative services that can help the user meet their need, if any exist
 
-### Choose a content template based on which service is unavailable
+### You MUST choose a content template based on which service is unavailable
 
 Where a single service is unavailable, base your shutter page content on the [appropriate template](#templates) below to match the service.
 
 Where multiple services are unavailable, base your content on the [multiple services](#multiple-services) template.
 
-### Choose content sections based on the facts to hand
+### You MUST choose content sections based on the facts to hand
 
 Each shutter page, according to the GOV.UK standard, has a number of [content sections](#content-sections) which can be used depending on the situation and the available information:
 
@@ -88,6 +89,13 @@ Each shutter page, according to the GOV.UK standard, has a number of [content se
 * user data - what has happened to the user's data, especially relating to if the user was in the middle of a transaction - may be present
 * contact information - if required to allow the user to meet a user need - may be present
 * other services - links to alternative services that meet the user needs - may be present
+
+### You SHOULD update the page as the facts change
+
+If the facts change after the shutter page has been posted, you should update the page to match the new facts.
+
+For example, if the service needs to remain unavailable for longer than anticipated, the shutter page should be updated with the new, confirmed time when it is expected to become available again.
+
 
 ## Content sections
 
@@ -102,8 +110,6 @@ _This section must always be present._
 * Otherwise, just give the day and date:  
 >You will be able to use the service on Monday 6 October 2025.
 
-If there is a situation where the timings change, for example the service needs to remain unavailable for longer than anticipated, the shutter page should be updated with the new, confirmed time when it is expected to become available again.
-
 ### User data
 
 _This section may optionally be present._
@@ -113,7 +119,7 @@ Use this section where the service allows users to input or modify data. It shou
 * Where the service cleans out data for incomplete user workflows, tell the user how long we keep the data for:  
 >We have saved your answers. They will be available for 30 days.
 * Where the service stores partial data indefinitely:  
->We have saved your answers. They will be available when the service is back.
+>Your answers have been saved for when the service is available again.
 * Where the service has not stored partial data:  
 >We have not saved your answers. When the service is available, you will have to start again.
 
@@ -176,44 +182,208 @@ Where there is another public-sector service that fully or partially meets the u
 
 #### Title
 
-```<title>Sorry, the service is unavailable - Ofqual - GOV.UK</title>```
+```
+<!-- HEAD - title -->
+<title>Sorry, the service is unavailable - Ofqual - GOV.UK</title>
+```
 
 #### Body content
 
 ```
+<!-- SECTION - heading -->
 <h1 class="govuk-heading-l">Sorry, the service is unavailable</h1>
-      
+
+<!-- SECTION - timings -->
 <p class="govuk-body">
   You will be able to use the service later.
 </p>
-```    
+```
 
 ### The Portal
 
 #### Title
 
-```<title>Sorry, the service is unavailable - The Portal - Ofqual - GOV.UK</title>```
+```
+<!-- HEAD - title -->
+<title>Sorry, the service is unavailable - The Portal - Ofqual - GOV.UK</title>
+```
 
 #### Body content
 
+Customise the sections below as needed, following the details in [content sections](#content-sections).
+
 ```
+<!-- SECTION - heading -->
 <h1 class="govuk-heading-l">Sorry, the service is unavailable</h1>
-      
+
+<!-- SECTION - timings -->
 <p class="govuk-body">
   You will be able to use the service later.
 </p>
-```  
+
+<!-- SECTION - user data -->
+<p class="govuk-body">
+  Your answers have been saved for when the service is available again.
+</p>
+
+<!-- SECTION - contact information -->
+<p class="govuk-body">
+  <a href="https://www.gov.uk/guidance/contact-ofqual" class="govuk-link">Contact Ofqual</a>
+  if you urgently need to complete a task while the portal is unavailable.
+</p>
+```
 
 ### The Register
 
 This covers the services `Find a regulated qualification` and `Find a regulated awarding organisation`.
 
+#### Title
+
+```
+<!-- HEAD - title -->
+<title>Sorry, the service is unavailable - Find a regulated qualification or awarding organisation - Ofqual - GOV.UK</title>
+```
+
+#### Body content
+
+Customise the sections below as needed, following the details in [content sections](#content-sections).
+
+```
+<!-- SECTION - heading -->
+<h1 class="govuk-heading-l">Sorry, the service is unavailable</h1>
+
+<!-- SECTION - timings -->
+<p class="govuk-body">
+  You will be able to use the service later.
+</p>
+
+<!-- SECTION - other services -->
+<p class="govuk-body">
+  You can <a href="https://submit-learner-data.service.gov.uk/find-a-learning-aim/" class="govuk-link">use the find a learning aim service</a> to find information on available:
+</p>
+<ul class="govuk-list govuk-list--bullet">
+  <li>qualifications</li>
+  <li>standards</li>
+  <li>apprenticeships</li>
+  <li>T Levels</li>
+</ul>
+<p class="govuk-body">
+  You can <a href="https://nationalcareers.service.gov.uk/find-a-course" class="govuk-link">use the find a course service</a>
+  to find information on:
+</p>
+<ul class="govuk-list govuk-list--bullet">
+  <li>qualifications</li>
+  <li>courses</li>
+  <li>unregulated courses</li>
+  <li>skills bootcamps</li>
+</ul>
+```
+
 ### Subject matter specialists
+
+#### Title
+
+```
+<!-- HEAD - title -->
+<title>Sorry, the service is unavailable - Subject matter specialists - Ofqual - GOV.UK</title>
+```
+
+#### Body content
+
+Customise the sections below as needed, following the details in [content sections](#content-sections).
+
+```
+<!-- SECTION - heading -->
+<h1 class="govuk-heading-l">Sorry, the service is unavailable</h1>
+
+<!-- SECTION - timings -->
+<p class="govuk-body">
+  You will be able to use the service later.
+</p>
+
+<!-- SECTION - user data -->
+<p class="govuk-body">
+  Your answers have been saved for when the service is available again.
+</p>
+```
 
 ### Contact Ofqual
 
+#### Title
+
+```
+<!-- HEAD - title -->
+<title>Sorry, the service is unavailable - Contact Ofqual - Ofqual - GOV.UK</title>
+```
+
+#### Body content
+
+Customise the sections below as needed, following the details in [content sections](#content-sections).
+
+```
+<!-- SECTION - heading -->
+<h1 class="govuk-heading-l">Sorry, the service is unavailable</h1>
+
+<!-- SECTION - timings -->
+<p class="govuk-body">
+  You will be able to use the service later.
+</p>
+
+<!-- SECTION - user data -->
+<p class="govuk-body">
+  We have not saved your answers. When the service is available, you will have to start again.
+</p>
+
+<!-- SECTION - contact information -->
+<p class="govuk-body">
+  Contact us if you need to speak to someone about your case.
+</p>
+<p class="govuk-body">Phone:<br>
+  <span class="govuk-!-font-weight-bold">
+    0300 303 3344
+  </span>
+</p>
+<p class="govuk-body">Email:<br>
+  <a href="mailto:public.enquiries@ofqual.gov.uk" class="govuk-link govuk-!-font-weight-bold">public.enquiries@ofqual.gov.uk</a>
+</p>  
+<p class="govuk-body">Opening times:<br>
+  <span class="govuk-!-font-weight-bold">
+    Monday to Friday: 9am to 5pm
+  </span>
+</p>
+```
+
 ### Recognition
 
+#### Title
 
+```
+<!-- HEAD - title -->
+<title>Sorry, the service is unavailable - Apply to have your qualifications regulated - Ofqual - GOV.UK</title>
+```
 
+#### Body content
+
+Customise the sections below as needed, following the details in [content sections](#content-sections).
+
+```
+<!-- SECTION - heading -->
+<h1 class="govuk-heading-l">Sorry, the service is unavailable</h1>
+
+<!-- SECTION - timings -->
+<p class="govuk-body">
+  You will be able to use the service later.
+</p>
+
+<!-- SECTION - user data -->
+<p class="govuk-body">
+  Your answers have been saved for when the service is available again.
+</p>
+
+<!-- SECTION - contact information -->
+<p class="govuk-body">
+  <a href="https://www.gov.uk/guidance/contact-ofqual" class="govuk-link">Contact Ofqual</a>
+  if you need to talk to someone about your application.
+</p>
+```
 ---
