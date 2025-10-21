@@ -9,6 +9,7 @@ tags:
   - Digital
   - Data
   - Infrastructure
+  - QA
 related: # remove this section if you do not need related links on your page
   sections:
     - title: Related principles
