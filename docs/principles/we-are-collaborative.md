@@ -7,9 +7,7 @@ tags:
 - Ways of working
 ---
 
-Colleagues should collaborate widely with other teams and professions, as well as closely with their immediate colleagues
-Work in the open by being transparent and collaborative. Provide maximum access to your work and artefacts, share knowledge and solutions, make collective decisions. 
-Open source your code unless there is a good reason not to.
+Colleagues should collaborate widely with other teams and professions, as well as closely with their immediate colleagues. Work in the open by being transparent and collaborative. Provide maximum access to your work and artefacts, share knowledge and solutions, make collective decisions. Open source your code unless there is a good reason not to.
 
 
 ---
