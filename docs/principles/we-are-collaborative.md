@@ -1,7 +1,7 @@
 ---
 layout: principle
 order: 7
-title: 7.	We are collaborative and transparent
+title: 07.	We are collaborative and transparent
 date: 2025-06-18
 tags:
 - Ways of working
