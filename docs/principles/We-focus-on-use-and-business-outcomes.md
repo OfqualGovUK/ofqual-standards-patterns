@@ -1,7 +1,7 @@
 ---
 layout: principle
 order: 1
-title: 1.	We focus on user and business outcomes balancing design and function
+title: 01.	We focus on user and business outcomes balancing design and function
 date: 2025-06-19
 tags:
   - Ways of working
