@@ -1,7 +1,7 @@
 ---
 layout: principle
 order: 6
-title: 6.	We understand and manage the threats we face
+title: 06.	We understand and manage the threats we face
 date: 2025-06-18
 tags:
 - Security
