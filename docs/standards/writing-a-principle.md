@@ -2,7 +2,8 @@
 layout: standard
 order: 1
 title: Writing a principle
-date: 2025-06-24
+date: 2025-10-31
+Reviewed Date: 2025-10-31
 id: OFQ-00001
 tags:
   - Guide

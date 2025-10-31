@@ -2,7 +2,7 @@
 layout: standard
 order: 2
 title: Writing a standard
-date: 2025-06-24
+date: 2025-10-31
 id: OFQ-00002
 tags:
   - Guide
@@ -77,7 +77,8 @@ tags:
 
 ### A standard MUST show when it was last updated
 
-Products and services are built to a standard and as time goes by standards evolve. Show the date the standard was last updated. The metadata needs to include the date in YYYY-MM-DD format (see below).
+Products and services are built to a standard and as time goes by standards evolve. Show the date the standard was last updated. This is also the date the standard was last reviewed (if not actually updated at that point). STandards should be reviewed at least every 12 months to ensure they remain valid to technology in use and the related principles in place.
+The metadata needs to include the date in YYYY-MM-DD format (see below).
 
 ```yaml
 date: 2024-12-31

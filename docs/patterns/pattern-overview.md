@@ -11,4 +11,6 @@ Our patterns are example solutions for addressing problems, meeting standards an
 
 We don't have a standard way of writing patterns, as we like the communities to decide on how best to write and maintain any 'templates' for this, as this allows communities and areas to be a bit more flexible with their structure. Please work with your community to produce your pattern documentation with suitable consistency.
 
+Any pattern should be reviewed regulalry for relevence (against daily operational norms and technology changes), at least every 6 months is suggested.
+
 ---
