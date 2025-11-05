@@ -77,7 +77,7 @@ tags:
 
 ### A standard MUST show when it was last updated
 
-Products and services are built to a standard and as time goes by standards evolve. Show the date the standard was last updated. This is also the date the standard was last reviewed (if not actually updated at that point). STandards should be reviewed at least every 12 months to ensure they remain valid to technology in use and the related principles in place.
+Products and services are built to a standard and as time goes by standards evolve. Show the date the standard was last updated. This is also the date the standard was last reviewed (if not actually updated at that point). Standards should be reviewed at least every 12 months to ensure they remain valid to technology in use and the related principles in place.
 The metadata needs to include the date in YYYY-MM-DD format (see below).
 
 ```yaml
