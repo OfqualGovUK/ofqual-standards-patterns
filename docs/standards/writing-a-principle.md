@@ -25,6 +25,7 @@ Ofqual principles will be written to include each of the components described be
 - [A principle MUST have tags](#a-principle-must-have-tags)
 - [A principle MUST show the role of the person that owns the principle](#a-principle-must-show-the-role-of-the-person-that-owns-the-principle)
 - [A principle MUST show when it was last updated](#a-principle-must-show-when-it-was-last-updated)
+- [A principle MUST show when it was last reviewed](#a-principle-must-show-when-it-was-last-reviewed)
 
 ---
 
@@ -82,6 +83,15 @@ Show the date the principle was last updated. The metadata needs to include the 
 
 ```yaml
 date: 2023-12-31
+```
+---
+
+### A principle MUST show when it was last reviewed
+
+Show the date the principle was last reviewed. The metadata needs to include the date in YYYY-MM-DD format (see below). This should be at least every 2 years and align with (the principle needs to support) the defined organisational and technical strategies.
+
+```yaml
+Review Date: 2024-12-31
 ```
 ---
 
