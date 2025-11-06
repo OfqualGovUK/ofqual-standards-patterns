@@ -90,7 +90,7 @@ date: 2023-12-31
 Show the date the principle was last reviewed. The metadata needs to include the date in YYYY-MM-DD format (see below). This should be at least every 2 years and align with (the principle needs to support) the defined organisational and technical strategies.
 
 ```yaml
-Review Date: 2024-12-31
+date: 2024-12-31
 ```
 ---
 
