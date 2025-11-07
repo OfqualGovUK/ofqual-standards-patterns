@@ -1,6 +1,6 @@
 ---
 layout: standard
-order: 1
+order: 10
 title: Infrastructure as Code
 date: 2025-11-06
 id: OFQ-00010
