@@ -8,13 +8,15 @@ date: 2025-11-06 # this should be the date that the content was most recently am
 tags:
   - Security
   - Digital
-  - Ways of working
+  - IaC
 related: # remove this section if you do not need related links on your page
   sections:
     - title: Related Standards
       items:
         - text: Secret Management
           href: /standards/secret-management/ # Note: use an absolute link from the site home page
+        - text: IaC Bicep Configuration
+          href: /standards/standard-iac-bicep-configuration/ 
 ---
 
 <!-- Pattern description -->
@@ -39,17 +41,17 @@ For local development, it is acceptable to use a developer environment file, suc
 
 ### Use Of Common Key Vaults
 
-Use the existing common key vault for secrets that are common across services (such as connection strings to a database that gets reused). This key vault is not controlled via Infrastructure as Code (Iac). Ensure all values are marked as secret.
+Use the existing common key vault for secrets that are common across services (such as connection strings to a database that gets reused). This key vault is not controlled via Infrastructure as Code (Iac). Ensure all values are marked as secret. As developers it is our responsiblity to maintain this key vault. Always define what the key vault value is intended for. To maintain good house keeping any secrets no longer being used by our services should be removed. 
 
 ### Use of Local Key Vaults
 
-- Local key vault creation, maintance and deployment is be controlled by IaC and the infrastructure team.
-- As developers it is our responsiblility to ensure that the data source for these key vaults is maintained.  For test purposes we can update a local key vault directly, however, when making a change to the key vault adding, removing or changing a secret we must update the data source.  For security reasons the data source we will use for our key vaults the Azure DevOps pipeline library variable groups.
-- When deploying an api/app that has impact upon a key vault then at each stage of deployment process dev/preprod/prod you must request infrastructure to deploy the affected key vault bicep.
+- Local key vault creation, maintance and deployment is controlled by IaC and the infrastructure team.
+- As developers it is our responsiblility to ensure that the data source for these key vaults is maintained.  For test purposes we can update a local key vault directly, however, when making a change to the key vault adding, removing or changing a secret we must update the data source.  For security reasons the data source we will use for our key vaults will be the Azure DevOps pipeline library variable group.
+- When deploying an api/app that has impacted upon our key vaults then at each stage of deployment process dev/preprod/prod you must request infrastructure to deploy the affected key vault bicep.
 
 ### Azure DevOps pipeline library variable groups
 
-- These are located under the pipeline menu in devops.  
+- These are located under the pipeline menu in Azure devops.  
 - There must be a variable group for each key vault.
 - All values in a variable group must be marked as secret.
 - The format of a variable group name is ofq-{env}-{service}-{service-type}-vg. service type is api/app/fcn.
@@ -97,9 +99,5 @@ example,
 ```
 the variable group is ApiAuth the variable is AadInstance and its mapped to the secret ref. The __ tells the bicep that is a group
 
-
-
-
-### Container 
 
 ---
