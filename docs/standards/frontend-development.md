@@ -28,24 +28,22 @@ This is our base for standards across all the frontends we maintain, and serves 
 - [Requirement 1](#requirement-1)
 - [Requirement 2](#requirement-2)
 
-### Requirement 1
-General Principles
-Set Up
+### Set Up (General)
 All repositories should have:
-A Dockerfile for running the system with
-Configured Accessibility, Acceptance, Integration and Unit Tests
-A LICENSE.md (which should be an MIT License)
-A README.md defining the project and how to run it on a local device
-A SECURITY.md file defining how to disclose vulnerabilities to Ofqual
-An azure-pipelines.yml for defining the build pipelines
-Architectural and Technical Design
-Configuration over Hardcoding
+- A Dockerfile for running the system with
+- Configured Accessibility, Acceptance, Integration and Unit Tests
+- A LICENSE.md (which should be an MIT License)
+- A README.md defining the project and how to run it on a local device
+- A SECURITY.md file defining how to disclose vulnerabilities to Ofqual
+- An azure-pipelines.yml for defining the build pipelines
+- Architectural and Technical Design
+- Configuration over Hardcoding
 For example, if you have a page format that could be reused (say a multiple choice question page), make that reusable and configurable
 
-### Requirement 2
-Exceptions and Logging
-By principle, exceptions should be caught and logged out as low as possible. For example, if an error occurs in a repository's function, it should be caught and logged in that function instead of relying on a catch at a higher level
-Exception messages should be in the format of Exception raised when <description of what was happening>, in <class name>::<function name>. Exception message: <exception message> so that we can identify easily in the logs where the issue was identified
+### Exceptions and Logging
+- Exceptions MUST be caught and logged out as low as possible. For example, if an error occurs in a repository's function, it should be caught and logged in that function instead of relying on a catch at a higher level
+- Exception messages MUST be in the format of: Exception raised when <description of what was happening>, in <class name>::<function name>. Exception message: <exception message>
+This enables usto identify easily in the logs where the issue manifested.
 
 
 ### Requirement 2
@@ -69,4 +67,3 @@ In addition to the general setup standards these MUST also be included:
 - If you need to retrieve data from somewhere or send data out (e.g. the cache, a HTTP Client), then a Model MUST be used; the data should then be mapped to and from the ViewModel as appropriate
 
 ---
-
