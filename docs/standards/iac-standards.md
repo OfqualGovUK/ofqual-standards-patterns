@@ -44,11 +44,8 @@ IaC must be clear and well formatted, clearly demonstrating it's purpose for dep
 ## Requirement(s)
 
 - [IaC must be written using Microsoft Bicep](#iac-must-be-written-using-microsoft-bicep)
-
 - [IaC must be considered first](#iac-must-be-considered-first)
-
 - [IaC must be modular](#iac-must-be-modular)
-
 - [IaC must be hosted in Azure DevOps](#iac-must-be-hosted-in-azure-devops)
 
 ### IaC must be written using Microsoft Bicep
