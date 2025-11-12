@@ -64,18 +64,16 @@ For example, if an error occurs in a repository's function, it should be caught 
 This enables us to identify easily in the logs where the issue manifested.
 
 
-### Requirement 3
-Specific Technology Guidance - C Sharp / ASP.NET  Core
-Setting up a new system
-In addition to the setup standard should include:
+### Setting up C Sharp / ASP.NET  Core
+In addition to the setup standard, when setting up in C Sharp / ASP.NET Core, you MUST also include:
 - A landing page for development purposes. This should only be available when ASPNETCORE_ENVIRONMENT is set to DEVELOPMENT
 - Unit and Integration tests
 - An appropriate Dockerfile for the project
 - Separate Infrastructure and Core projects
-The main project is used for storing the Program.cs, appsettings, and Controllers in their own folder
-Core is used for Models, Interfaces for structures and Enums
-Infrastructure is used for Services, Repositories and other supporting items such as Mappers
-Serilog for appropriate logging control
+- The main project is used for storing the Program.cs, appsettings, and Controllers in their own folder.
+- Core is used for Models, Interfaces for structures and Enums
+- Infrastructure is used for Services, Repositories and other supporting items such as Mappers
+- Serilog for appropriate logging control
 
 ### Organisation and Naming conventions
 The models folder MUST be structured with
@@ -86,7 +84,8 @@ Only do this if both items are in the same "level"; if for instance in the above
 
 ### Requirement 4
 Object Orientated
-DTO objects MUST be used when transferring more complex data from a client to other services/domains.
+- DTO objects MUST be used when transferring more complex data from a client to other services/domains.
+
 The use of Interfaces and code built around using interfaces generically allows concrete classes to be replaced in the future:
 - Repositories and Clients always need an interface
 - Shared attributes and functionality between models MUST always have an interface that is then implemented across all models that can use it
