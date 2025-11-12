@@ -24,11 +24,15 @@ This is our base for standards across all the frontends we maintain, and serves 
 ---
 
 ## Requirement(s)
-
+General
+- [Requirement 1](#requirement-1)
+- [Requirement 2](#requirement-2)
+Technology Specific
 - [Requirement 1](#requirement-1)
 - [Requirement 2](#requirement-2)
 
-### Set Up (General)
+General
+### Setup
 All repositories should have:
 - A Dockerfile for running the system with
 - Configured Accessibility, Acceptance, Integration and Unit Tests
@@ -45,8 +49,8 @@ For example, if you have a page format that could be reused (say a multiple choi
 - Exception messages MUST be in the format of: Exception raised when <description of what was happening>, in <class name>::<function name>. Exception message: <exception message>
 This enables usto identify easily in the logs where the issue manifested.
 
-
-### Requirement 2
+Technology Specific
+### C Sharp / ASP.NET Core Setup
 Specific Technology Guidance for C Sharp / ASP.NET  Core when setting up a new system
 In addition to the general setup standards these MUST also be included:
 - A landing page for development purposes. Only available when ASPNETCORE_ENVIRONMENT is set to DEVELOPMENT
