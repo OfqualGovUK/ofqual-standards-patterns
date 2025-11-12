@@ -17,34 +17,21 @@ related: # remove this section if you do not need related links on your page
           href: /standards/
 ---
 
-<!-- Standard description -->
 Backend Code Standards
 This document serves as our base for standards across all the backends we maintain, and serves the following areas:
 - General standards (applicable to all languages/technologies)
 - Specific language and technology standards
 
 ---
-
 ## Requirement(s)
-
-<!-- Populate list for each requirement (there can be more than 2) -->
-
-<!--
-
-# Notes on anchor links
-
-Use HTML URL encoding as in the 'Notes on links' above, to ensure that links to headers with punctuation works as expected. For example:
-
-[Product documentation MUST include build, release and deployment processes](#product-documentation-must-include-build%2C-release-and-deployment-processes)
-
--->
 General Standard Requirements
-- [Set Up (General)](#Set-Up)
-- [Requirement 2](#requirement-2)
-- [Requirement 3](#requirement-3)
-- [Requirement 4](#requirement-4)
+- [Setup](#setup)
+- [Exceptions and Logging](#exceptions-and-logging)
+- [Setting up C Sharp](#setting-up-C-Sharp)
+- [Organisation and Naming conventions](#organisation-and-naming-conventions)
+- [Object Orientated](#object-orientated)
 
-### Set Up (General)
+### Setup
 All repositories MUST have:
 - A Dockerfile for running the system with
 - Configured Integration and Unit Tests
@@ -82,10 +69,8 @@ The models folder MUST be structured with
 - Models which join tables together can be named in a similar way to how link tables would be named. For instance, if a model represented a join between a "Task" and a "Question", that model could be called "TaskQuestion"
 Only do this if both items are in the same "level"; if for instance in the above example, the Question table was mapped to a List<Question>, then just name the model "Task"
 
-### Requirement 4
-Object Orientated
+### Object Orientated
 - DTO objects MUST be used when transferring more complex data from a client to other services/domains.
-
 The use of Interfaces and code built around using interfaces generically allows concrete classes to be replaced in the future:
 - Repositories and Clients always need an interface
 - Shared attributes and functionality between models MUST always have an interface that is then implemented across all models that can use it
