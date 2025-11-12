@@ -4,12 +4,10 @@ order: 1
 title: Front end development standards
 date: 2025-11-12 
 id: OFQ-00000 
-# use `tags: []` for no tags
-# Note: tags must use sentence case capitalisation
 tags:
   - Digital
   - Data
-related: # remove this section if you do not need related links on your page
+related: 
   sections:
     - title: Related links
       items:
@@ -23,15 +21,12 @@ This is our base for standards across all the frontends we maintain, and serves 
 
 ---
 
-## Requirement(s)
-General
+## Requirements
 - [Setup](#setup)
 - [Exceptions and Logging](#exceptions-and-logging)
-Technology Specific
 - [C Sharp / ASP.NET Core Setup](#c-sharp)
 - [Viewmodels](#viewmodels)
 
-General
 ### Setup
 All repositories should have:
 - A Dockerfile for running the system with
@@ -49,9 +44,8 @@ For example, if you have a page format that could be reused (say a multiple choi
 - Exception messages MUST be in the format of: Exception raised when <description of what was happening>, in <class name>::<function name>. Exception message: <exception message>
 This enables usto identify easily in the logs where the issue manifested.
 
-Technology Specific
 ### C Sharp / ASP.NET Core Setup
-Specific Technology Guidance for C Sharp / ASP.NET  Core when setting up a new system
+Specific Technology Guidance for C Sharp / ASP.NET Core when setting up a new system
 In addition to the general setup standards these MUST also be included:
 - A landing page for development purposes. Only available when ASPNETCORE_ENVIRONMENT is set to DEVELOPMENT
 - Use the GovUk.Frontend.AspNetCore package for installing the GOV.UK Frontend toolkit. Do not use minified JS.
