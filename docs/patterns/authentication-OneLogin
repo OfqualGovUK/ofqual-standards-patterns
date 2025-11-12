@@ -1,4 +1,19 @@
+---
+layout: pattern
+order: 1
+title: Authentication - One Login
+date: 2025-11-12 # this should be the date that the content was most recently amended or formally reviewed
+tags:
+  - Digital
+related: 
+  sections:
+    - title: Related links
+      items:
+        - text: Authentication - Azure B2C
+          href: /patterns/
+---
 
+<!-- Pattern description -->
 
 
 
