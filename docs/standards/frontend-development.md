@@ -49,25 +49,24 @@ Exception messages should be in the format of Exception raised when <description
 
 
 ### Requirement 2
-Specific Technology Guidance
-C Sharp / ASP.NET  Core
-Setting up a new system
-In addition to the General principle, setup should include:
-A landing page for development purposes. This should only be available when ASPNETCORE_ENVIRONMENT is set to DEVELOPMENT
-Use the GovUk.Frontend.AspNetCore package for installing the GOV.UK Frontend toolkit. Do not use minified JS.
-Most installs shouldn't require the use of npm or explicit package.jsons and should simply be a case of installing the nuget package and configuring it in the _Layout.cshtml and Program.cs
-You will need to use an explicit package.json combined with a gulpfile to appropriately move assets, if you need to use the MOJ Design System (or any other design toolkit)
-Configured Accessibility, Acceptance, Unit and Integration tests
-An appropriate Dockerfile for the project
-Separate out Infrastructure, Core and Web components
-Web components are used for Controllers, Pages and ViewModels
-Core is used for Domain Models, Configuration and Enums
-Infrastructure is used for Services, Repositories and Clients (things typically used for business logic and communication to other things)
-Serilog should be setup so that we can have appropriate logging control
-ViewModels
-To differentiate between Models and ViewModels (which could have the same name and overall structure), ViewModels should always have ViewModel as their suffix
-A ViewModel is purely presentational; these should only be referenced in the Web portion of the service.
-If you need to retrieve data from somewhere or send data out (e.g. the cache, a HTTP Client), then a Model should be used; the data should then be mapped to and from the ViewModel as appropriate
+Specific Technology Guidance for C Sharp / ASP.NET  Core when setting up a new system
+In addition to the general setup standards these MUST also be included:
+- A landing page for development purposes. Only available when ASPNETCORE_ENVIRONMENT is set to DEVELOPMENT
+- Use the GovUk.Frontend.AspNetCore package for installing the GOV.UK Frontend toolkit. Do not use minified JS.
+- Most installs shouldn't require the use of npm or explicit package.jsons and should simply be a case of installing the nuget package and configuring it in the _Layout.cshtml and Program.cs
+- You will need to use an explicit package.json combined with a gulpfile to appropriately move assets, if you need to use the MOJ Design System (or any other design toolkit)
+- Configured Accessibility, Acceptance, Unit and Integration tests
+- An appropriate Dockerfile for the project
+- Separate out Infrastructure, Core and Web components
+- Web components are used for Controllers, Pages and ViewModels
+- Core is used for Domain Models, Configuration and Enums
+- Infrastructure is used for Services, Repositories and Clients (things typically used for business logic and communication to other things)
+- Serilog should be setup so that we can have appropriate logging control
+
+### ViewModels
+- To differentiate between Models and ViewModels (which could have the same name and overall structure), ViewModels MUST always have ViewModel as their suffix
+- A ViewModel is purely presentational; these MUST only be referenced in the Web portion of the service.
+- If you need to retrieve data from somewhere or send data out (e.g. the cache, a HTTP Client), then a Model MUST be used; the data should then be mapped to and from the ViewModel as appropriate
 
 ---
 
