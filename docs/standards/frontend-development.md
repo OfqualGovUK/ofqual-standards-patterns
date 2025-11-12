@@ -25,11 +25,11 @@ This is our base for standards across all the frontends we maintain, and serves 
 
 ## Requirement(s)
 General
-- [Requirement 1](#requirement-1)
-- [Requirement 2](#requirement-2)
+- [Setup](#setup)
+- [Exceptions and Logging](#exceptions-and-logging)
 Technology Specific
-- [Requirement 1](#requirement-1)
-- [Requirement 2](#requirement-2)
+- [C Sharp / ASP.NET Core Setup](#c-sharp)
+- [Viewmodels](#viewmodels)
 
 General
 ### Setup
