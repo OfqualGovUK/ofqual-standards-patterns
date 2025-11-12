@@ -2,7 +2,7 @@
 layout: standard
 order: 10
 title: Infrastructure as Code
-date: 2025-11-06
+date: 2025-11-12
 id: OFQ-00010
 tags:
   - Digital
