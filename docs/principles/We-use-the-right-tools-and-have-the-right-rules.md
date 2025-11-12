@@ -1,7 +1,7 @@
 ---
 layout: principle
 order: 8
-title: 8.	We use the right tools and have the right rules
+title: 08.	We use the right tools and have the right rules
 date: 2025-06-18
 tags:
 - Ways of working
