@@ -23,8 +23,7 @@ This document serves as our base for standards across all the backends we mainta
 - Specific language and technology standards
 
 ---
-## Requirement(s)
-General Standard Requirements
+## Requirements
 - [Setup](#setup)
 - [Exceptions and Logging](#exceptions-and-logging)
 - [Setting up C Sharp](#setting-up-C-Sharp)
@@ -49,7 +48,6 @@ For example, if you have a page format that could be reused (say a multiple choi
 For example, if an error occurs in a repository's function, it should be caught and logged in that function instead of relying on a catch at a higher level.
 - Exception messages MUST follow the format of: Exception raised when <description of what was happening>, in <class name>::<function name>. Exception message: <exception message>
 This enables us to identify easily in the logs where the issue manifested.
-
 
 ### Setting up C Sharp / ASP.NET  Core
 In addition to the setup standard, when setting up in C Sharp / ASP.NET Core, you MUST also include:
