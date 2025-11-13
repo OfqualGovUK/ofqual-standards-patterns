@@ -5,99 +5,121 @@ title: Authentication - One Login
 date: 2025-11-12 # this should be the date that the content was most recently amended or formally reviewed
 tags:
   - Digital
+  - Infrastructure
 related: 
   sections:
     - title: Related links
       items:
         - text: Authentication - Azure B2C
-          href: /patterns/
+          href: /patterns/authentication-azure-b2c
+    - title: Related standards
+      items:
+        - text: Security In First Party Software
+          href: /standards/security-in-first-party-software
 ---
 
 <!-- Pattern description -->
 
+## Introduction
 
-
-One Login
-Introduction
 This guide is intended for those who are implementing GOV.UK One Login from both an infrastrucure perspective and a code perspective.
 
-Full technical documentation for One Login is available at https://docs.sign-in.service.gov.uk/ 
+Full technical documentation for One Login is available at [https://docs.sign-in.service.gov.uk/](https://docs.sign-in.service.gov.uk/)
 
-Infrastructure
-General Set Up Tools
+## Infrastructure
+
+### General Set Up Tools
+
 For our implementation of One Login, you will need:
 
-A client, created on https://admin.sign-in.service.gov.uk/ 
-A key vault for the environment you are in
-A bash command line (to be able to generate key pairs with via the openssl tool)
-Creating a key pair
-References: https://docs.sign-in.service.gov.uk/before-integrating/set-up-your-public-and-private-keys/ 
+- A client, created on https://admin.sign-in.service.gov.uk/
+- A key vault for the environment you are in
+- A bash command line (to be able to generate key pairs with via the openssl tool)
 
-GOV.UK One Login uses public and private key RSA-2048 bit encryption to secure communication
-Use the following lines of code to generate a private key and public key
+### Creating a key pair
 
+References: [https://docs.sign-in.service.gov.uk/before-integrating/set-up-your-public-and-private-keys/](https://docs.sign-in.service.gov.uk/before-integrating/set-up-your-public-and-private-keys/)
+
+- GOV.UK One Login uses public and private key RSA-2048 bit encryption to secure communication
+- Use the following lines of code to generate a private key and public key
+
+```bash
 openssl genpkey -algorithm RSA -out private_key.pem -pkeyopt rsa_keygen_bits:2048
 
 openssl rsa -pubout -in private_key.pem -out public_key.pem
-The public key is inserted into the client on the One Login integration; the private key is stored within key vault
-Important: The private key generated is sensitive; if the private key is released, a new key set must be generated. Delete local copies of the key once uploaded to Key Vault
-The Integration Client
-The integration client is used in our test environments to try out One Login
-This client is not for managing the production service. There is no client currently for managing production and this needs to be dealt with through the live service team and One Login's engagement officer, who can be contacted via the product team
-When a client is created, the following key fields/information will be provided or need to be updated:
-A Client ID. This must be given to developers to direct their code to the right service
-Contacts. This should always contain at least the portalsupport@ofqual.gov.uk email address, so that we can monitor all of our integration clients for updates
-Redirect URLs. The redirect URL should be in the format of https://<frontend-url>/signin-oidc, where <frontend-url> is the frontend URL of the service you are implementing this for. If this URL is incorrect, you will get an "Invalid request" when you try to access the authorized part of the service
-Scopes. These should be discussed with product but we always need the OpenID and Email scopes to be available.
-Public Key. This is where you set your public key; select the static key option and copy and paste the whole of the contents of the public key you generate into here
-The Key Vault
-A key vault should be created for each environment and for each service that uses One Login
-To create a new key, navigate to the Key Vault > Keys > Generate/Import
-Give the key an appropriate name and import the private key that was generated
-Once created, you will see the key added to the list. Click on the key and then the current version of the key (which will have a unique identifier), and copy to clipboard the Key Identifier which should be passed to a developer
-At this point, the local instance of the private key should be deleted for security reasons
-Development
-Note: this section assumes that implementation is being done using C# / ASP.NET  Core
+```
 
-Our development kit for One Login is based on an ESFA package found at (https://github.com/SkillsFundingAgency/das-shared-packages/tree/master/SFA.DAS.GovUK.Auth )[https://github.com/SkillsFundingAgency/das-shared-packages/tree/master/SFA.DAS.GovUK.Auth ] and we should monitor this package for future updates
+- The public key is inserted into the client on the One Login integration; the private key is stored within key vault
+- **Important:** The private key generated is sensitive; if the private key is released, a new key set must be generated. Delete local copies of the key once uploaded to Key Vault
 
-High level flow
-To authenticate, the auth system...
+### The Integration Client
 
-First contacts the /authorize endpoint. This is the initial point where users are then required to authorize with OneLogin. Some services may also use this to verify identity, but we don't do this in Ofqual; if a user hasn't already logged in, this is the thing that gets the user to go through their login flows. Relevant documentation: https://docs.sign-in.service.gov.uk/integrate-with-integration-environment/authenticate-your-user/#make-a-request-to-the-authorize-endpoint 
-Once logged in, the user is then redirected through a URL specified during infrastructure set up. This is always to a URL ending in /signin-oidc, which our service provides. In addition, an authorization code is created, which we can then use to generate JWT tokens to continue to keep the user authenticated. Relevant documentation: https://docs.sign-in.service.gov.uk/integrate-with-integration-environment/authenticate-your-user/#generate-an-authorisation-code 
-The authorization code given is used to POST to the /token endpoint to receive an ID Token containing their basicattributes, and an Access Token that is then used to contact the /userinfo endpoint for OneLogin to get the user's full information Once this is done, the user is successfully authenticated on our end, and this loop effectively happens whenever the user needs a fresh JWT token when it expires. Relevant documentation: https://docs.sign-in.service.gov.uk/integrate-with-integration-environment/authenticate-your-user/#generate-an-authorisation-code  and https://docs.sign-in.service.gov.uk/integrate-with-integration-environment/authenticate-your-user/#retrieve-user-information 
-A high level flow diagram is maintained in One Login's documentation at https://docs.sign-in.service.gov.uk/how-gov-uk-one-login-works/#understand-the-technical-flow-gov-uk-one-login-uses 
+- The integration client is used in our test environments to try out One Login
+- This client is **not** for managing the production service. **There is no client currently for managing production and this needs to be dealt with through the live service team and One Login's engagement officer, who can be contacted via the product team**
+- When a client is created, the following key fields/information will be provided or need to be updated:
+  - A Client ID. This must be given to developers to direct their code to the right service
+  - Contacts. This should *always* contain at least the portalsupport@ofqual.gov.uk email address, so that we can monitor all of our integration clients for updates
+  - Redirect URLs. The redirect URL should be in the format of `https://<frontend-url>/signin-oidc`, where `<frontend-url>` is the frontend URL of the service you are implementing this for. If this URL is incorrect, you will get an "Invalid request" when you try to access the authorized part of the service
+  - Scopes. These should be discussed with product but we always need the OpenID and Email scopes to be available.
+  - Public Key. This is where you set your public key; select the static key option and copy and paste the **whole** of the contents of the public key you generate into here
 
-Environment Variables
+### The Key Vault
+
+- A key vault should be created for each environment and for each service that uses One Login
+- To create a new key, navigate to the Key Vault > Keys > Generate/Import
+- Give the key an appropriate name and **import** the **private** key that was generated
+- Once created, you will see the key added to the list. Click on the key and then the current version of the key (which will have a unique identifier), and copy to clipboard the Key Identifier which should be passed to a developer
+- At this point, the local instance of the private key should be deleted for security reasons
+
+## Development
+
+*Note: this section assumes that implementation is being done using C# / ASP.NET Core*
+
+Our development kit for One Login is based on an ESFA package found at (https://github.com/SkillsFundingAgency/das-shared-packages/tree/master/SFA.DAS.GovUK.Auth)[https://github.com/SkillsFundingAgency/das-shared-packages/tree/master/SFA.DAS.GovUK.Auth] and we should monitor this package for future updates
+
+### High level flow
+
+- To authenticate, the auth system...
+    - First contacts the /authorize endpoint. This is the initial point where users are then required to authorize with OneLogin. Some services may also use this to verify identity, but we don't do this in Ofqual; if a user hasn't already logged in, this is the thing that gets the user to go through their login flows. Relevant documentation: [https://docs.sign-in.service.gov.uk/integrate-with-integration-environment/authenticate-your-user/#make-a-request-to-the-authorize-endpoint](https://docs.sign-in.service.gov.uk/integrate-with-integration-environment/authenticate-your-user/#make-a-request-to-the-authorize-endpoint)
+    - Once logged in, the user is then redirected through a URL specified during infrastructure set up. This is always to a URL ending in /signin-oidc, which our service provides. In addition, an authorization code is created, which we can then use to generate JWT tokens to continue to keep the user authenticated. Relevant documentation: [https://docs.sign-in.service.gov.uk/integrate-with-integration-environment/authenticate-your-user/#generate-an-authorisation-code](https://docs.sign-in.service.gov.uk/integrate-with-integration-environment/authenticate-your-user/#generate-an-authorisation-code)
+    - The authorization code given is used to POST to the /token endpoint to receive an ID Token containing their basicattributes, and an Access Token that is then used to contact the /userinfo endpoint for OneLogin to get the user's full information Once this is done, the user is successfully authenticated on our end, and this loop effectively happens whenever the user needs a fresh JWT token when it expires. Relevant documentation: [https://docs.sign-in.service.gov.uk/integrate-with-integration-environment/authenticate-your-user/#generate-an-authorisation-code](https://docs.sign-in.service.gov.uk/integrate-with-integration-environment/authenticate-your-user/#generate-an-authorisation-code) and [https://docs.sign-in.service.gov.uk/integrate-with-integration-environment/authenticate-your-user/#retrieve-user-information](https://docs.sign-in.service.gov.uk/integrate-with-integration-environment/authenticate-your-user/#retrieve-user-information)
+- A high level flow diagram is maintained in One Login's documentation at [https://docs.sign-in.service.gov.uk/how-gov-uk-one-login-works/#understand-the-technical-flow-gov-uk-one-login-uses](https://docs.sign-in.service.gov.uk/how-gov-uk-one-login-works/#understand-the-technical-flow-gov-uk-one-login-uses)
+
+### Environment Variables
+
 You will need the following environment variables
 
-Group: GovUkOidcConfiguration
-BaseUrl: The base URL for One Login's OIDC endpoints. For test environments, this is https://oidc.integration.account.gov.uk
-ClientId: This is the ID used to identify our service in OneLogin and is provided by infrastructure when setting up the integration environment
-KeyVaultIdentifier: This provides a direct URL to our private key, which is used to encrypt communication with OneLogin. This URL should be provided by the Infrastructure team
-Group: KeyVault
-ApplicationId: This is the client id of an App Registration that is used to authenticate with the Key Vault
-ApplicationSecret: This is the client secret of an App Registration that is used to authenticate with the Key Vault
-DirectoryId: This is the tenant of the key vault and should always be 8e336469-1c6b-4b0b-a06c-748a7c586f7c
-Name: The name of the key vault to be accessed
-Note: Key Vault in the future should be accessed with Managed Identities, and the docs should be updated to reflect this when it happens
+- Group: GovUkOidcConfiguration
+  - BaseUrl: The base URL for One Login's OIDC endpoints. For test environments, this is `https://oidc.integration.account.gov.uk`
+  - ClientId: This is the ID used to identify our service in OneLogin and is provided by infrastructure when setting up the integration environment
+  - KeyVaultIdentifier: This provides a direct URL to our private key, which is used to encrypt communication with OneLogin. This URL should be provided by the Infrastructure team
+- Group: KeyVault
+  - ApplicationId: This is the client id of an App Registration that is used to authenticate with the Key Vault
+  - ApplicationSecret: This is the client secret of an App Registration that is used to authenticate with the Key Vault
+  - DirectoryId: This is the tenant of the key vault and should always be `8e336469-1c6b-4b0b-a06c-748a7c586f7c`
+  - Name: The name of the key vault to be accessed
 
-Folder and file structure
+*Note: Key Vault in the future should be accessed with Managed Identities, and the docs should be updated to reflect this when it happens*
+
+### Folder and file structure
+
 In the Web folder of the solution, you will need to add the following folders and files:
 
-Folder: Extensions
-ServiceCollectionExtensions: This class is used to ship off the functionality used to initiate setting up authentication services to outside the Program.cs
-Folder: AuthUtils
-OidcService: Used to manage getting tokens and populating tokens with account claims appropriately
-JwtSecurityTokenService: Used to generate JWT tokens
-GovUkOidcConfiguration: Used to structure the environment variables defined above
-Token: A class definition for both Access and ID tokens
-GovUkUser: Used to define the basic ID information from the /userinfo endpoint
-AzureIdentityService: Used to authenticate with Key Vault
-GovUkOidcConfiguration
-Use the following structure:
+- Folder: Extensions
+    - ServiceCollectionExtensions: This class is used to ship off the functionality used to initiate setting up authentication services to outside the Program.cs
+- Folder: AuthUtils
+    - OidcService: Used to manage getting tokens and populating tokens with account claims appropriately
+    - JwtSecurityTokenService: Used to generate JWT tokens
+    - GovUkOidcConfiguration: Used to structure the environment variables defined above
+    - Token: A class definition for both Access and ID tokens
+    - GovUkUser: Used to define the basic ID information from the /userinfo endpoint
+    - AzureIdentityService: Used to authenticate with Key Vault
 
+### GovUkOidcConfiguration
+
+- Use the following structure:
+
+```C#
 
 public class GovUkOidcConfiguration
 {
@@ -108,9 +130,13 @@ public class GovUkOidcConfiguration
     public string KeyVaultIdentifier { get; set; } = null!;
 }
 
-Token
-Use the following structure:
+```
 
+### Token
+
+- Use the following structure:
+
+```C#
 
 public class Token
 {
@@ -124,9 +150,13 @@ public class Token
     public string? TokenType { get; set; }
 }
 
-GovUkUser
-Use the following structure:
+```
 
+### GovUkUser
+
+- Use the following structure:
+
+```C#
 
 public class GovUkUser
 {
@@ -139,9 +169,13 @@ public class GovUkUser
     public string Email { get; set; } = null!;
 }
 
-JwtSecurityTokenService
-Use the following code to generate a JWT token:
+```
 
+### JwtSecurityTokenService
+
+- Use the following code to generate a JWT token:
+
+```C#
 
     public string CreateToken(string clientId, string audience, ClaimsIdentity claimsIdentity, SigningCredentials signingCredentials)
     {
@@ -152,10 +186,15 @@ Use the following code to generate a JWT token:
         return value.RawData;
     }
 
-This code uses the JwtSecurityTokenHandler, which is in the processed of being replaced with JsonWebTokenHandler. A way of using the latter should ideally be found in the future
-OidcService
-Use the following constructor
+```
 
+- This code uses the JwtSecurityTokenHandler, which is in the processed of being replaced with JsonWebTokenHandler. A way of using the latter should ideally be found in the future
+
+### OidcService
+
+- Use the following constructor
+
+```C#
 
     private readonly HttpClient _httpClient;
     private readonly IAzureIdentityService _azureIdentityService;
@@ -175,8 +214,11 @@ Use the following constructor
         _httpClient.BaseAddress = new Uri(configuration["GovUkOidcConfiguration:BaseUrl"]);
     }
 
-Use the following private function to help create JWT Assertions, which are then used to help get a token via OIDC
+```
 
+- Use the following private function to help create JWT Assertions, which are then used to help get a token via OIDC
+
+```C#
 
     private string CreateJwtAssertion()
     {
@@ -202,9 +244,12 @@ Use the following private function to help create JWT Assertions, which are then
         return value;
     }
 
-Use the following function to populate account claims via the userinfo endpoint in OIDC (see https://docs.sign-in.service.gov.uk/integrate-with-integration-environment/authenticate-your-user/#retrieve-user-information ) and an access token
-Product name should be replaced with an appropriate product name, such as OfqualExpertApply
+```
 
+- Use the following function to populate account claims via the userinfo endpoint in OIDC (see [https://docs.sign-in.service.gov.uk/integrate-with-integration-environment/authenticate-your-user/#retrieve-user-information](https://docs.sign-in.service.gov.uk/integrate-with-integration-environment/authenticate-your-user/#retrieve-user-information)) and an access token
+- Product name should be replaced with an appropriate product name, such as OfqualExpertApply
+
+```C#
 
     public async Task PopulateAccountClaims(TokenValidatedContext tokenValidatedContext)
     {
@@ -235,8 +280,11 @@ Product name should be replaced with an appropriate product name, such as Ofqual
         }
 
     }
-Use the following endpoint to obtain an access token
+```
 
+- Use the following endpoint to obtain an access token
+
+``` C#
 
 public async Task<Token?> GetToken(OpenIdConnectMessage? openIdConnectMessage)
 {
@@ -273,9 +321,13 @@ public async Task<Token?> GetToken(OpenIdConnectMessage? openIdConnectMessage)
     return content;
 }
 
-AzureIdentityService
-Add in the following class to set up authentication callbacks to access Key Vault credentials
+```
 
+### AzureIdentityService
+
+- Add in the following class to set up authentication callbacks to access Key Vault credentials
+
+```C#
 
 private readonly IConfiguration _config;
 
@@ -300,12 +352,14 @@ public async Task<string> AuthenticationCallback(string authority, string resour
 
     return token.Token;
 }
-ServiceCollectionExtensions
-This should be set up as a static class
+```
 
-Use the following function to add in the sign in services needed as transients
+### ServiceCollectionExtensions
 
+- This should be set up as a static class
+- Use the following function to add in the sign in services needed as transients
 
+```C#
 
 public static void AddSignInServices(this IServiceCollection services, IConfiguration configRoot)
 {
@@ -314,8 +368,11 @@ public static void AddSignInServices(this IServiceCollection services, IConfigur
         .AddHttpClient<IOidcService, OidcService>();
 }
 
-Use the following function to initially add in OpenIdConnect and Cookies for it
+```
 
+- Use the following function to initially add in OpenIdConnect and Cookies for it
+
+```C#
 
 
     // This method is used to add the authentication services required for the sign-in process.
@@ -383,8 +440,11 @@ Use the following function to initially add in OpenIdConnect and Cookies for it
             });
     }
 
-Use this function to configure the options required for OpenIdConnect
+```
 
+- Use this function to configure the options required for OpenIdConnect
+
+```C#
 
 // This method is used to configure the sign-in process using OpenIdConnect
 public static void ConfigureSignInOidc(this IServiceCollection services, GovUkOidcConfiguration config)
@@ -421,9 +481,13 @@ public static void ConfigureSignInOidc(this IServiceCollection services, GovUkOi
         });
 }
 
-Program.cs
-In Program.cs, add the following setup calls:
+```
 
+### Program.cs
+
+- In Program.cs, add the following setup calls:
+
+```C#
 
 // Bring in the OpenIDConnect configuration
 var govukOidcConfig = builder.Configuration.GetSection(GovUkOidcConfiguration.KEY).Get<GovUkOidcConfiguration>();
@@ -437,3 +501,8 @@ builder.Services.ConfigureSignInOidc(govukOidcConfig);
 app.UseAuthentication();
 app.UseAuthorization();
 app.UseSession();
+
+```
+
+
+
