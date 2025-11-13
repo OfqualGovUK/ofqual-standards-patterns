@@ -1,7 +1,7 @@
 
 # Ofqual Principles, Standards and Patterns
  
-This is the home of principles, standards and patterns for Ofqual. 
+This is the home of principles, standards and patterns for Ofqual Digital and Data. 
 
 It is built using Markdown, GOV.UK templates, Ofqual styles, the [x-gov Eleventy Plugin](https://x-govuk.github.io/govuk-eleventy-plugin/) and GitHub Actions.
 
@@ -53,16 +53,4 @@ http-server -p 8080
 ```
 
 Now you can preview the site on http://localhost:8080
-
-## Running Cypress tests
-To run the [Cypress](https://www.cypress.io/) tests locally, run the following command:
-
-```
-npm run cypress:open
-```
-
-This will open up the Cypress UI, which you can use to run the end-to-end tests locally.
-
-> **Note**
-> The site must be running on localhost for the tests to work. See [Preview your changes locally](#preview-your-changes-locally).
 

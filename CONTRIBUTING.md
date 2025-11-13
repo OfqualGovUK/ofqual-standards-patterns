@@ -1,7 +1,6 @@
 # How to contribute
 
-This is the contribution guide for the Ofqual Principles, Standards and Patterns. This guide will cover the primary way we
-expect contributions to be made, which is adding new principles, standards and patterns.
+This is the contribution guide for the Ofqual Principles, Standards and Patterns. This guide will cover the primary way we expect contributions to be made, which is adding new principles, standards and patterns.
 
 # Getting Started
 
@@ -9,15 +8,15 @@ We will now look at the process we expect contributors to take when suggesting f
 
 ## Make changes
 
-To start the process of making changes, firstly you should [fork our repo](https://github.com/UKOfqualGovUK/ofqual-standards-patterns/fork). This is so you can make changes without affecting the original project until you're ready.
+To start the process of making changes, firstly you must be added to the Ofqual organisation as a member; if you are not, you will not be able to push branches to the repository
 
 ### Create a branch
 
-Please create a branch using the default GitHub branch naming strategy which is based off the issue you are working on.
+Please create a branch using the default GitHub branch naming strategy which is based off the issue you are working on. Changes made to the main branch will be rejected
 
 ### Make changes in the UI
 
-If you are updating a small piece of text, a typo or broken link, then you can edit the file directly from GitHub.  Click the make a contribution button which will open the file in the GitHub user interface.  If you haven't already, when starting this, GitHub will automatically create a fork of our project into your account.
+If you are updating a small piece of text, a typo or broken link, then you can edit the file directly from GitHub.  Click the make a contribution button which will open the file in the GitHub user interface. 
 
 ### Make changes locally
 
@@ -41,7 +40,7 @@ When creating a PR, use the appropriate template checklists for code and content
 
 ### Who can merge your PR
 
-Any 2 of the maintainers on this repo are needed to review and accept your change and at least 1 reviewer must be a [code owner](https://github.com/OfqualGovUK/ofqual-standards-patterns/blob/main/CODEOWNERS).
+Any other member of the Ofqual organisation can review your PR; once they have done so, you have permission to then merge in your PR yourself, so long as the pipeline checks also pass. If they do not, seek the assistance of another developer to investigate.
 
 ## Your PR is merged!
 
