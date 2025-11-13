@@ -2,8 +2,8 @@
 layout: standard
 order: 9
 title: Shutter page content
-date: 2025-10-21 # this should be the date that the content was most recently amended or formally reviewed
-id: OFQ-00009 # Set unique ID for standard
+date: 2025-11-13 # this should be the date that the content was most recently amended or formally reviewed
+id: OFQ-00012 # Set unique ID for standard
 # use `tags: []` for no tags
 # Note: tags must use sentence case capitalisation
 tags:
