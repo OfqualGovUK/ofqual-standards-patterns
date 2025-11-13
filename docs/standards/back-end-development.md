@@ -1,0 +1,63 @@
+---
+layout: standard
+order: 1
+title: Back-end development
+date: 2025-11-12 
+id: OFQ-00011 
+# use `tags: []` for no tags
+# Note: tags must use sentence case capitalisation
+tags:
+  - Digital
+related: # remove this section if you do not need related links on your page
+  sections:
+    - title: Related standards
+      items:
+        - text: Front-end development
+          href: /standards/front-end-development
+---
+
+This document serves as our base for standards across all the backends we maintain, and serves the following areas:
+- General standards (applicable to all languages/technologies)
+- Specific language and technology standards
+
+---
+## Requirements
+- [All repositories MUST be set up in a consistent manner](#all-repositories-must-be-set-up-in-a-consistent-manner)
+- [All exceptions MUST be handled and logged](#all-exceptions-must-be-handled-and-logged)
+
+### All repositories MUST be set up in a consistent manner
+All repositories MUST have:
+
+- A Dockerfile for running the system with
+- Configured Integration and Unit Tests
+- A LICENSE.md (which should be an MIT License)
+- A README.md defining the project and how to run it on a local device
+- A SECURITY.md file defining how to disclose vulnerabilities to Ofqual
+- A .gitignore
+- An azure-pipelines.yml for defining the build pipelines
+- An Architectural and Technical Design
+- Use Configuration over Hardcoding
+For example, if you have a page format that could be reused (say a multiple choice question page), make that reusable and configurable
+
+#### Setting up C Sharp / ASP.NET Core
+In addition to the setup standard, when setting up in C Sharp / ASP.NET Core, you MUST also include:
+- A landing page for development purposes using Swagger. This should only be available when ASPNETCORE_ENVIRONMENT is set to DEVELOPMENT
+- The repository should be separated out into multiple solutions for organisational purposes:
+  - The Main project is used for storing the Program.cs, appsettings, and Controllers in their own folder.
+  - The Core project used for Models, Interfaces for structures and Enums
+  - The Infrastructure project used for Services, Repositories and other supporting items such as Mappers
+- Serilog should be used for appropriate logging control
+
+#### Organisation and Naming Conventions
+
+- In the Models folder in the Core Project, there should generally be a folder for each database table or item represented (e.g. User)
+- A Data Transfer Object (DTO) for a table can go in the same folder as its corresponding model (e.g. User and UserDto)
+- Models which join tables together can be named in a similar way to how link tables would be named. For instance, if a model represented a join between a "Task" and a "Question", that model could be called "TaskQuestion"
+  - Only do this if both items are in the same "level"; if for instance in the above example, the Question table was mapped to a List<Question>, then just name the model "Task"
+
+### All exceptions MUST be handled and logged
+- Exceptions MUST be caught and logged out as low as possible. 
+For example, if an error occurs in a repository's function, it should be caught and logged in that function instead of relying on a catch at a higher level.
+- Exception messages MUST follow the format of: `Exception raised when <description of what was happening>, in <class name>::<function name>. Exception message: <exception message>` as this enables us to identify easily in the logs where the issue manifested.
+
+---
