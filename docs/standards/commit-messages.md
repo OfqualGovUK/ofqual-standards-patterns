@@ -1,9 +1,9 @@
 ---
 layout: standard
-order: 9
+order: 14
 title: Commit Messages
-date: 2025-10-10 # this should be the date that the content was most recently amended or formally reviewed
-id: OFQ-00009 # Set unique ID for standard
+date: 2025-11-13 # this should be the date that the content was most recently amended or formally reviewed
+id: OFQ-00014 # Set unique ID for standard
 # use `tags: []` for no tags
 # Note: tags must use sentence case capitalisation
 tags:
