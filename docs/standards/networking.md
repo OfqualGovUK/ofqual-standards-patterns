@@ -11,8 +11,10 @@ related:
   sections:
     - title: Related links
       items:
-        - text: Writing a standard
-          href: /standards/writing-a-standard/
+        - text: We understand and manage the threats we face
+          href: /principles/We-understand-and-manage-the-threats-we-face/
+        - text: We design and continuously develop services that are durable and resilient
+          href: /principles/We-design-and-continuously-develop-services/
 
 ---
 
