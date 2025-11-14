@@ -67,12 +67,40 @@ Use HTML URL encoding as in the 'Notes on links' above, to ensure that links to 
 1. Navigate to our Releases page on Dev Ops - Pipelines -> Releases
 2. Click on `+ New` -> `New release pipeline`
 
-##### Set up the Artifact
+##### Set up the Release Artifact
 
 1. On the main pipeline sceen, click on `Add an artifact`.
 2. Choose the Source type of `Build`. 
 3. Select the relevant build pipeline. 
 4. Click `Add`.
+
+#### Set up the IaC Artifacts for Container Apps
+This needs setting up for each environment 
+
+##### Dev:  
+1 On the main pipeline screen, click on `Add an artifact`.
+2 Choose the source type of `Azure Repo`.
+3 Select Project `Ofqual.IM`.
+4 Select Source(repo) `Ofqual.Infrastructure`.
+5 Select branch `feature/deploy_dev_infra`.
+6 Set the alias `_Ofqual.InfrastructureDev`. 
+
+##### Pre Prod:  
+1 On the main pipeline screen, click on `Add an artifact`.
+2 Choose the source type of `Azure Repo`.
+3 Select Project `Ofqual.IM`.
+4 Select Source(repo) `Ofqual.Infrastructure`.
+5 Select branch `feature/deploy_pprd_infra`.
+6 Set the alias `_Ofqual.InfrastructurePprd`. 
+
+##### Prod:  
+1 On the main pipeline screen, click on `Add an artifact`.
+2 Choose the source type of `Azure Repo`.
+3 Select Project `Ofqual.IM`.
+4 Select Source(repo) `Ofqual.Infrastructure`.
+5 Select branch `feature/deploy_prd_infra`.
+6 Set the alias `_Ofqual.InfrastructurePrd`. 
+
 
 #### Container App
 
@@ -84,7 +112,7 @@ You will be prompted to select a template for the initial stage, this can be ski
 2. Select to start with an empty job. 
 3. Give the stage a name of `Dev`.
 
-##### Configure the first task:
+##### Configure the task:
 
 1. On the Stages section on your `Dev` stage click on `1 job, 0 task` to view in more detail.
 2. On the Agent job tab click the `+` button to add a new task. Do a search for `cli` and add the task `Azure Cli`.
@@ -93,24 +121,15 @@ You will be prompted to select a template for the initial stage, this can be ski
     2. Select the relevant Azure Subscription, for this stage it should be `Enterprise Dev/test 2024`.
     3. Script Type - `PowerShell`.
     4. Script Location - `Inline script`.
-    5. Inline Script - 
+    5. Inline Script for dev - 
     ```powershell
-    az config set extension.use_dynamic_install=yes_without_prompt
-    az extension add -n containerapp
+        az deployment group create `
+        --resource-group "$(ResourceGroupName)" `
+        --template-file ` "$(System.DefaultWorkingDirectory)/_Ofqual.InfrastructureDev/bicep/contApps/main_containerApp.bicep" `
+        --parameters ` "@$(System.DefaultWorkingDirectory)/{repo-name}/drop/Bicep/{name-of-config-file}" `
+        --parameters "imageTag=$(Build.BuildId)"     
     ``` 
 
-##### Configure the second task:
-
-1. On the Agent job tab click the `+` button to add a new task. Do a search for `cli` and add the task `Azure Cli`.
-2. Fill in the empty fields 
-    1. Give a Display name of `Azure CLI`.
-    2. Select the relevant Azure Subscription, for this stage it should be `Enterprise Dev/test 2024`.
-    3. Script Type - `PowerShell`.
-    4. Script Location - `Inline script`.
-    5. Inline Script - 
-    ```powershell
-    az containerapp up ` --name "$(AppName)" ` --resource-group "$(ResourceGroupName)" ` --image "$(ImageUri):$(Build.BuildId)"
-    ```
 
 ##### Set up Pipeline Variables 
 
@@ -184,23 +203,13 @@ You will be prompted to select a template for the initial stage, this can be ski
     3. Script Type - `PowerShell`.
     4. Script Location - `Inline script`.
     5. Inline Script - 
-    ```powershell
-    az config set extension.use_dynamic_install=yes_without_prompt
-    az extension add -n containerapp
-    ``` 
-
-##### Configure the second task:
-
-1. On the Agent job tab click the `+` button to add a new task. Do a search for `cli` and add the task `Azure Cli`.
-2. Fill in the empty fields 
-    1. Give a Display name of `Azure CLI`.
-    2. Select the relevant Azure Subscription, for this stage it should be `Enterprise Dev/test 2024`.
-    3. Script Type - `PowerShell`.
-    4. Script Location - `Inline script`.
-    5. Inline Script - 
-    ```powershell
-    az containerapp up ` --name "$(AppName)" ` --resource-group "$(ResourceGroupName)" ` --image "$(ImageUri):$(Build.BuildId)"
+    az deployment group create `
+    --resource-group "$(ResourceGroupName)" `
+    --template-file ` "$(System.DefaultWorkingDirectory)/_Ofqual.InfrastructurePprd/bicep/contApps/main_containerApp.bicep" `
+    --parameters ` "@$(System.DefaultWorkingDirectory)/{repo-name}/drop/Bicep/{name-of-config-file}" `
+    --parameters "imageTag=$(Build.BuildId)" 
     ```
+
 
 ##### Set up Pipeline Variables 
 
@@ -296,26 +305,16 @@ This Stage will have no task applied to it.
 2. On the Agent job tab click the `+` button to add a new task. Do a search for `cli` and add the task `Azure Cli`.
 3. Fill in the empty fields 
     1. Give a Display name of `Install container app extension`.
-    2. Select the relevant Azure Subscription, for this stage it should be `Microsoft Azure Enterprise 2024`.
+    2. Select the relevant Azure Subscription, for this stage it should be `Microsoft Azure Enterprise 2025`.
     3. Script Type - `PowerShell`.
     4. Script Location - `Inline script`.
     5. Inline Script - 
     ```powershell
-    az config set extension.use_dynamic_install=yes_without_prompt
-    az extension add -n containerapp
-    ``` 
-
-###### Configure the second task:
-
-1. On the Agent job tab click the `+` button to add a new task. Do a search for `cli` and add the task `Azure Cli`.
-2. Fill in the empty fields 
-    1. Give a Display name of `Azure CLI`.
-    2. Select the relevant Azure Subscription, for this stage it should be `Microsoft Azure Enterprise 2024`.
-    3. Script Type - `PowerShell`.
-    4. Script Location - `Inline script`.
-    5. Inline Script - 
-    ```powershell
-    az containerapp up ` --name "$(AppName)" ` --resource-group "$(ResourceGroupName)" ` --image "$(ImageUri):$(Build.BuildId)"
+    az deployment group create `
+    --resource-group "$(ResourceGroupName)" `
+    --template-file ` "$(System.DefaultWorkingDirectory)/_Ofqual.InfrastructurePrd/bicep/contApps/main_containerApp.bicep" `
+    --parameters ` "@$(System.DefaultWorkingDirectory)/{repo-name}/drop/Bicep/{name-of-config-file}" `
+    --parameters "imageTag=$(Build.BuildId)" 
     ```
 
 ###### Set up Pipeline Variables 
