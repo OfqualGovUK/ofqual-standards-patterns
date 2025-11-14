@@ -8,7 +8,7 @@ date: 2025-11-06 # this should be the date that the content was most recently am
 tags:
   - Security
   - Digital
-  - IaC
+  - Infrastructure
 related: # remove this section if you do not need related links on your page
   sections:
     - title: Related Standards
