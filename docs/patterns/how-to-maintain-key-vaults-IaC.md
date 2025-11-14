@@ -36,12 +36,17 @@ Heading tags are automatically assigned an id, converting spaces to `kebab-case`
 
 ## Introduction
 
-For local development, it is acceptable to use a developer environment file, such as appsettings.development.json, so long as it is appropriately gitignored and not checked into an repo or published source.  This how to guide seeks to identify how we as part of good security architecture, developers use key vaults to support our good secret management principles to protect our sensitive resources, such as database connections strings and tokens. This document outlines our approach for this across all Digital products.
-
+For local development, it is acceptable to use a developer environment file, such as appsettings.development.json, so long as it is appropriately gitignored and not checked into an repo or published source. For us to use variables in a deployable environment, we need to make sure we have a configured store that is secure instead of checking secrets into Github, such as Azure Key Vault. 
+This how to guide seeks to identify how we developers as part of good security architecture, use key vaults to support our good secret management principles to secure these sensitive resources. This document outlines our approach for this across all Digital products.
 
 ### Use Of Common Key Vaults
 
-Use the existing common key vault for secrets that are common across services (such as connection strings to a database that gets reused). This key vault is not controlled via Infrastructure as Code (Iac). Ensure all values are marked as secret. As developers it is our responsiblity to maintain this key vault. Always define what the key vault value is intended for. To maintain good house keeping any secrets no longer being used by our services should be removed. 
+- Use the existing common key vault for secrets that are common across services (such as connection strings to a database that gets reused). 
+- This key vault is not controlled via Infrastructure as Code (Iac).
+- Ensure all values are marked as secret. 
+- It is Digitals responsiblity to maintain this key vault.
+- Always define what the key vault value is intended for. 
+- To maintain good house keeping any secrets no longer being used by our services should be removed. 
 
 ### Use of Local Key Vaults
 
@@ -54,14 +59,16 @@ Use the existing common key vault for secrets that are common across services (s
 - These are located under the pipeline menu in Azure devops.  
 - There must be a variable group for each key vault.
 - All values in a variable group must be marked as secret.
-- The format of a variable group name is ofq-{env}-{service}-{service-type}-vg. service type is api/app/fcn.
+- The format of a variable group name is ofq-{env}-{service}-{service-type}-vg, where service type is the shorthand for the type of service such as api, app or fcn.
 
 
 ## Environment Variable Configuration 
 
-Each repo will have a Bicep folder, this folder will have for each environment (eg. dev/preprod/prod) a yaml file which gets processed by the bicep to create the deployed environment and sets up in part the environment variables. The environment variables are configured in 2 parts "secrets" where the secret is and "envVars" mapping the secret to an environment variable.  So the yaml environment part basically says create these environment variables and either get the value from one of the a secret key vault or in the case of a plain environment value it can be entered directly.
+- Each repo will have a Bicep folder, containing folders for each environment (eg. dev/preprod/prod).
+- A yaml file which gets processed by the bicep to create the deployed environment and sets up in part the environment variables. 
+- The environment variables are configured in 2 parts: "secrets" where the secret is, and "envVars" which map the secrets to an environment variable, either from a key vault or from a plain value. 
 
-eg
+###eg
 ```yaml
 "envVars": 
 { "value": 
@@ -92,8 +99,7 @@ The formatting of this is custom to us and needs explanation.
 - "enVars" and "secretRef" tells the bicep to map the environment variable to a key vault entry.
 - "enVars" and "value" tells the bicep to map the environment variable to a direct value, **do not use this for secrets!**  
 
-example,
-
+##eg
 ```yaml
 { "name": "ApiAuth__AadInstance", "secretRef": "api-auth-aad-instance" }
 ```

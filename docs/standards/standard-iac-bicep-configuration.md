@@ -8,6 +8,7 @@ tags:
   - Guide
   - Meta
   - IaC
+  - Infrastructure
 related: # remove this section if you do not need related links on your page
   sections:
     - title: Related Standards
