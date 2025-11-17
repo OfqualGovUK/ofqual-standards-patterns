@@ -48,11 +48,11 @@ The name of the configuration file will be in the form {env}-{service}_parameter
 ### Bicep Configuration Tags
 This define tags for use elsewhere in the system.
 
-1. environment; for dev or pre prod set this to "Dev/Test" for production set to "Prd".
-2. service; this is common for all environments and should reflect the service, so for example "service": "ExpertApply API",
-3. team; this is common for all environments and should be set to "RS Team"
+- Tag "environment", for dev or pre prod set this to "Dev/Test" for production set to "Prd".
+- Tag "service", this is common for all environments and should reflect the service, so for example "service": "ExpertApply API",
+- Tag "team", this is common for all environments and should be set to "RS Team"
 
-example 
+###eg
 ```yaml
     "tags": {
       "value": {
@@ -66,11 +66,11 @@ example
 ### Bicep Configuration Environment Variables
 This section defines the environment variables to be used by the service.  Environment variable either map to a secret in a key vault or in the case of a non secret to a direct value.
 
-1. name; this defines the name of the environment variable, the name defines the group and the field in the group and have this format {group}__{fieldName}
-2. secretRef; if the environment variable data is a secret this is a reference to where the secret is stored (see secrets below).
-3. value; if the environment variable is not a secret or a common value then it can be set directly
+- Tag "name", this defines the name of the environment variable, the name defines the group and the field in the group and have this format {group}__{fieldName}.
+- Tag "secretRef", if the environment variable data is a secret this is a reference to where the secret is stored (see secrets below).
+- Tag "value", if the environment variable is not a secret or a common value then it can be set directly.
 
-example 
+###eg
 ```yaml
 "envVars": 
 { "value": 
@@ -84,9 +84,10 @@ example
 ### Bicep Configuration Secrets
 This section defines the secret references to be used by the environment variables to be used by the service. 
 
-1. name; this is the reference to be used above in envVars, the name should be meaningful and cannot contain any special characters apart from '-'
-2. keyVaultUrl; this is the location of the secret in our Azure workspace.  To access these the dev will have to PIM themselves up for secret access.
-example
+- Tag "name", this is the reference to be used above in envVars, the name should be meaningful and cannot contain any special characters apart from '-'
+- Tag "keyVaultUrl", this is the location of the secret in our Azure workspace.  To access these the dev will have to PIM themselves up for secret access.
+
+###eg
 ```yaml
   "secrets": 
   { "value": 
@@ -97,40 +98,46 @@ example
 ```
 
 ### Bicep Configuration Image Name
-"imageName"; this is the container registry repository name.  This is defined in the build pipeline
+
+- Tag "imageName", this is the container registry repository name.  This is defined in the build pipeline
 
 ### Bicep Configuration Image Tag
-"imageTag"; this is the container image version to use and should be set to latest
+
+- Tag "imageTag", this is the container image version to use and should be set to latest
 
 ### Bicep Configuration Container Registry
-"containerRegistry"; this is the login server address for the container registry that the image is being stored in, this is defined in the build pipeline. 
+
+- Tag "containerRegistry", this is the login server address for the container registry that the image is being stored in, this is defined in the build pipeline. 
 1. Dev/Preprod - crofqappdev1.azurecr.io
 2. Prod - crofqportal.azurecr.io
 
 ### Bicep Configuration Processor 
-"containerAppCpu"; this defines the number of cpu's and should always be set to 1 unless an infrastructure engineer defines otherwise.
+
+- Tag "containerAppCpu", this defines the number of cpu's and should always be set to 1 unless an infrastructure engineer defines otherwise.
 
 ### Bicep Configuration Memory
-"containerAppMem"; this defines the memory to be made available to the container app and should always be set to 2.0Gi unless and infrastructure engineer defines otherwise.
+
+- Tag "containerAppMem", this defines the memory to be made available to the container app and should always be set to 2.0Gi unless and infrastructure engineer defines otherwise.
 
 ### Bicep Configuration Container App Name
-"acaAppName"; this defines part of the container app name and should relect the service eg "expert-apply-api"
+
+Tag "acaAppName", this defines part of the container app name and should relect the service ###eg "expert-apply-api"
 
 ### Bicep Configuration Enviroment
+
 There must be a config file per environment as this configuration files are processed as part of the release pipeline. The environment is specifed by "acaEnvName", this defines the environment these are the options;
-1. dev - devAcaEnv
-2. pre prod - pprdAcaEnv
-3. prod - prdAcaEnv
+
+- for dev environment - devAcaEnv
+- for pre prod environment - pprdAcaEnv
+- for prod environment - prdAcaEnv
 
 ### Bicep Configuration uamIdName
+
 Set this field accourding to the environment required
 
-| Environment | UAM ID     |
-|-------------|------------|
-| Dev         | devUamId   |
-| Pre Prod    | pprdUamId  |
-| Prod        | prdUamId   |
-
+- for dev environment - devUamId
+- for pre prod environment - pprdUamId
+- for prod environment - prdUamId
 
 ---
 
