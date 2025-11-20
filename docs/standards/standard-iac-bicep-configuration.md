@@ -1,9 +1,9 @@
 ---
 layout: standard
-order: 11
+order: 15
 title: IaC Build Configuration Standard
 date: 2025-11-10
-id: OFQ-00011
+id: OFQ-00015
 tags:
   - Guide
   - Meta
