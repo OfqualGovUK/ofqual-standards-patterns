@@ -25,13 +25,10 @@ They enable easy and quick identification of purpose and usage.
 - [Azure Data Factory Objects](#azure-data-factory-objects)
 
 ### Azure Resources
-----------------
-
 Below is the naming convention that MUST be observed when deploying resources to the Ofqual Azure subscriptions.
 When naming an Azure resource, follow the format below:
 
  **{Organisation}{Owner}-{Environment}-{Solution}-{ResourceType}{Instance}**
-<br>
 <br>
 | **Aspect**<br> | **Description**<br> | **Example(s)**<br> |
 | --- | --- | --- |
@@ -50,10 +47,7 @@ Examples:
 | **ofqds-prod-dp-vm01**<br> | A Virtual Machine (**vm01**) for the Data Portal solution (**dp**) in the Production environment (**prod**).<br> |
 | **ofqds-dev-dp-rg01**<br> | A Resource Group (**rg01**) for the Data Portal (**dp**) solution in the Development environment (**dev**).<br> |
 
-<br>
-
 ### Service Principal Names:
-------------------------
 Below is the naming convention that MUST be used when requesting a new Service Principal (an AAD account) for application level access to resources across the network.
 
 **{Organisation}{Owner}-spn-{Solution}**
@@ -67,11 +61,7 @@ Below is the naming convention that MUST be used when requesting a new Service P
 | **Owner**<br> | Code of the team or group responsible for the product<br> | **ds**           (Data Service)<br> |
 | **Solution/**<br>**Product**<br> | The name of the solution or product the resources are supporting.<br> | **DataPortal**<br>**DataImporter**<br>**DataMart**<br>**DataWarehouse**<br> |
 
-<br>
-
 ### SQL Database Objects:
----------------------
-
 Below is the naming convention that MUST be used against all objects within a SQL database.
 
 | **Object Type**<br> | **Example**<br> | **Description**<br> |
@@ -86,11 +76,8 @@ When naming a database object follow the format shown below:
 **{Schema}.{Grouping}_{Object Type}_{Object Name}**
 
 E.g.MD_Staging.Ref_ST_AddressTypes
-<br>
 
 ### Azure Data Factory Objects:
----------------------------
-
 Below is a naming convention that MUST be used for all objects within an Azure Data Factory. 
 For the **(type)** and **(subtype)**, see the second and third tables.
 
@@ -171,13 +158,10 @@ Activities within a Pipeline should observe the following naming convention:
 
 
 ### Azure Key Vault:
-----------------
 Naming convention that MUST be used when storing secrets within Key Vault (environment optional):
-
 **scrt-{SecretType}-{SecretDescription}-{SecretSubType}-{Environment}**
-
-Note: environment optional<br>
-**e.g.**<br>
-**scrt-SQL-DWAdmin-UserName-Dev**<br>
+Note: environment optional e.g.
+**scrt-SQL-DWAdmin-UserName-Dev**
 **scrt-spn-DataImporter-UserName**
+
 ---
