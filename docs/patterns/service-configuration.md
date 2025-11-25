@@ -1,4 +1,3 @@
-
 ---
 layout: pattern
 order: 1
