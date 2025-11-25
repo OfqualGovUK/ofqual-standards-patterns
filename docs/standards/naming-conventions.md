@@ -1,7 +1,7 @@
 ---
 layout: standard
 order: 16
-title: naming conventions
+title: Naming Conventions
 date: 2025-11-20 
 id: OFQ-00016 # Set unique ID for standard
 # use `tags: []` for no tags
