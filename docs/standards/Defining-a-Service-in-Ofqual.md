@@ -1,7 +1,7 @@
 ---
 layout: standard
 order: 1
-title: Standard title
+title: Defining a Service in Ofqual
 date: 2025-12-01 # this should be the date that the content was most recently amended or formally reviewed
 id: OFQ-00017 # Set unique ID for standard
 # use `tags: []` for no tags
