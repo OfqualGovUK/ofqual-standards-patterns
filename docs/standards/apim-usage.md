@@ -30,9 +30,8 @@ Each environment will contain an Azure APIM instance within its own subnet, leve
 
 ## Requirement(s)
 
-- [](#)
-
 ### Azure APIM MUST be used as an API Gateway to provide a single entry-point into Ofqual APIs. 
+
 ### Each environment MUST contain an Azure APIM instance within its own subnet - leveraging network isolation and secure controlled access for internal and external API consumers. 
 
 
