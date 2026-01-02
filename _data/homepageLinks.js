@@ -21,5 +21,6 @@ export default async () => {
             await fromPage('principles'),
             await fromPage('standards'),
             await fromPage('patterns'),
-    ];
+            await fromPage('ixpatterns'),
+        ];
 }

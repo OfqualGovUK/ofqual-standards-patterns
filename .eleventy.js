@@ -5,6 +5,9 @@ import childProcess from "child_process";
 import path from "path";
 import fs from "fs";
 import dlAsSummaryList from "./lib/markdown/dl-as-govuk-summary-list.js";
+import { evaluate } from "@mdx-js/mdx";
+import { renderToStaticMarkup } from "react-dom/server";
+import * as runtime from "react/jsx-runtime";
 
 function injectGitSha(eleventyConfig, gitHubRepositoryUrl) {
     let latestGitCommitHash = process.env.GITHUB_COMMIT_SHA;
@@ -31,6 +34,8 @@ export default async function(eleventyConfig) {
     // Pass assets through to final build directory
     eleventyConfig.addPassthroughCopy({ "docs/assets/logos": "assets/logos"});
     eleventyConfig.addPassthroughCopy({ "docs/assets/images": "assets/images"});
+    eleventyConfig.addPassthroughCopy({ "docs/ixpatterns/examples": "assets/examples"});
+    
     // Register the plugins
     let govukPluginOptions = {
         opengraphImageUrl: '/assets/logos/govuk-opengraph-image.png',
@@ -82,6 +87,26 @@ export default async function(eleventyConfig) {
     };
     eleventyConfig.addPlugin(govukEleventyPlugin, govukPluginOptions)
 
+    // Enable `.mdx` files as a template format
+    eleventyConfig.addTemplateFormats("mdx");
+
+    // MDX with full front‑matter compatibility
+    eleventyConfig.addExtension("mdx", {
+        compile: async (str, inputPath) => {
+            // Evaluate MDX to a React component; baseUrl must point at the file
+            const { default: MDXContent } = await evaluate(str, {
+                ...runtime,
+                baseUrl: pathToFileURL(inputPath),
+            });
+
+            // Eleventy calls this renderer with the merged data cascade (incl. front matter)
+            return async function (data) {
+                const element = await MDXContent(data);
+                return renderToStaticMarkup(element);
+            };
+        },
+    });
+    
     // Customise markdown-it renderer provided by x-gov 11ty plugin. Plugin execution is
     // deferred, so this needs to be a plugin, and added after the x-gov plugin is.
     eleventyConfig.addPlugin((eleventyConfig) => {
@@ -148,6 +173,12 @@ export default async function(eleventyConfig) {
       return collectionApi.getFilteredByGlob("**/patterns/*.md").sort(function(a, b) {
         return a.data.title.localeCompare(b.data.title); // sort by title ascending
       });
+    });
+
+    eleventyConfig.addCollection("getAllIXPatternsOrderedByTitle", function(collectionApi) {
+        return collectionApi.getFilteredByGlob("**/ixpatterns/*.{md,mdx}").sort(function(a, b) {
+            return a.data.title.localeCompare(b.data.title); // sort by title ascending
+        });
     });
 
     eleventyConfig.addGlobalData("phaseBannerConfiguration", () => {

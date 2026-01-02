@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+
+    <!-- Optional: Carbon page-level styles (Plex + reset) -->
+    <link rel="stylesheet"
+          href="https://1.www.s81c.com/common/carbon-for-ibm-dotcom/tag/latest/plex.css" />
+
+    <style>
+      :root { color-scheme: light; }
+      body {
+        margin: 16px;
+        font-family: 'IBM Plex Sans', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      }
+      /* Hide the custom element until the module defines it */
+      cds-button:not(:defined) { visibility: hidden; }
+
+      .row { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+      .caption {
+        margin: 12px 0 6px;
+        font: 500 14px/1.4 'IBM Plex Sans', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      }
+    </style>
+
+    <!-- Carbon Web Components: Button (module) -->
+    <script type="module" src="https://1.www.s81c.com/common/carbon/web-components/tag/latest/button.min.js"></script>
+  </head>
+
+  <body>
+    <p class="caption">Default and variant buttons (Carbon Web Components)</p>
+    <div class="row">
+      <cds-button>Primary button</cds-button>
+      <cds-button kind="secondary">Secondary</cds-button>
+      <cds-button kind="ghost">Ghost</cds-button>
+      <cds-button href="https://www.ibm.com" target="_blank" rel="noopener">As link</cds-button>
+    </div>
+
+    <!-- Debug aid: log whether the element is defined -->
+    <script type="module">
+      console.log('cds-button defined?', !!customElements.get('cds-button'));
+    </script>
+  </body>
+</html>

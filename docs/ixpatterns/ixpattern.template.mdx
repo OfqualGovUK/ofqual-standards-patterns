@@ -1,0 +1,16 @@
+---
+title: "Hello from MDX"
+layout: "ixpattern"
+tags: ["mdx", "demo"]
+order: 1
+date: "2026-01-02"
+---
+export function Exclaim({ children }) {
+  return <>{children}!!!</>;
+}
+
+# {props.title}
+
+This page is MDX with **front matter** and a component:
+
+<Exclaim>Nice</Exclaim>

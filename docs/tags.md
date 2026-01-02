@@ -17,6 +17,7 @@ pagination:
     - Standards
     - Principles
     - Patterns
+    - IXPatterns
 eleventyComputed:
   title: Pages tagged with "{{ tag }}"
 permalink: /tags/{{ tag | slugify }}/
