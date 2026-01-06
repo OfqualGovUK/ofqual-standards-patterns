@@ -47,10 +47,10 @@ export default async function (eleventyConfig) {
     header: {
       logotype: {
         html:
-          '&lt;span class="govuk-header__logotype"&gt;' +
-          '  &lt;img src="/assets/logos/OfqualLogoWhite.svg" height="64px" alt="Ofqual Logo"&gt;' +
-          '  &lt;img class="hide" src="/assets/logos/OfqualLogoBlack.svg" height="64px" alt="Ofqual Logo"&gt;' +
-          "&lt;/span&gt;",
+          '<span class="govuk-header__logotype">' +
+          '  <img src="/assets/logos/OfqualLogoWhite.svg" height="64px" alt="Ofqual Logo">' +
+          '  <img class="hide" src="/assets/logos/OfqualLogoBlack.svg" height="64px" alt="Ofqual Logo">' +
+          "</span>",
       },
       productName: "Ofqual Digital and Data",
       search: {
@@ -62,7 +62,7 @@ export default async function (eleventyConfig) {
     footer: {
       copyright: {
         html:
-          '&lt;a class="govuk-footer__link govuk-footer__copyright-logo" href="https://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/uk-government-licensing-framework/crown-copyright/"&gt;©&amp;nbsp;Crown copyright&lt;/a&gt;',
+          '<a class="govuk-footer__link govuk-footer__copyright-logo" href="https://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/uk-government-licensing-framework/crown-copyright/">&copy;&nbsp;Crown copyright</a>',
       },
       meta: {
         items: [
@@ -214,11 +214,10 @@ export default async function (eleventyConfig) {
     return {
       tag: { text: "New Service" },
       html:
-        'This is a new service – your ' +
-        '&lt;a class="govuk-link" href="/provide-feedback/" target="_blank" rel="noopener"&gt;' +
-        "feedback (opens in a new tab)" +
-        "&lt;/a&gt; " +
-        "will help us to improve it.",
+        'This is a new service. Help us improve it and ' +
+        '<a class="govuk-link" href="/provide-feedback/" target="_blank" rel="noopener">' +
+        'give your feedback (opens in a new tab)' +
+        '</a>.'
     };
   });
 
