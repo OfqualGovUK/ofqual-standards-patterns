@@ -1,9 +1,9 @@
 ---
 layout: standard
-order: 18
+order: 19
 title: APIM usage
 date: 2025-11-27 
-id: OFQ-00018 
+id: OFQ-00019
 
 tags:
   - Digital
@@ -29,6 +29,9 @@ Each environment will contain an Azure APIM instance within its own subnet, leve
 ---
 
 ## Requirement(s)
+
+- [Azure APIM MUST be used as an API Gateway to provide a single entry-point into Ofqual APIs.](#azure-apim-must-be-used-as-an-api-gateway-to-provide-a-single-entry-point-into-Ofqual-APIs)
+- [Each environment MUST contain an Azure APIM instance within its own subnet - leveraging network isolation and secure controlled access for internal and external API consumers.](#each-environment-must-contain-an-azure-apim-instance-within-its-own-subnet-leveraging-network-isolation-and-secure-controlled-access-for-internal-and-external-api-consumers)
 
 ### Azure APIM MUST be used as an API Gateway to provide a single entry-point into Ofqual APIs. 
 
