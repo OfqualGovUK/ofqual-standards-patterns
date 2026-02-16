@@ -94,7 +94,12 @@ This pattern defines how a developer could use an API Management service and whe
 
 We centralise controls at the **API level** so they apply to **all operations** on the SuiteCRM façade. This concentrates inbound JWT authentication, backend token acquisition/caching, correlation, and rate limiting.
 
-
+### Configuration (Named Values)
+- **{{OpenIDConfigUrl}} — OpenID discovery endpoint for inbound JWT validation**
+- **{{TokenIssuer}} — expected token issuer**
+- **{{TokenAUD}} — expected audience**
+- **{{SuiteCRMBaseUrl}} — SuiteCRM base URL**
+- **{{SuiteCRMClientID}} / {{SuiteCRMClientSecret}} — client credentials (use Key Vault references)**
 
 ### Our policies (at a glance)
 
@@ -253,3 +258,83 @@ We centralise controls at the **API level** so they apply to **all operations** 
  
 - **Why:** Keeps backend error payloads intact.
 - **Option (future):** Add a standard error envelope (and ensure X‑Correlation‑ID is always present) if consumers need consistent error shapes.
+
+---
+
+## Operation‑level policy:
+
+#### GET /custom/oqmodule/{module}
+
+- **Scope:** This policy applies only to the GET /custom/oqmodule/{module} operation. It inherits the API‑level policy via < base />, so JWT validation, rate limiting, correlation, and SuiteCRM token handling still apply.
+
+#### What it does
+- **Backend override (inbound):** Routes this operation to a specific dev Container Apps base URL (different from the API‑level default).
+- **Response shaping (outbound):** On HTTP 200 only, parses the JSON body and removes the relationships property from every object inside the top‑level data array, then returns the modified JSON.
+
+- **XML:**
+  ```xml  
+  <!--
+      - Policies are applied in the order they appear.
+      - Position <base/> inside a section to inherit policies from the outer scope.
+      - Comments within policies are not preserved.
+  -->
+  <!-- Add policies as children to the <inbound>, <outbound>, <backend>, and <on-error> elements -->
+  <policies>
+      <!-- Throttle, authorize, validate, cache, or transform the requests -->
+      <inbound>
+          <base />
+          <set-backend-service base-url="{{SuiteCRMBaseUrl}}/legacy/Api/V8" />
+      </inbound>
+
+      <!-- Control if and how the requests are forwarded to services  -->
+      <backend>
+          <base />
+      </backend>
+
+      <!-- Customize the responses -->
+      <outbound>
+          <base />
+          <choose>
+              <when condition="@(context.Response.StatusCode == 200)">
+                  <set-body>@{
+                  var body = context.Response.Body.As<JObject>(preserveContent: true);
+
+                  if (body["data"] != null)
+                  {
+                      var dataArray = body["data"] as JArray;
+                      if (dataArray != null)
+                      {
+                          foreach (var item in dataArray)
+                          {
+                              var obj = item as JObject;
+                              if (obj != null && obj["relationships"] != null)
+                              {
+                                  obj.Remove("relationships");
+                              }
+                          }
+                      }
+                  }
+
+                  return body.ToString();
+              }</set-body>
+              </when>
+          </choose>
+      </outbound>
+
+      <!-- Handle exceptions and customize error responses  -->
+      <on-error>
+          <base />
+      </on-error>
+  </policies>
+
+#### Why we do this
+- **Strip relationships:** Downstream consumers of this endpoint don’t use relationships from the SuiteCRM JSON:API response; removing it shrinks payloads and simplifies the contract. 
+
+#### Caveats & notes
+
+- **Success‑only transforms:** Downstream consumers of this endpoint don’t use relationships from the SuiteCRM JSON:API response; removing it shrinks payloads and simplifies the contract. 
+
+- **Assumes data is an array:** The code only removes relationships from elements in a data array. If the backend sometimes returns data as a single object (not an array), extend the logic to also handle JObject.
+
+- **Content type:** set-body returns a string. APIM will infer JSON if the string is JSON and the original Content-Type was application/json. If needed, explicitly set the response header Content-Type: application/json; charset=utf-8.
+
