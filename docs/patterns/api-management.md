@@ -268,7 +268,6 @@ We centralise controls at the **API level** so they apply to **all operations** 
 - **Scope:** This policy applies only to the GET /custom/oqmodule/{module} operation. It inherits the API‑level policy via < base />, so JWT validation, rate limiting, correlation, and SuiteCRM token handling still apply.
 
 #### What it does
-- **Backend override (inbound):** Routes this operation to a specific dev Container Apps base URL (different from the API‑level default).
 - **Response shaping (outbound):** On HTTP 200 only, parses the JSON body and removes the relationships property from every object inside the top‑level data array, then returns the modified JSON.
 
 - **XML:**
