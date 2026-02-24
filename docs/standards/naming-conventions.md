@@ -2,7 +2,7 @@
 layout: standard
 order: 16
 title: Naming Conventions
-date: 2025-11-20 
+date: 2026-02-24 
 id: OFQ-00016 # Set unique ID for standard
 # use `tags: []` for no tags
 # Note: tags must use sentence case capitalisation
@@ -10,6 +10,12 @@ tags:
   - Digital
   - Data
   - Infrastructure
+title: Related Principles
+      items:
+      - text: We use the right tools and have the right rules
+      - href: /principles/We-use-the-right-tools-and-have-the-right-rules/
+      - text: We keep things neat and tidy
+      - href: /principles/We-keep-things-neat-and-tidy/
 
 ---
 Naming conventions provide clear meaning and consistency throughout the Ofqual Azure environments, subscriptions and solutions.
