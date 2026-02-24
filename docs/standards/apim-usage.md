@@ -9,7 +9,7 @@ tags:
   - Digital
 related: # remove this section if you do not need related links on your page
   sections:
-    - title: Related links
+    - title: Related Principles
       items:
       - text: We use the right tools and have the right rules
       - href: /principles/We-use-the-right-tools-and-have-the-right-rules/
