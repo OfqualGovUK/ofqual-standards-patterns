@@ -13,8 +13,13 @@ related: # remove this section if you do not need related links on your page
   sections:
     - title: Related principles
       items:
-        - text: We design and continuously develop services
-          href: /standards/we-design-and-continuously-develop-services/ # Note: use an absolute link from the site home page
+      - text: We use the right tools and have the right rules
+      - href: /principles/We-use-the-right-tools-and-have-the-right-rules/
+      - text: We design and continuously develop services that are durable and resilient
+      - href: /principles/We-design-and-continuously-develop-services/
+      - text: We keep things neat and tidy
+      - href: /principles/We-keep-things-neat-and-tidy/
+          # Note: use an absolute link from the site home page
 ---
 
 <!-- Standard description -->
