@@ -10,9 +10,9 @@ tags:
   - Digital
   - Data
   - Infrastructure
- sections:
-   - title: Related Principles
-      items:
+sections:
+  - title: Related Principles
+    items:
       - text: We use the right tools and have the right rules
       - href: /principles/We-use-the-right-tools-and-have-the-right-rules/
       - text: We keep things neat and tidy
