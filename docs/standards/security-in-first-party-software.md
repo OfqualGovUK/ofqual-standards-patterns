@@ -14,7 +14,15 @@ related: # remove this section if you do not need related links on your page
     - title: Related Principles
       items:
         - text: Security Is Everyone's Responsibility
-          href: /principles/security-is-everyones-responsibility/ # Note: use an absolute link from the site home page
+          href: /principles/security-is-everyones-responsibility/
+        - text: We use the right tools and have the right rules
+      - href: /principles/We-use-the-right-tools-and-have-the-right-rules/
+      - text: We design and continuously develop services that are durable and resilient
+      - href: /principles/We-design-and-continuously-develop-services/
+      - text: We keep things neat and tidy
+      - href: /principles/We-keep-things-neat-and-tidy/
+
+          # Note: use an absolute link from the site home page
     - title: Related Patterns
       items:
         - text: Snyk as a Security Scanning Tool
