@@ -2,7 +2,7 @@
 layout: standard
 order: 1
 title: Front-end Development
-date: 2025-11-12 
+date: 2026-02-26 
 id: OFQ-00012 
 tags:
   - Digital
