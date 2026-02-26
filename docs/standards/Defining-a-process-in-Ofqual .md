@@ -44,12 +44,12 @@ Heading tags are automatically assigned an id, converting spaces to `kebab-case`
 
 - [Define what a process is](#define-what-a-process-is)
 - [Apply this standard to all processes](#apply-this-standard-to-all-processes)
-- [Specify modelling and notation](#specify-modelling-and-notation)
+- [Use BPMN 2.0 for process mapping](#use-bpmn-20-for-process-mapping)
 - [Provide required artefacts based on criticality](#provide-required-artefacts-based-on-criticality)
 - [Provide minimum information for each process](#provide-minimum-information-for-each-process)
 - [Set measurement and governance expectations](#set-measurement-and-governance-expectations)
 - [Evidence compliance and manage change control](#evidence-compliance-and-manage-change-control)
-- [Examples and references](#examples-and-references)
+
 
 ### Define what a process is
 
@@ -78,16 +78,18 @@ This standard applies to all processes across the organisation.
 **Supporting information**  
 If a process is retired or merged, record its final state and disposition so that the process inventory remains accurate.
 
-### Specify modelling and notation
+### Use BPMN 2.0 for process mapping
 
 **Context**  
-A common modelling approach improves comprehension and reuse. The organisation intends to standardise modelling but is still confirming the choice.
+A common modelling approach improves comprehension and reuse. The organisation has standardised on BPMN 2.0
 
 **Requirement**  
-The mandated modelling notation and tool will be confirmed and added to this standard. Until then, teams may continue using their current approach.
+BPMN 2.0 should be used for all process maps and models. Where an alternative view is produced for a specific audience, a BPMN 2.0 source model must be maintained as the canonical version.
 
 **Supporting information**  
-When the modelling decision is confirmed, this section will be updated with the specific notation, the approved toolset and any required stencil or palette.
+[BPMN 2.0 specification 
+](https://www.omg.org/spec/BPMN)
+
 
 ### Provide required artefacts based on criticality
 
@@ -95,3 +97,47 @@ When the modelling decision is confirmed, this section will be updated with the 
 Not all processes require the same depth of documentation. Process mapping is good practice, but documentation must be proportionate to the criticality of the service the process supports.
 
 **Requirement**  
+A process map is good practice for all processes. A process map is essential for all mission‑critical and business‑critical processes that support mission‑critical or business‑critical services.
+
+**Supporting information**  
+- *Mission‑critical* and *business‑critical* should align to the organisation’s service criticality classification.  
+- For lower‑criticality processes, retain at least the minimum information set defined in this standard.  
+- Where a map is essential, store it in the approved repository and link it from the process record.
+
+### Provide minimum information for each process
+
+**Context**  
+A baseline set of information enables governance, traceability and improvement, even when a full map is not required.
+
+**Requirement**  
+All in‑scope processes must include, at a minimum: triggers, end states, roles, controls, exceptions, service level agreements, version and owners.
+
+**Supporting information**  
+- Roles should identify accountable and responsible parties for each activity.  
+- Controls may include preventive, detective and corrective controls.  
+- Exceptions should describe non‑standard paths and how they are handled.  
+- Version and owners should include change history and effective dates.
+
+### Set measurement and governance expectations
+
+**Context**  
+Measurement should be meaningful and manageable. KPIs are managed at the service level rather than mandated at the process level.
+
+**Requirement**  
+There are no mandated process‑level KPIs. Each service owner defines the review cadence for the processes that support their service.
+
+**Supporting information**  
+- Where teams choose to set process measures, align them to service outcomes.  
+- Service owners should ensure that process reviews occur at the cadence they define and are recorded.
+
+### Evidence compliance and manage change control
+
+**Context**  
+Compliance must be demonstrable through normal artefacts. Change control should fit existing service governance rather than duplicating it.
+
+**Requirement**  
+Teams evidence compliance with this standard through the artefacts they maintain. The change control process for updating process definitions is defined at the service‑owner level.
+
+**Supporting information**  
+Evidence may include the process record, the process map where required, change history and links to controls or service documentation.
+
