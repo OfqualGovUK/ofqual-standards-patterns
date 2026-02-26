@@ -2,7 +2,7 @@
 layout: standard
 order: 6
 title: VIPER-Style Architecture in C# Front-Ends
-date: 2025-08-28 # this should be the date that the content was most recently amended or formally reviewed
+date: 2026-02-25 # this should be the date that the content was most recently amended or formally reviewed
 id: OFQ-00006 # Set unique ID for standard
 # use `tags: []` for no tags
 # Note: tags must use sentence case capitalisation
@@ -12,8 +12,12 @@ related: # remove this section if you do not need related links on your page
   sections:
     - title: Related principles
       items:
-        - text: We keep things neat and tidy
-          href: /principles/we-keep-things-neat-and-tidy/ # Note: use an absolute link from the site home page
+      - text: We use the right tools and have the right rules
+      - href: /principles/We-use-the-right-tools-and-have-the-right-rules/
+      - text: We design and continuously develop services that are durable and resilient
+      - href: /principles/We-design-and-continuously-develop-services/
+      - text: We keep things neat and tidy
+      - href: /principles/We-keep-things-neat-and-tidy/
     - title: External documentation
       items:
         - text: A video on various different architectural structures, including VIPER
