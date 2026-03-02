@@ -12,13 +12,13 @@ related: # remove this section if you do not need related links on your page
     - title: Related Principles
       items:
       - text: We use the right tools and have the right rules
-      - href: /principles/We-use-the-right-tools-and-have-the-right-rules/
+         href: /principles/We-use-the-right-tools-and-have-the-right-rules/
       - text: We design and continuously develop services that are durable and resilient
-      - href: /principles/We-design-and-continuously-develop-services/
+         href: /principles/We-design-and-continuously-develop-services/
       - text: We keep things neat and tidy
-      - href: /principles/We-keep-things-neat-and-tidy/
+         href: /principles/We-keep-things-neat-and-tidy/
       - text: We understand and manage the threats we face
-      - href: //principles/We-understand-and-manage-the-threats-we-face/
+         href: //principles/We-understand-and-manage-the-threats-we-face/
      # - text: Writing a standard
        #  href: /standards/writing-a-standard/ # Note: use an absolute link from the site home page
 ---
