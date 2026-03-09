@@ -11,13 +11,13 @@ tags:
   - Data
   - Infrastructure
 related:
-sections:
+  sections:
   - title: Related Principles
     items:
       - text: We use the right tools and have the right rules
-      - href: /principles/We-use-the-right-tools-and-have-the-right-rules/
+        href: /principles/We-use-the-right-tools-and-have-the-right-rules/
       - text: We keep things neat and tidy
-      - href: /principles/We-keep-things-neat-and-tidy/
+        href: /principles/We-keep-things-neat-and-tidy/
 
 ---
 Naming conventions provide clear meaning and consistency throughout the Ofqual Azure environments, subscriptions and solutions.
