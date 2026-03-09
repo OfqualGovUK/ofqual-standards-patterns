@@ -2,7 +2,7 @@
 layout: standard
 order: 6
 title: VIPER-Style Architecture in C# Front-Ends
-date: 2026-02-25 # this should be the date that the content was most recently amended or formally reviewed
+date: 2026-03-09 # this should be the date that the content was most recently amended or formally reviewed
 id: OFQ-00006 # Set unique ID for standard
 # use `tags: []` for no tags
 # Note: tags must use sentence case capitalisation
