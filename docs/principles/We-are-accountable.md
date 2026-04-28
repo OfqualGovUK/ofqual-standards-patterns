@@ -1,7 +1,7 @@
 ---
 layout: principle
 order: 3
-title: 3.	We are accountable, fostering ownership through empowerment
+title: 03.	We are accountable, fostering ownership through empowerment
 date: 2025-06-18
 tags:
 - Ways of working

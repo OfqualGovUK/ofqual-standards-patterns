@@ -1,7 +1,7 @@
 ---
 layout: principle
 order: 5
-title: 5.	We design and continuously develop services that are durable and resilient
+title: 05.	We design and continuously develop services that are durable and resilient
 date: 2025-06-18
 tags:
   - Ways of working

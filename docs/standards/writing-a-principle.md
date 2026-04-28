@@ -2,7 +2,7 @@
 layout: standard
 order: 1
 title: Writing a principle
-date: 2025-06-24
+date: 2025-10-31
 id: OFQ-00001
 tags:
   - Guide
@@ -77,7 +77,8 @@ Write the name of the role which owns the principle. eg 'Associate Director of P
 
 ### A principle MUST show when it was last updated
 
-Show the date the principle was last updated. The metadata needs to include the date in YYYY-MM-DD format (see below).
+Show the date the principle was last updated. This is also the date the principle was last reviewed (if not actually updated at that point). Principles should be reviewd at least every 2 years to ensure that they continue to align with (the principle needs to support) the defined organisational and technical strategies.
+The metadata needs to include the date in YYYY-MM-DD format (see below).
 
 ```yaml
 date: 2023-12-31

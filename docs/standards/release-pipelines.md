@@ -1,14 +1,15 @@
 ---
 layout: standard
 order: 5
-title: Release Pipelines in Digital Services
-date: 2025-07-25 # this should be the date that the content was most recently amended or formally reviewed
+title: Releasing Services to Live
+date: 2026-04-07 # this should be the date that the content was most recently amended or formally reviewed
 id: OFQ-00005 # Set unique ID for standard
 # use `tags: []` for no tags
 # Note: tags must use sentence case capitalisation
 tags:
   - Digital
   - Infrastructure
+  - Data
 related: # remove this section if you do not need related links on your page
   sections:
     - title: Related Principles
@@ -36,7 +37,11 @@ Please see https://x-govuk.github.io/govuk-eleventy-plugin/markdown/#line-breaks
 Heading tags are automatically assigned an id, converting spaces to `kebab-case` and applying URL encoding. If you want to link to a specific heading, you can obtain the URL encoded link by running the site locally, inspecting the appropriate <h3> element in the browser's developer tools and copying the value from the 'id' attribute.
 -->
 
-This standard defines how developers and infrastructure engineers must set up release pipelines in digital services
+This standard defines how developers, data and infrastructure engineers, as well as any other team that makes changes to a live environment hosting a service, must set up and conduct their releases.
+
+It is expected that release pipelines are used in all deployed services, the exception for static apps, which are controlled via the Build Pipelines. 
+
+Third party systems and content updates should be controlled and audited centrally too, with the same rigour as the in-house developed platforms.
 
 ---
 
@@ -54,306 +59,45 @@ Use HTML URL encoding as in the 'Notes on links' above, to ensure that links to 
 
 -->
 
+- [All releases and changes to live must be repeatable](#all-releases-and-changes-to-live-must-be-repeatable)
+- [Changes must be proven in at least one pre-production environment before going live](#changes-must-be-proven-in-at-least-one-pre-production-environment-before-going-live)
+- [Changes must be delivered through automated release mechanisms](#changes-must-be-delivered-through-automated-release-mechanisms)
+- [All releases and changes to live must be auditable and recorded](#all-releases-and-changes-to-live-must-be-auditable-and-recorded)
+- [Live releases must have two-stage authorisation](#live-releases-must-have-two-stage-authorisation)
 - [Release pipelines MUST have a Dev stage that deploys automatically](#release-pipelines-must-have-a-dev-stage-that-deploys-automatically)
 - [Release pipelines MUST have a Preprod stage that deploys manually](#release-pipelines-must-have-a-preprod-stage-that-deploys-manually)
 - [Release pipelines MUST have a Prod stage that requires managerial approval](#release-pipelines-must-have-a-prod-stage-that-requires-managerial-approval)
 
+### All releases and changes to live must be repeatable
+
+All releases and changes to live must be repeatable and follow the same steps in all pre-production environments and then into the live environment. This provides consistency, certainty and confidence that any release which has been proven in a previous environment will be robust in the next.
+
+### Changes must be proven in at least one pre-production environment before going live
+
+No change should be made to live unless it has been proven in at least one pre-production environment. Normally, releases and changes should be made in a Dev environment, then once satisfied that it passes the prescribed testing, manually released to Pre-prod for more live-like checks, and then on to live.
+
+### Changes must be delivered through automated release mechanisms
+
+No changes to live (or any other environment) should be made manually. Automation removes the ability for steps to be forgotten, missed, or not undertaken correctly. It also prevents changes from being overwritten by other changes.
+
+### All releases and changes to live must be auditable and recorded
+
+All releases and changes to live must be auditable and recorded in the central release log. This provides the ability to validate unexpected behaviour and identify unauthorised changes being made to live.
+
+### Live releases must have two-stage authorisation
+
+Only authorised senior members of the team can make changes to the live environment, and they must be signed off by another senior team member or manager before being allowed to go live. The pipelines should have this staged approval included within them.
+
 ### Release pipelines MUST have a Dev stage that deploys automatically
 
-#### General Steps
+The Dev stage provides an automated deployment environment where new changes are continuously deployed. This allows developers to quickly validate their changes in a deployed environment and ensure the release pipeline itself functions correctly without manual intervention.
 
-##### Create a new pipeline
-
-1. Navigate to our Releases page on Dev Ops - Pipelines -> Releases
-2. Click on `+ New` -> `New release pipeline`
-
-##### Set up the Artifact
-
-1. On the main pipeline sceen, click on `Add an artifact`.
-2. Choose the Source type of `Build`. 
-3. Select the relevant build pipeline. 
-4. Click `Add`.
-
-#### Container App
-
-##### Set up first stage:
-
-You will be prompted to select a template for the initial stage, this can be skipped and completed later. 
-
-1. On the main pipeline screen in the Stages section select `+ Add` -> `New stage`.
-2. Select to start with an empty job. 
-3. Give the stage a name of `Dev`.
-
-##### Configure the first task:
-
-1. On the Stages section on your `Dev` stage click on `1 job, 0 task` to view in more detail.
-2. On the Agent job tab click the `+` button to add a new task. Do a search for `cli` and add the task `Azure Cli`.
-3. Fill in the empty fields 
-    1. Give a Display name of `Install container app extension`.
-    2. Select the relevant Azure Subscription, for this stage it should be `Enterprise Dev/test 2024`.
-    3. Script Type - `PowerShell`.
-    4. Script Location - `Inline script`.
-    5. Inline Script - 
-    ```powershell
-    az config set extension.use_dynamic_install=yes_without_prompt
-    az extension add -n containerapp
-    ``` 
-
-##### Configure the second task:
-
-1. On the Agent job tab click the `+` button to add a new task. Do a search for `cli` and add the task `Azure Cli`.
-2. Fill in the empty fields 
-    1. Give a Display name of `Azure CLI`.
-    2. Select the relevant Azure Subscription, for this stage it should be `Enterprise Dev/test 2024`.
-    3. Script Type - `PowerShell`.
-    4. Script Location - `Inline script`.
-    5. Inline Script - 
-    ```powershell
-    az containerapp up ` --name "$(AppName)" ` --resource-group "$(ResourceGroupName)" ` --image "$(ImageUri):$(Build.BuildId)"
-    ```
-
-##### Set up Pipeline Variables 
-
-The scope for the following variables should all be `Dev` to match the name of the Dev Stage.
-
-1. On the tabs at the top of the main pipeline screen click on `Variables`.
-2. Under `Pipeline variables` add in the following:
-    1. Name: `AcrUri` Value: input the relevant container registry uri e.g `ofqdevportal.azurecr.io`.
-    2. Name: `AppName` Value: input the relevant app name e.g `ofq-dev..`.
-    3. Name: `ImageUri` Value: input the relevant uri e.g `ofqdevportal.azurecr.io/ofq-dev-expertsapply`.
-    4. Name: `ResourceGroupName` Value: input the relevant resource group e.g `RG-DEV-Experts`.
-
-#### Function App
-
-##### Set up first stage:
-
-You will be prompted to select a template for the initial stage, this can be skipped and completed later. 
-
-1. Select from the list (you may need to search for it) `Deploy a function app to Azure Functions` and click Apply.
-2. Give the Stage a name of `Dev`. 
-3. The stage will be created, this will be set up with a default Pre-deployment condition - this will be a trigger that will start the deployment to the Dev stage after a release (i.e. after an artifact has been published from the build pipeline and dropped into the release pipeline).
-
-##### Configure the task:
-
-1. On the Stages section on your `Dev` stage click on `1 job, 1 task` to view the task in more detail.
-2. Fill in the empty fields 
-    1. Select the relevant Azure Subscription, for this stage it should be `Enterprise Dev/test 2024`.
-    2. App type `Function App on Linux`.
-    3. App service name - select the relevant App service. e.g `ofq-dev..`.
-3. If you click on to the `Deploy Azure Function App` task you should see the fields have been auto filled based on the fields you completed above.
-
-#### App Service (DEPRECATED)
-
-This is only to be used on legacy systems; new systems should deploy to container apps or function apps instead
-
-##### Set up first stage:
-
-You will be prompted to select a template for the initial stage, this can be skipped and completed later. 
-
-1. Select from the list (you may need to search) `Azure App Service deployment` and click Apply.
-2. Give the Stage a name of `Dev`. 
-3. The stage will be created, this will be set up with a default Pre-deployment condition - this will be a trigger that will start the deployment to the Dev stage after a release (i.e. after an artifact has been published from the build pipeline and dropped into the release pipeline).
-
-##### Configure the task:
-
-1. On the Stages section on your `Dev` stage click on `1 job, 1 task` to view the task in more detail.
-2. Fill in the empty fields 
-    1. Select the relevant Azure Subscription, for this stage it should be `Enterprise Dev/test 2024`.
-    2. App type `Web App on Linux`.
-    3. App service name - select the relevant App service. e.g `ofq-dev..`.
-3. If you click on to the `Deploy Azure App Service` task you should see the fields have been auto filled based on the fields you completed above. 
-
+**Exception:** GovForms does not have a dedicated Dev environment. For GovForms releases, the QA environment fulfils the role of pre-production and aligns with the Preprod requirement, with Live as the production environment.
 
 ### Release pipelines MUST have a Preprod stage that deploys manually
 
-#### Container App
-
-##### Set up stage:
-
-1. On the main pipeline screen in the Stages section select `+ Add` -> `New stage`.
-2. Select to start with an empty job. 
-3. Give the stage a name of `Preprod`.
-
-##### Configure the first task:
-
-1. On the Stages section on your `Preprod` stage click on `1 job, 0 task` to view in more detail.
-2. On the Agent job tab click the `+` button to add a new task. Do a search for `cli` and add the task `Azure Cli`.
-3. Fill in the empty fields 
-    1. Give a Display name of `Install container app extension`.
-    2. Select the relevant Azure Subscription, for this stage it should be `Enterprise Dev/test 2024`.
-    3. Script Type - `PowerShell`.
-    4. Script Location - `Inline script`.
-    5. Inline Script - 
-    ```powershell
-    az config set extension.use_dynamic_install=yes_without_prompt
-    az extension add -n containerapp
-    ``` 
-
-##### Configure the second task:
-
-1. On the Agent job tab click the `+` button to add a new task. Do a search for `cli` and add the task `Azure Cli`.
-2. Fill in the empty fields 
-    1. Give a Display name of `Azure CLI`.
-    2. Select the relevant Azure Subscription, for this stage it should be `Enterprise Dev/test 2024`.
-    3. Script Type - `PowerShell`.
-    4. Script Location - `Inline script`.
-    5. Inline Script - 
-    ```powershell
-    az containerapp up ` --name "$(AppName)" ` --resource-group "$(ResourceGroupName)" ` --image "$(ImageUri):$(Build.BuildId)"
-    ```
-
-##### Set up Pipeline Variables 
-
-The scope for the following variables should all be `Preprod` to match the name of the Preprod Stage.
-
-1. On the tabs at the top of the main pipeline screen click on `Variables`.
-2. Under `Pipeline variables` add in the following:
-    1. Name: `AcrUri` Value: input the relevant container registry uri.
-    2. Name: `AppName` Value: input the relevant app name e.g `ofq-preprod..`.
-    3. Name: `ImageUri` Value: input the relevant uri.
-    4. Name: `ResourceGroupName` Value: input the relevant resource group.
-
-#### Function App
-
-##### Set up stage:
-
-1. On the main pipeline screen in the Stages section select `+ Add` -> `New stage`.
-2. Select from the list (you may need to search for it) `Deploy a function app to Azure Functions` and click Apply. 
-3. Give the stage a name of `Preprod`.
-
-##### Configure the Pre-deployment trigger:
-
-1. On this new stage click on the lighting bolt icon to see the Pre-deployment triggers. 
-    1. Change the trigger from `After release` to `Manual only`.
-
-##### Configure the task:
-
-1. Click on `1 job, 1 task` to view the task in more detail.
-2. Fill in the empty fields. 
-    1. Select the relevant Azure Subscription, for this stage it should be `Enterprise Dev/test 2024`.
-    2. App type `Function App on Linux`.
-    3. App service name - select the relevant App service. e.g `ofq-preprod..`
-3. If you click on to the `Deploy Azure Function App` task you should see the fields have been auto filled based on the fields you completed above. 
-
-#### App Service (DEPRECATED)
-
-This is only to be used on legacy systems; new systems should deploy to container apps or function apps instead
-
-##### Set up stage:
-
-1. On the main pipeline screen in the Stages section select `+ Add` -> `New stage`.
-2. Select the task `Azure App Service deployment`. 
-3. Give the stage a name of `Preprod`.
-
-##### Configure the Pre-deployment trigger:
-
-1. On this new stage click on the lighting bolt icon to see the Pre-deployment triggers. 
-    1. Change the trigger from `After release` to `Manual only`.
-
-##### Configure the task:
-
-1. Click on `1 job, 1 task` to view the task in more detail.
-2. Fill in the empty fields. 
-    1. Select the relevant Azure Subscription, for this stage it should be `Enterprise Dev/test 2024`.
-    2. App type `Web App on Linux`.
-    3. App service name - select the relevant App service. e.g `ofq-preprod..`
-3. If you click on to the `Deploy Azure App Service` task you should see the fields have been auto filled based on the fields you completed above. 
+The Preprod stage provides a manual deployment step to a pre-production environment that closely mirrors the live environment. This stage requires explicit approval before deployment, allowing teams to perform comprehensive testing and validation before any changes reach live. Manual deployment at this stage prevents accidental releases and ensures changes have been properly reviewed.
 
 ### Release pipelines MUST have a Prod stage that requires managerial approval
 
-#### General Steps
-
-##### Set up Manager Approval stage
-
-This Stage will have no task applied to it. 
-
-###### Set up stage:
-
-1. On the main pipeline screen in the Stages section select `+ Add` -> `New stage`.
-2. Select to start with an empty job. 
-3. Give the stage a name of `Production - Manager Approval`.
-
-###### Configure the Pre-deployment trigger:
-
-1. On this new stage click on the lighting bolt icon to see the Pre-deployment triggers. 
-    1. Change the trigger from `After release` to `Manual only`.
-    2. Enable `Pre-deployment approvals` and select the relevant group as Approvers.
-    3. Set the Approval order to be `Any one user`.
-
-#### Set up Production - Deploy stage
-
-##### Container App
-
-###### Set up stage:
-
-1. On the main pipeline screen in the Stages section select `+ Add` -> `New stage`.
-2. Select to start with an empty job. 
-3. Give the stage a name of `Production - Deploy`.
-
-###### Configure the first task:
-
-1. On the Stages section on your `Production - Deploy` stage click on `1 job, 0 task` to view in more detail.
-2. On the Agent job tab click the `+` button to add a new task. Do a search for `cli` and add the task `Azure Cli`.
-3. Fill in the empty fields 
-    1. Give a Display name of `Install container app extension`.
-    2. Select the relevant Azure Subscription, for this stage it should be `Microsoft Azure Enterprise 2024`.
-    3. Script Type - `PowerShell`.
-    4. Script Location - `Inline script`.
-    5. Inline Script - 
-    ```powershell
-    az config set extension.use_dynamic_install=yes_without_prompt
-    az extension add -n containerapp
-    ``` 
-
-###### Configure the second task:
-
-1. On the Agent job tab click the `+` button to add a new task. Do a search for `cli` and add the task `Azure Cli`.
-2. Fill in the empty fields 
-    1. Give a Display name of `Azure CLI`.
-    2. Select the relevant Azure Subscription, for this stage it should be `Microsoft Azure Enterprise 2024`.
-    3. Script Type - `PowerShell`.
-    4. Script Location - `Inline script`.
-    5. Inline Script - 
-    ```powershell
-    az containerapp up ` --name "$(AppName)" ` --resource-group "$(ResourceGroupName)" ` --image "$(ImageUri):$(Build.BuildId)"
-    ```
-
-###### Set up Pipeline Variables 
-
-The scope for the following variables should all be `Production - Deploy` to match the name of the Production - Deploy Stage.
-
-1. On the tabs at the top of the main pipeline screen click on `Variables`.
-2. Under `Pipeline variables` add in the following:
-    1. Name: `AcrUri` Value: input the relevant container registry uri.
-    2. Name: `AppName` Value: input the relevant app name e.g `ofq-prod..`.
-    3. Name: `ImageUri` Value: input the relevant uri.
-    4. Name: `ResourceGroupName` Value: input the relevant resource group.
-
-##### App Service (DEPRECATED)
-
-This is only to be used on legacy systems; new systems should deploy to container apps or function apps instead
-
-###### Set up stage:
-
-1. On the main pipeline screen in the Stages section select `+ Add` -> `New stage`.
-2. Select the task `Azure App Service deployment`. 
-3. Give the stage a name of `Production - Deploy`.
-
-###### Configure the Pre-deployment trigger:
-
-1. On this new stage click on the lighting bolt icon to see the Pre-deployment triggers. 
-    1. Change the trigger from `After release` to `After stage`.
-    2. From the dropdown list select the stage `Production - Manager Approval`.
-    3. Enable `Pre-deployment approvals` and select the relevant group as Approvers.
-    4. Set the Approval order to be `Any one user`.
-
-###### Configure the task:
-
-1. Click on `1 job, 1 task` to view the task in more detail.
-2. Fill in the empty fields. 
-    1. Select the relevant Azure Subscription, for this stage it should be `Microsoft Azure Enterprise 2024`.
-    2. App type `Web App on Linux`.
-    3. App service name - select the relevant App service. e.g `ofq-prod..`
-3. If you click on to the `Deploy Azure App Service` task you should see the fields have been auto filled based on the fields you completed above. 
-
----
+The Production stage is the final deployment step and must require approval from a senior team member or manager before changes are released to live. This two-stage authorisation ensures that only authorised personnel can approve production releases, maintaining control and accountability over live environment changes.

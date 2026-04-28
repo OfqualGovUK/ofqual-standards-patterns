@@ -1,7 +1,7 @@
 ---
 layout: principle
 order: 4
-title: 4.	We fail fast, learn, share and reuse
+title: 04.	We fail fast, learn, share and reuse
 date: 2025-06-18
 tags:
 - Ways of working

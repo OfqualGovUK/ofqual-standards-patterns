@@ -1,0 +1,508 @@
+---
+layout: pattern
+order: 1
+title: Authentication - One Login
+date: 2025-11-12 # this should be the date that the content was most recently amended or formally reviewed
+tags:
+  - Digital
+  - Infrastructure
+related: 
+  sections:
+    - title: Related links
+      items:
+        - text: Authentication - Azure B2C
+          href: /patterns/authentication-azure-b2c
+    - title: Related standards
+      items:
+        - text: Security In First Party Software
+          href: /standards/security-in-first-party-software
+---
+
+<!-- Pattern description -->
+
+## Introduction
+
+This guide is intended for those who are implementing GOV.UK One Login from both an infrastrucure perspective and a code perspective.
+
+Full technical documentation for One Login is available at [https://docs.sign-in.service.gov.uk/](https://docs.sign-in.service.gov.uk/)
+
+## Infrastructure
+
+### General Set Up Tools
+
+For our implementation of One Login, you will need:
+
+- A client, created on https://admin.sign-in.service.gov.uk/
+- A key vault for the environment you are in
+- A bash command line (to be able to generate key pairs with via the openssl tool)
+
+### Creating a key pair
+
+References: [https://docs.sign-in.service.gov.uk/before-integrating/set-up-your-public-and-private-keys/](https://docs.sign-in.service.gov.uk/before-integrating/set-up-your-public-and-private-keys/)
+
+- GOV.UK One Login uses public and private key RSA-2048 bit encryption to secure communication
+- Use the following lines of code to generate a private key and public key
+
+```bash
+openssl genpkey -algorithm RSA -out private_key.pem -pkeyopt rsa_keygen_bits:2048
+
+openssl rsa -pubout -in private_key.pem -out public_key.pem
+```
+
+- The public key is inserted into the client on the One Login integration; the private key is stored within key vault
+- **Important:** The private key generated is sensitive; if the private key is released, a new key set must be generated. Delete local copies of the key once uploaded to Key Vault
+
+### The Integration Client
+
+- The integration client is used in our test environments to try out One Login
+- This client is **not** for managing the production service. **There is no client currently for managing production and this needs to be dealt with through the live service team and One Login's engagement officer, who can be contacted via the product team**
+- When a client is created, the following key fields/information will be provided or need to be updated:
+  - A Client ID. This must be given to developers to direct their code to the right service
+  - Contacts. This should *always* contain at least the portalsupport@ofqual.gov.uk email address, so that we can monitor all of our integration clients for updates
+  - Redirect URLs. The redirect URL should be in the format of `https://<frontend-url>/signin-oidc`, where `<frontend-url>` is the frontend URL of the service you are implementing this for. If this URL is incorrect, you will get an "Invalid request" when you try to access the authorized part of the service
+  - Scopes. These should be discussed with product but we always need the OpenID and Email scopes to be available.
+  - Public Key. This is where you set your public key; select the static key option and copy and paste the **whole** of the contents of the public key you generate into here
+
+### The Key Vault
+
+- A key vault should be created for each environment and for each service that uses One Login
+- To create a new key, navigate to the Key Vault > Keys > Generate/Import
+- Give the key an appropriate name and **import** the **private** key that was generated
+- Once created, you will see the key added to the list. Click on the key and then the current version of the key (which will have a unique identifier), and copy to clipboard the Key Identifier which should be passed to a developer
+- At this point, the local instance of the private key should be deleted for security reasons
+
+## Development
+
+*Note: this section assumes that implementation is being done using C# / ASP.NET Core*
+
+Our development kit for One Login is based on an ESFA package found at (https://github.com/SkillsFundingAgency/das-shared-packages/tree/master/SFA.DAS.GovUK.Auth)[https://github.com/SkillsFundingAgency/das-shared-packages/tree/master/SFA.DAS.GovUK.Auth] and we should monitor this package for future updates
+
+### High level flow
+
+- To authenticate, the auth system...
+    - First contacts the /authorize endpoint. This is the initial point where users are then required to authorize with OneLogin. Some services may also use this to verify identity, but we don't do this in Ofqual; if a user hasn't already logged in, this is the thing that gets the user to go through their login flows. Relevant documentation: [https://docs.sign-in.service.gov.uk/integrate-with-integration-environment/authenticate-your-user/#make-a-request-to-the-authorize-endpoint](https://docs.sign-in.service.gov.uk/integrate-with-integration-environment/authenticate-your-user/#make-a-request-to-the-authorize-endpoint)
+    - Once logged in, the user is then redirected through a URL specified during infrastructure set up. This is always to a URL ending in /signin-oidc, which our service provides. In addition, an authorization code is created, which we can then use to generate JWT tokens to continue to keep the user authenticated. Relevant documentation: [https://docs.sign-in.service.gov.uk/integrate-with-integration-environment/authenticate-your-user/#generate-an-authorisation-code](https://docs.sign-in.service.gov.uk/integrate-with-integration-environment/authenticate-your-user/#generate-an-authorisation-code)
+    - The authorization code given is used to POST to the /token endpoint to receive an ID Token containing their basicattributes, and an Access Token that is then used to contact the /userinfo endpoint for OneLogin to get the user's full information Once this is done, the user is successfully authenticated on our end, and this loop effectively happens whenever the user needs a fresh JWT token when it expires. Relevant documentation: [https://docs.sign-in.service.gov.uk/integrate-with-integration-environment/authenticate-your-user/#generate-an-authorisation-code](https://docs.sign-in.service.gov.uk/integrate-with-integration-environment/authenticate-your-user/#generate-an-authorisation-code) and [https://docs.sign-in.service.gov.uk/integrate-with-integration-environment/authenticate-your-user/#retrieve-user-information](https://docs.sign-in.service.gov.uk/integrate-with-integration-environment/authenticate-your-user/#retrieve-user-information)
+- A high level flow diagram is maintained in One Login's documentation at [https://docs.sign-in.service.gov.uk/how-gov-uk-one-login-works/#understand-the-technical-flow-gov-uk-one-login-uses](https://docs.sign-in.service.gov.uk/how-gov-uk-one-login-works/#understand-the-technical-flow-gov-uk-one-login-uses)
+
+### Environment Variables
+
+You will need the following environment variables
+
+- Group: GovUkOidcConfiguration
+  - BaseUrl: The base URL for One Login's OIDC endpoints. For test environments, this is `https://oidc.integration.account.gov.uk`
+  - ClientId: This is the ID used to identify our service in OneLogin and is provided by infrastructure when setting up the integration environment
+  - KeyVaultIdentifier: This provides a direct URL to our private key, which is used to encrypt communication with OneLogin. This URL should be provided by the Infrastructure team
+- Group: KeyVault
+  - ApplicationId: This is the client id of an App Registration that is used to authenticate with the Key Vault
+  - ApplicationSecret: This is the client secret of an App Registration that is used to authenticate with the Key Vault
+  - DirectoryId: This is the tenant of the key vault and should always be `8e336469-1c6b-4b0b-a06c-748a7c586f7c`
+  - Name: The name of the key vault to be accessed
+
+*Note: Key Vault in the future should be accessed with Managed Identities, and the docs should be updated to reflect this when it happens*
+
+### Folder and file structure
+
+In the Web folder of the solution, you will need to add the following folders and files:
+
+- Folder: Extensions
+    - ServiceCollectionExtensions: This class is used to ship off the functionality used to initiate setting up authentication services to outside the Program.cs
+- Folder: AuthUtils
+    - OidcService: Used to manage getting tokens and populating tokens with account claims appropriately
+    - JwtSecurityTokenService: Used to generate JWT tokens
+    - GovUkOidcConfiguration: Used to structure the environment variables defined above
+    - Token: A class definition for both Access and ID tokens
+    - GovUkUser: Used to define the basic ID information from the /userinfo endpoint
+    - AzureIdentityService: Used to authenticate with Key Vault
+
+### GovUkOidcConfiguration
+
+- Use the following structure:
+
+```C#
+
+public class GovUkOidcConfiguration
+{
+    public const string KEY = "GovUkOidcConfiguration";
+
+    public string BaseUrl { get; set; } = null!;
+    public string ClientId { get; set; } = null!;
+    public string KeyVaultIdentifier { get; set; } = null!;
+}
+
+```
+
+### Token
+
+- Use the following structure:
+
+```C#
+
+public class Token
+{
+    [JsonPropertyName("access_token")]
+    public string? AccessToken { get; set; }
+
+    [JsonPropertyName("id_token")]
+    public string? IdToken { get; set; }
+
+    [JsonPropertyName("token_type")]
+    public string? TokenType { get; set; }
+}
+
+```
+
+### GovUkUser
+
+- Use the following structure:
+
+```C#
+
+public class GovUkUser
+{
+    [JsonPropertyName("sub")] public string Sub { get; set; } = null!;
+
+    [JsonPropertyName("email_verified")]
+    public bool EmailVerified { get; set; }
+
+    [JsonPropertyName("email")]
+    public string Email { get; set; } = null!;
+}
+
+```
+
+### JwtSecurityTokenService
+
+- Use the following code to generate a JWT token:
+
+```C#
+
+    public string CreateToken(string clientId, string audience, ClaimsIdentity claimsIdentity, SigningCredentials signingCredentials)
+    {
+        var handler = new JwtSecurityTokenHandler();
+        var value = handler.CreateJwtSecurityToken(clientId, audience, claimsIdentity, DateTime.UtcNow,
+            DateTime.UtcNow.AddMinutes(5), DateTime.UtcNow, signingCredentials);
+
+        return value.RawData;
+    }
+
+```
+
+- This code uses the JwtSecurityTokenHandler, which is in the processed of being replaced with JsonWebTokenHandler. A way of using the latter should ideally be found in the future
+
+### OidcService
+
+- Use the following constructor
+
+```C#
+
+    private readonly HttpClient _httpClient;
+    private readonly IAzureIdentityService _azureIdentityService;
+    private readonly IJwtSecurityTokenService _jwtSecurityTokenService;
+    private readonly IConfiguration _configuration;
+
+    public OidcService(
+        HttpClient httpClient,
+        IAzureIdentityService azureIdentityService,
+        IJwtSecurityTokenService jwtSecurityTokenService,
+        IConfiguration configuration)
+    {
+        _httpClient = httpClient;
+        _azureIdentityService = azureIdentityService;
+        _jwtSecurityTokenService = jwtSecurityTokenService;
+        _configuration = configuration;
+        _httpClient.BaseAddress = new Uri(configuration["GovUkOidcConfiguration:BaseUrl"]);
+    }
+
+```
+
+- Use the following private function to help create JWT Assertions, which are then used to help get a token via OIDC
+
+```C#
+
+    private string CreateJwtAssertion()
+    {
+        var jti = Guid.NewGuid().ToString();
+        var claimsIdentity = new ClaimsIdentity(
+            new List<Claim>
+            {
+                new ("sub",_configuration["GovUkOidcConfiguration:ClientId"]),
+                new ("jti", jti)
+
+            });
+        var signingCredentials = new SigningCredentials(
+            new KeyVaultSecurityKey(_configuration["GovUkOidcConfiguration:KeyVaultIdentifier"], _azureIdentityService.AuthenticationCallback), "RS512")
+        {
+            CryptoProviderFactory = new CryptoProviderFactory
+            {
+                CustomCryptoProvider = new KeyVaultCryptoProvider()
+            }
+        };
+        var value = _jwtSecurityTokenService.CreateToken(_configuration["GovUkOidcConfiguration:ClientId"],
+            $"{_configuration["GovUkOidcConfiguration:BaseUrl"]}/token", claimsIdentity, signingCredentials);
+
+        return value;
+    }
+
+```
+
+- Use the following function to populate account claims via the userinfo endpoint in OIDC (see [https://docs.sign-in.service.gov.uk/integrate-with-integration-environment/authenticate-your-user/#retrieve-user-information](https://docs.sign-in.service.gov.uk/integrate-with-integration-environment/authenticate-your-user/#retrieve-user-information)) and an access token
+- Product name should be replaced with an appropriate product name, such as OfqualExpertApply
+
+```C#
+
+    public async Task PopulateAccountClaims(TokenValidatedContext tokenValidatedContext)
+    {
+        if (tokenValidatedContext.TokenEndpointResponse == null || tokenValidatedContext.Principal == null)
+        {
+            return;
+        }
+
+        // This access token should be obtained via the /token endpoint
+        var accessToken = tokenValidatedContext.TokenEndpointResponse.Parameters["access_token"];
+
+        // We contact the /userinfo endpoint to get the user's full information
+        var httpRequestMessage = new HttpRequestMessage(HttpMethod.Get, "/userinfo")
+        {
+
+            Headers =
+            {
+                UserAgent = { new ProductInfoHeaderValue("<ProductName>","1") },
+                Authorization = new AuthenticationHeaderValue("Bearer",accessToken)
+            }
+        };
+        var response = await _httpClient.SendAsync(httpRequestMessage);
+        var valueString = response.Content.ReadAsStringAsync().Result;
+        var content = JsonSerializer.Deserialize<GovUkUser>(valueString);
+        if (content?.Email != null)
+        {
+            tokenValidatedContext.Principal.Identities.First().AddClaim(new Claim(ClaimTypes.Email, content.Email));
+        }
+
+    }
+```
+
+- Use the following endpoint to obtain an access token
+
+``` C#
+
+public async Task<Token?> GetToken(OpenIdConnectMessage? openIdConnectMessage)
+{
+    // https://docs.sign-in.service.gov.uk/integrate-with-integration-environment/authenticate-your-user/#make-a-post-request-to-the-token-endpoint
+
+    var httpRequestMessage = new HttpRequestMessage(HttpMethod.Post, "/token")
+    {
+        Headers =
+        {
+            Accept = { new MediaTypeWithQualityHeaderValue("*/*"), new MediaTypeWithQualityHeaderValue("application/x-www-form-urlencoded") },
+            UserAgent = { new ProductInfoHeaderValue("OfqualExpertsApply","1") },
+        }
+    };
+
+    var assertion = CreateJwtAssertion();
+    httpRequestMessage.Content = new FormUrlEncodedContent (new List<KeyValuePair<string, string>>
+    {
+        new ("grant_type","authorization_code"),
+        new ("code",openIdConnectMessage?.Code ?? ""),
+        new ("redirect_uri",openIdConnectMessage?.RedirectUri  ?? ""),
+        new ("client_assertion_type","urn:ietf:params:oauth:client-assertion-type:jwt-bearer"),
+        new ("client_assertion", assertion),
+        // new("code_verifier", openIdConnectMessage != null && openIdConnectMessage.Parameters.TryGetValue("code_verifier", out var codeVerifier) ? codeVerifier : "" ),
+    });
+
+    httpRequestMessage.Content.Headers.Clear();
+    httpRequestMessage.Content.Headers.Add("Content-Type","application/x-www-form-urlencoded");
+
+
+    var response = await _httpClient.SendAsync(httpRequestMessage);
+    var valueString = await response.Content.ReadAsStringAsync();
+    var content = JsonSerializer.Deserialize<Token>(valueString);
+
+    return content;
+}
+
+```
+
+### AzureIdentityService
+
+- Add in the following class to set up authentication callbacks to access Key Vault credentials
+
+```C#
+
+private readonly IConfiguration _config;
+
+public AzureIdentityService(IConfiguration config)
+{
+    _config = config;
+}
+
+public async Task<string> AuthenticationCallback(string authority, string resource, string scope)
+{
+    var chainedTokenCredential = new ChainedTokenCredential(
+        new ManagedIdentityCredential(),
+        new AzureCliCredential(),
+        new EnvironmentCredential(),
+        new ClientSecretCredential(
+            _config["KeyVault:DirectoryId"],
+            _config["KeyVault:ApplicationId"],
+            _config["KeyVault:ApplicationSecret"]));
+
+    var token = await chainedTokenCredential.GetTokenAsync(
+        new TokenRequestContext(scopes: new [] {"https://vault.azure.net/.default"}));
+
+    return token.Token;
+}
+```
+
+### ServiceCollectionExtensions
+
+- This should be set up as a static class
+- Use the following function to add in the sign in services needed as transients
+
+```C#
+
+public static void AddSignInServices(this IServiceCollection services, IConfiguration configRoot)
+{
+    services.AddTransient<IAzureIdentityService>(_ => new AzureIdentityService(configRoot))
+        .AddTransient<IJwtSecurityTokenService, JwtSecurityTokenService>()
+        .AddHttpClient<IOidcService, OidcService>();
+}
+
+```
+
+- Use the following function to initially add in OpenIdConnect and Cookies for it
+
+```C#
+
+
+    // This method is used to add the authentication services required for the sign-in process.
+    public static void AddSignInAuthentication(this IServiceCollection services, GovUkOidcConfiguration config)
+    {
+        services
+            .AddAuthentication(opt =>
+            {
+                // Configures the default schemes used for authentication; use the cookie by default but
+                // if that fails, use OpenIdConnect as the challenge
+                opt.DefaultSignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+                opt.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+                opt.DefaultChallengeScheme = OpenIdConnectDefaults.AuthenticationScheme;
+                opt.DefaultSignOutScheme = OpenIdConnectDefaults.AuthenticationScheme;
+            })
+            .AddOpenIdConnect(opt =>
+            {
+                // This configures options for OpenIdConnect to connect to GOV.UK One Login
+                // Details for this can be found at https://docs.sign-in.service.gov.uk/before-integrating/
+                // and https://docs.sign-in.service.gov.uk/integrate-with-integration-environment/
+                opt.ClientId = config.ClientId;
+                opt.MetadataAddress = $"{config.BaseUrl}/.well-known/openid-configuration";
+                opt.ResponseType = "code";
+                opt.SignedOutRedirectUri = "/";
+                opt.SignedOutCallbackPath = "/signed-out";
+                opt.CallbackPath = "/signin-oidc";
+                opt.ResponseMode = string.Empty;
+                opt.SaveTokens = true;
+                // openid is a mandatory scope for One Login; we then prefer to use email instead of phone
+                opt.Scope.Clear();
+                opt.Scope.Add("openid");
+                opt.Scope.Add("email");
+
+                opt.Events.OnRemoteFailure = ctx =>
+                {
+                    if (ctx.Failure is not null && ctx.Failure.Message.Contains("Correlation failed"))
+                    {
+                        ctx.Response.Redirect("/");
+                        ctx.HandleResponse();
+                    }
+
+                    return Task.CompletedTask;
+                };
+
+                opt.Events.OnSignedOutCallbackRedirect = ctx =>
+                {
+                    // This is used to clear the cookie when the user signs out
+                    ctx.Response.Cookies.Delete(CookieConstants.AUTH_COOKIE_NAME);
+                    ctx.Response.Redirect("/");
+                    ctx.HandleResponse();
+                    return Task.CompletedTask;
+                };
+            })
+            .AddCookie(opt =>
+            {
+                // This configures the cookie options for the sign-in process, such as when the cookie expires
+                opt.AccessDeniedPath = new PathString("/error/403");
+                opt.ExpireTimeSpan = TimeSpan.FromHours(20);
+                opt.Cookie.Name = CookieConstants.AUTH_COOKIE_NAME;
+                opt.Cookie.SecurePolicy = CookieSecurePolicy.Always;
+                opt.SlidingExpiration = true;
+                opt.Cookie.SameSite = SameSiteMode.None;
+                opt.CookieManager = new ChunkingCookieManager { ChunkSize = 3000 };
+                opt.LogoutPath = "/home/signed-out";
+            });
+    }
+
+```
+
+- Use this function to configure the options required for OpenIdConnect
+
+```C#
+
+// This method is used to configure the sign-in process using OpenIdConnect
+public static void ConfigureSignInOidc(this IServiceCollection services, GovUkOidcConfiguration config)
+{
+    services
+        .AddOptions<OpenIdConnectOptions>(OpenIdConnectDefaults.AuthenticationScheme)
+        .Configure<IOidcService, IAzureIdentityService>((options, oidcService, azureIdService) =>
+        {
+            options.TokenValidationParameters = new TokenValidationParameters
+            {
+                // This configures the token validation parameters for the sign-in process
+                AuthenticationType = "private_key_jwt",
+                // This key is sourced from an Azure Key Vault instead of a file
+                IssuerSigningKey = new KeyVaultSecurityKey(
+                    config.KeyVaultIdentifier,
+                    azureIdService.AuthenticationCallback),
+                ValidateIssuerSigningKey = true,
+                ValidateAudience = true,
+                ValidateIssuer = true,
+                SaveSigninToken = true
+            };
+            // When the token is validated, the account claims are populated via the OIDC service
+            options.Events.OnTokenValidated = async ctx => { await oidcService.PopulateAccountClaims(ctx); };
+            options.Events.OnAuthorizationCodeReceived = async (ctx) =>
+            {
+                // When an authorization code is received, the token is retrieved and the code is redeemed
+                var token = await oidcService.GetToken(ctx.TokenEndpointRequest);
+                if (token is { AccessToken: { }, IdToken: { } })
+                {
+                    ctx.HandleCodeRedemption(token.AccessToken, token.IdToken);
+                }
+            };
+            options.UsePkce = false;
+        });
+}
+
+```
+
+### Program.cs
+
+- In Program.cs, add the following setup calls:
+
+```C#
+
+// Bring in the OpenIDConnect configuration
+var govukOidcConfig = builder.Configuration.GetSection(GovUkOidcConfiguration.KEY).Get<GovUkOidcConfiguration>();
+// Bring in the services required to help configure and run OpenIDConnect
+builder.Services.AddSignInServices(builder.Configuration);
+// Adds in OpenIDConnect to the Program.cs configuration along with other authentication functons
+builder.Services.AddSignInAuthentication(govukOidcConfig);
+// Actually configures OpenIDConnect with the correct values we need
+builder.Services.ConfigureSignInOidc(govukOidcConfig);
+
+app.UseAuthentication();
+app.UseAuthorization();
+app.UseSession();
+
+```
+
+
+

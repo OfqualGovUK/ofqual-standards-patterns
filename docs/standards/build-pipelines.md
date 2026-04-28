@@ -2,7 +2,7 @@
 layout: standard
 order: 4
 title: Build Pipelines for Digital Infrastructure
-date: 2025-07-23 # this should be the date that the content was most recently amended or formally reviewed
+date: 2025-10-01 # this should be the date that the content was most recently amended or formally reviewed
 id: OFQ-00004 # Set unique ID for standard
 # use `tags: []` for no tags
 # Note: tags must use sentence case capitalisation
@@ -84,9 +84,9 @@ As good practice we should save the endpoint needed for authentication and the t
 - Use a separate stage for this. There should be one job configured:
   - A job for running Snyk
 - See the snippets below for example implementations
-- Only include the `Build Docker Image` & `container` tasks if there is a working Dockerfile included in the repo
+- Only include the `Build Docker Image` & `container` tasks if there is a working Dockerfile included in the repo; static applications do not use Docker files
 
-##### Front-End Example (React)
+##### Front-End Example (React / Static Web Apps)
 
 _NB: Don't just copy and paste this! This is an example from 29/04/2025 - it may be out of date (e.g. Node version spec)_
 
@@ -143,6 +143,25 @@ _NB: Don't just copy and paste this! This is an example from 29/04/2025 - it may
             severityThreshold: 'high'
             failOnIssues: true
             additionalArguments: '--all-projects'
+
+        - task: Docker@2 # not needed for static apps
+          displayName: Build Docker Image
+          inputs:
+            command: build
+            repository: 'repository'
+            dockerfile: '$(dockerfilePath)'
+            tags: 'latest'
+
+        - task: SnykSecurityScan@1 # not needed for static apps
+          displayName: 'Synk container scan'
+          inputs:
+            serviceConnectionEndpoint: 'snyk-integration-eu'
+            testType: 'container'
+            dockerImageName: 'repository:latest'
+            dockerfilePath: '$(dockerfilePath)'
+            monitorWhen: 'always'
+            severityThreshold: 'high'
+            failOnIssues: true
 
 ```
 
@@ -237,7 +256,7 @@ A 'Run Tests' stage should always be present, and execute appropriate test suite
 
 If tests fail, they should always block the pipeline from passing. Tests should always be ran regardless of Static Analysis results.
 
-Exceptions to this requirement should only be approved by the Lead Developer and will generally only be approved on legacy equipment that cannot be maintained; no exceptions will be approved for newly-written software
+Exceptions to this requirement should only be approved by the Lead Developer and will generally only be approved on legacy equipment that cannot be maintained or for basic static apps; no exceptions will be approved for newly-written software
 
 #### Example Snippets
 
@@ -472,6 +491,35 @@ _NB: Don't just copy and paste this! These are examples from 23/07/2025 - it may
                   appName: $(FunctionAppName)
                   package: '$(Pipeline.Workspace)/drop/$(Build.BuildId).zip'
                   deploymentMethod: 'auto'
+```
+
+##### Static Applications
+
+###### Introduction
+
+- For lightweight static applications, such as those used for our standards and patterns site and our shutter pages, it is suitable to deploy out directly to a static application
+- Unlike our other applications, these **build and deploy out to production on main** rather than building and then using a release pipeline; this is to maintain the intended simplicity of these static apps.
+- Note that a lot of the configuration for static apps is determined by the package.json (e.g. the build engine used)
+- The deployment token is a secret and is obtained via the Azure Static Web App to be deployed onto.
+
+###### Example Snippet
+
+_NB: Don't just copy and paste this! These are examples from 01/10/2025 - it may be out of date (e.g. Node version spec) and in most cases should just be used as a reference_
+
+```yaml
+- stage: BuildAndDeploy
+  jobs:
+    - job: BuildProd
+      condition: and(succeeded(), startsWith(variables['build.sourceBranch'], 'refs/heads/main'))
+      steps:
+        - checkout: self
+          submodules: true
+        - task: AzureStaticWebApp@0
+          inputs:
+            app_location: '/' # App source code path relative to cwd
+            api_location: '' # Api source code path relative to cwd
+            output_location: '_site' # Built app content directory; in eleventy this is _site, and in vite this is the dist folder
+            azure_static_web_apps_api_token: $(deployment_token)
 ```
 
 ##### Legacy Systems using App Services (DEPRECATED)

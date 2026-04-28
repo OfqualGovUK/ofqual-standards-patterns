@@ -1,7 +1,7 @@
 ---
 layout: principle
 order: 9
-title: 9.	We keep things neat and tidy
+title: 09.	We keep things neat and tidy
 date: 2025-06-18
 tags:
   - Ways of working
