@@ -2,7 +2,7 @@
 layout: standard
 order: 4
 title: Developer Testing
-date: 2025-10-10
+date: 2026-05-01
 id: OFQ-00009
 tags:
 - Digital
@@ -61,7 +61,8 @@ Organise tests clearly and review them each time that you are working in a code 
 
 ### Tests must be run automatically in the CI/CD pipeline
 
-All tests must be integrated into the CI/CD pipeline. 
+All tests must be integrated into the CI/CD pipeline.
+There must be an overnight automated test run of our pipelines. 
 They must run on every commit and pull request. 
 
 ### Tests must cover new features and bug fixes
