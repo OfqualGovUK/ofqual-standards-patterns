@@ -83,7 +83,11 @@ API hostnames must be whitelisted by GovForms admin before they can be used in t
 
 The hostnames below are currently whitelisted:
 
-* Mike, can you please list them here
+* https://ofq-prd-common-refdata-api.wittybay-a6b6e414.uksouth.azurecontainerapps.io
+* https://ofq-prd-comm-users-api.wittybay-a6b6e414.uksouth.azurecontainerapps.io
+* https://ofq-prd-expert-apply-api.wittybay-a6b6e414.uksouth.azurecontainerapps.io
+* https://login.microsoftonline.com
+* Note: If APIs are under GOV.UK then you do not need to do anything as everything under there is already whitelisted by GovForms
 
 APIs can be called from any standard question page and the results stored within the form session data. Consult Darcy (the in-built chatbot for details on how to interface with APIs and the resulting data).
 
@@ -91,15 +95,23 @@ APIs can be called from any standard question page and the results stored within
 
 It is often necessary to use different API endpoints in testing and production. You can set properties and secrets within the library settings and these can contain different values depending on whether the environment is QA or production. Use this feature to set the differing API endpoints for testing and production.
 
+It is good practice to include a matching or representative API response as a mock response in the page action settings for testing in the prototyping environment. This can also provide a clear example of the expected response contract for an API that doesn't yet exist.
+
 ## Testing
 
 Since APIs can not be used in the GovForms prototyping environment, all pre-production testing must be done in the GovForms QA environment.
 
-Where the form needs to interact with different Ofqual services in QA and production, e.g. for testing APIs vs production APIs, these endpoints and secrets should be defined as envirnment variables and secrets within the library settings. There are separate sections for QA and production so the system can automatically swap between them when the form is deployed to QA or production.
+Where the form needs to interact with different Ofqual services in QA and production, e.g. for testing APIs vs production APIs, these endpoints and secrets should be defined as environment variables and secrets within the library settings. There are separate sections for QA and production so the system can automatically swap between them when the form is deployed to QA or production.
 
 ### Testing for services requiring authentication
 
-Mike - can you put something in here re how we test with our token-passing services that don't use the built-in auth options?
+There are currently two main forms of authentication in our govforms services. The first is the built-in GovForms authentication, which can be set at the library level. The second is external authentication, where the user authenticates outside of the form and then a token is passed to the form to identify the user, in this scenario the govform actually operates in anonymous mode. The former is preferred as it is supported by GovForms and ensures we have all the userinfo available within the form session data, whereas the latter is not supported and requires workarounds to ensure any user identification is saved to the form submission.
+
+For testing with GovForms built-in authentication, you can create test users within the GovForms admin interface and use these to log in to the form in the QA environment. 
+
+In the case of the Ofqual 2 library (Expansions form), this uses Entra ID for authenticating AO users. You must create users in the Entra ID tenant that is used for the library and assign them to the appropriate permissions in GovForms to ensure they have access to the QA form. user creation can be done in the Portal UI to create a user for an AO and automatically add them to the Entra ID tenant. It's recommended to use a dedicated email address for test AO users. You will also need access to AO Portal GOV.UK Notify service to grab the temporary password email from the API Integration dashboard. It must be intercepted in the Notify UI - the email will not be sent to the actual email address. Once you have the temporary password, you can log in to the form with the Portal login address given, and set a new password for future use.
+
+For SMS services, users use Gov.UK OneLogin to authenticate into the citizen app, but as part of the govforms integration, we use a OneShotToken authentication method where the user is authenticated outside of the form and then a token is passed to the form to identify the user. This method is not supported by GovForms and requires workarounds to ensure the token makes it all the way through the form and that any necessary user information is saved to the form submission. For testing, you will need to generate a valid token for a test user and pass it in as a query parameter and also include the service journey query parameter in the URL.
 
 ## Patterns
 
