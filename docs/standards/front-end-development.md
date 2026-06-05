@@ -2,7 +2,7 @@
 layout: standard
 order: 1
 title: Front-end Development
-date: 2026-02-26 
+date: 2026-03-09 
 id: OFQ-00012 
 tags:
   - Digital
@@ -11,12 +11,12 @@ related:
   sections:
     - title: Related Principles
       items:
-      - text: We use the right tools and have the right rules
-      - href: /principles/We-use-the-right-tools-and-have-the-right-rules/
-      - text: We design and continuously develop services that are durable and resilient
-      - href: /principles/We-design-and-continuously-develop-services/
-      - text: We keep things neat and tidy
-      - href: /principles/We-keep-things-neat-and-tidy/
+        - text: We use the right tools and have the right rules
+          href: /principles/We-use-the-right-tools-and-have-the-right-rules/
+        - text: We design and continuously develop services that are durable and resilient
+          href: /principles/We-design-and-continuously-develop-services/
+        - text: We keep things neat and tidy
+          href: /principles/We-keep-things-neat-and-tidy/
     - title: Related links
       items:
         - text: Back-end Development
