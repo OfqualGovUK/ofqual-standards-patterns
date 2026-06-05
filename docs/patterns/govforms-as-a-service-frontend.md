@@ -2,7 +2,7 @@
 layout: pattern
 order: 1
 title: GovForms as a service frontend
-date: 2026-06-03 # this should be the date that the content was most recently amended or formally reviewed
+date: 2026-06-05 # this should be the date that the content was most recently amended or formally reviewed
 # use `tags: []` for no tags 
 # Note: tags must use sentence case capitalisation
 tags:
@@ -68,7 +68,7 @@ The built-in options in GovForms are:
 * Open ID Connect (OAuth 2.0)
 * AWS Cognito
 
-The authentication settings are defined at the library level, but you can decide whether each form requires authentication or not. The consequence is that you can't have 2 forms with differing authentication settings, e.g. Gov.UK One Login and Entra ID, within the same library – they would have to be placed in separate libraries.
+The authentication settings are defined at the library level, but you can decide whether each form requires authentication or not. The consequence is that you can't have 2 forms with differing authentication settings, e.g. GOV.UK One Login and Entra ID, within the same library – they would have to be placed in separate libraries.
 
 **Do not alter the authentication settings on existing libraries.**
 
