@@ -1,7 +1,7 @@
 ---
 layout: standard
 order: 1
-title: Tests Pyramid
+title: Test Pyramid
 date: 2026-06-26 # this should be the date that the content was most recently amended or formally reviewed
 id: OFQ-00022 # Set unique ID for standard
 # use `tags: []` for no tags
@@ -30,7 +30,7 @@ Please see https://x-govuk.github.io/govuk-eleventy-plugin/markdown/#line-breaks
 
 Heading tags are automatically assigned an id, converting spaces to `kebab-case` and applying URL encoding. If you want to link to a specific heading, you can obtain the URL encoded link by running the site locally, inspecting the appropriate <h3> element in the browser's developer tools and copying the value from the 'id' attribute.
 -->
-![Test Pyramid](assets/images/testpyramid.png)
+![Test Pyramid](/assets/images/testpyramid.png)
 
 The Software Engineering Test Pyramid is a strategic model used widely for software testing, that emphasises an optimised approach to testing across different levels. Each layer represents a different type of test, and the size of the layer indicates the recommended proportion of that test type. Use the structured approach outlined by the test pyramid as a guide for your testing. Prioritise a large volume of unit tests to validate individual components effectively. Implement a smaller set of integration tests to verify interactions between these components. Limit end-to-end (E2E) tests to critical user flows and high-risk areas, due to their complexity and maintenance costs.
 
