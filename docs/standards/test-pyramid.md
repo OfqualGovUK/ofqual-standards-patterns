@@ -2,13 +2,13 @@
 layout: standard
 order: 1
 title: Test Pyramid
-date: 2026-06-26 # this should be the date that the content was most recently amended or formally reviewed
+date: 2026-06-11 # this should be the date that the content was most recently amended or formally reviewed
 id: OFQ-00022 # Set unique ID for standard
 # use `tags: []` for no tags
 # Note: tags must use sentence case capitalisation
 tags:
   - QA
-  - strategy
+  - Strategy
 related: # remove this section if you do not need related links on your page
   sections:
     - title: Related Standards
@@ -66,14 +66,25 @@ As a tester you should understand the business and technical risks before decidi
 To implement this standard the following risk information must be captured in User Stories to ensure that the testing is targeted correctly and that the right types and levels of testing (test pyramid coverage) are applied:
 Business Risk Category - Product teams should consider whether there is a High, Medium or Low overall risk rating Tag to a User Story
 Product teams should consider each of the following risk categories when assigning the risk rating:
-- Compliance / Regulatory (what level of compliance/regulatory risk is associated with this change?) 
-- Customer Impact (what level of risk to Ofqual's business/Public impact is there of this development?)
-- Financial (is there any possible financial risk from this change?)
-- Operational (what is the risk to the customer or Ofqual of being able to operate if there is an issue with this?)
-- Reputational (is there high visibility, for example across all AOs, customers, Ofqual users which carries a risk?)
-If Risk is High in any of the risk categories, then the overall risk rating tagged to the User Story is High
-If the highest Risk category rating is Medium in all categories, then the overall risk rating tagged to the User Story is Medium
+- Compliance / Regulatory risk
+What level of compliance/regulatory risk is associated with this change? 
+
+- Customer Impact 
+What level of risk to Awarding Organisations business, Ofqual business and/or customers from the general public impact is there from this development?
+
+- Financial 
+Is there any possible financial risk from this change?
+
+- Operational 
+What is the risk to the customer or Ofqual of being able to continue to operate 
+
+- Reputational 
+If this development went wrong, how visible would it be and how much would it damage user trust?
+
+If Risk is High in any of the risk categories, then the overall risk rating tagged to the User Story is High.
+If the highest Risk category rating is Medium in any category, then the overall risk rating tagged to the User Story is Medium.
 If all Risk Categories are low, then the overall Risk Rating is Low.
+The test process (i.e. the level and depth of the testing within the test pyramid) is then tailored according to the business risk, for this development.
 
 Technical Risks
 The Development teams should identify what the Technical risk of implementing the User Story are (during Technical Design)
@@ -83,21 +94,27 @@ Integration / APIs
 - What happens if an API contract changes or breaks?
 - What systems/services doe this component depend on?
 - How are failures handled?
+
 Data Integrity
 - How critical is the accuracy of the data being stored/transformed?
 - Could data be lost, duplicated or corrupted?
-- Are there validation mechanisms
+
 Security
 - What sensitive data is being handled?
 - Are there vulnerabilities (authentication, authorisation, input validation)?
 - What would be the impact of a breach?
 - Are security controls (encryption, access control) sufficient/in place? 
+
 Availability / Reliability
 - Is there resilience (failover, redundancy)?
-- How quickly can the system/component recover (from a failure in this User Story)?
-Other technical risk categories specific to this code area/user story?
-- Infrastructure/deployment risks?
-- Performance risks? 
+- How quickly can the system/component recover (from a failure)?
+
+Are there other technical risk categories specific to this code area/user story?
+For example:
+- Are there Infrastructure or Deployment risks introduced?
+- Are there system performance risks by this change? 
+
+The test process should focus on mitigating through testing where there are the highest technical risks for any given development change.
 
 <!-- Requirement description text -->
 ### You MUST implement a test early approach
