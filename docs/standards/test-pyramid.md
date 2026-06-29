@@ -129,7 +129,7 @@ Quality Assurance engineers should always look for opportunities to "shift left"
 The top of the pyramid is the smallest, representing the End to End (E2E) tests. These tests validate the entire application flow, simlulating real-world user scenarios and verifying all components work together. E2E tests are the most complex and by nature are the most fragile. They are also the most time-consuming to write, execute and maintain. Automation should be strategic, for only critical user work flows and high risk areas, while limiting the scope to as small a number as possible, to reduce complexity and maintenance costs.
 <!-- Requirement description text -->
 
-### You MUST capture metrics to provide evidence of the effeciency of your tests
+### You MUST capture metrics to provide evidence of the efficiency of your tests
 Capturing metrics is crucial for evaluating effectiveness of your tests. These metrics should be available for unit/component level tests, the middle integration layers and the E2E tests.
 
 This is not an exhaustive list, but as a minimum across the pyramid you should capture and store for automated test runs:
