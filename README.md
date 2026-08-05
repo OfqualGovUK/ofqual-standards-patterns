@@ -52,5 +52,30 @@ Installs the server globally and then navigate to a terminal/cmd prompt to the _
 http-server -p 8080
 ```
 
-Now you can preview the site on http://localhost:8080
+Now you can preview the site on `http://localhost:8080`
 
+### Alternative method for previewing changes locally via Docker
+
+Alternatively, you can run the site using the provided Dockerfile and a working and running Docker Desktop installation. To do this, run:
+
+```
+npm run docker:build
+```
+
+To generate an image named `ofqual-standards-patterns` with the tag `latest`
+
+To then run this image, use:
+
+```
+npm run docker:run
+```
+
+To host the image at `http://localhost:8080`
+
+If this port is not suitable, you may use:
+
+```
+docker run -p <PREFERRED_PORT>:80 ofqual-standards-patterns
+```
+
+To host the image at `http://localhost:<PREFERRED_PORT>`

@@ -23,7 +23,8 @@
   "scripts": {
     "build": "eleventy",
     "serve": "eleventy --serve",
-    "docker:build": "docker build -t ofqual-standards-patterns ."
+    "docker:build": "docker build -t ofqual-standards-patterns .",
+    "docker:run": "docker run -p 8080:80 ofqual-standards-patterns"
   },
   "engines": {
     "node": ">=22.0.0 <23.0.0"
