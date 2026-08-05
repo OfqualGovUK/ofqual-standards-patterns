@@ -1,7 +1,6 @@
 $_font-family: roboto, system-ui, sans-serif;
 @use "pkg:govuk-frontend/dist/govuk" with (
   $govuk-font-family: $_font-family,
-  $govuk-brand-colour: #15a427,
   $govuk-page-width: 1100px
 );
 
@@ -10,23 +9,18 @@ $_font-family: roboto, system-ui, sans-serif;
 
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
-@font-face {
-  font-family: 'Roboto';
-  font-style: normal;
-  font-weight: 400;
-}
-
 html.govuk-template {
   background-color: #fff;
 }
 
-body, .govuk-template__body {
+body,
+.govuk-template__body {
   background-color: #f5f5f5;
   color: #0b0c0c;
+  font-family: 'Roboto', Arial, sans-serif;
 }
 
-.govuk-template--rebranded .govuk-header {
-  background-color: #15a427;
+.govuk-header {
   color: #fff;
 
   .govuk-header__container {
@@ -35,41 +29,40 @@ body, .govuk-template__body {
     padding-bottom: 20px;
   }
 
-  .govuk-header__link--homepage {
+  .govuk-header__homepage-link {
     background: transparent;
-  }
-
-  .govuk-header__link, .govuk-header__link:visited, .govuk-header__link:active, .govuk-header__link:hover {
     color: #fff;
     display: inline-block;
+
+    &:visited,
+    &:active,
+    &:hover {
+      color: #fff;
+    }
+
+    &:focus {
+      background-color: #ffdd00;
+      color: #0b0c0c;
+    }
   }
 
-  .govuk-header__link:focus {
-    background-color: #ffdd00;
-    color: #0b0c0c;
-  }
-
-  // This hide class and child sections get
-  // used to swap around the Ofqual logo for when
-  // the main link is hovered over
-
+  // Used to hide the black logo by default
   .hide {
-    display: none
-  }
-
-  .govuk-header__link:focus img:first-child
-  {
     display: none;
   }
 
-  .govuk-header__link:focus img:last-child
-  {
-    display: inline-block
+  // Only swap logos when the link receives focus
+  .govuk-header__homepage-link:focus img:first-child {
+    display: none;
+  }
+
+  .govuk-header__homepage-link:focus img:last-child {
+    display: inline-block;
   }
 
   .govuk-header__logotype {
     vertical-align: baseline;
-    top: 0
+    top: 0;
   }
 
   .govuk-header__product-name {
@@ -88,7 +81,11 @@ body, .govuk-template__body {
   }
 
   app-search {
-    margin-bottom: 8px
+    margin-bottom: 8px;
+  }
+
+  label.govuk-visually-hidden {
+    color: black;
   }
 }
 
@@ -136,4 +133,9 @@ body, .govuk-template__body {
 .govuk-breadcrumbs__link {
   display: inline-block;
   min-height: 24px;
+}
+
+// Ensure search result text uses the default GOV.UK text colour
+.app-search__menu {
+    color: #0b0c0c;
 }
